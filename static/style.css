@@ -1,0 +1,6 @@
+.navbar{
+    height: 14vh;
+    display: flex;
+    background-color: #00462A;
+    align-items: center;
+}
