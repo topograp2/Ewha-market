@@ -4,3 +4,11 @@
     background-color: #00462A;
     align-items: center;
 }
+
+.navbar a{
+    color: #939393;
+}
+
+.navbar a:hover{
+    color: white;
+}
