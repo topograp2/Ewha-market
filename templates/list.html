@@ -1,5 +1,86 @@
 {% extends "index.html" %}
 
 {% block section %}
-    등록된 상품 리스트 조회 화면 입니다.
+
+  <!-- 상단 카테고리 내비게이션 -->
+  <nav class="category-nav">
+    <a href="#" class="active">의류</a>
+    <a>|</a>
+    <a href="#">문구</a>
+    <a>|</a>
+    <a href="#">뷰티</a>
+    <a>|</a>
+    <a href="#">푸드</a>
+    <a>|</a>
+    <a href="#">디지털</a>
+    <a>|</a>
+    <a href="#">잡화</a>
+  </nav>
+  <!-- 서브 카테고리 내비게이션 -->
+  <nav class="subcategory-nav">
+    <a href="#">세부1</a>
+    <a href="#">세부2</a>
+    <a href="#">세부3</a>
+    <a href="#">세부4</a>
+  </nav>
+  
+  <div class="list_section">
+    <a id="list_title">상품 리스트</a><br>
+    <a id="list_info">전체 상품은 50개입니다</a>
+  </div>
+
+  <!-- 상품 리스트 -->
+  <div class="product-list">
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+        <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+    <div class="product-item">
+      <img src="../static/images/temp.png" alt="상품 이미지">
+      <div class="product-name">컴공 학잠 공구</div>
+    </div>
+  </div>
+
+  <!-- 페이지네이션 -->
+  <div class="pagination">
+    <a href="#">&lt;&lt;</a>
+    <a href="#" class="active">1</a>
+    <a href="#">2</a>
+    <a href="#">3</a>
+    <a href="#">4</a>
+    <a href="#">5</a>
+    <a href="#">&gt;&gt;</a>
+  </div>
 {% endblock section %}
