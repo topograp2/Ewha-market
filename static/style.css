@@ -2,20 +2,21 @@
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
+body>:not(.navbar) {justify-content: center;}
+
+/*헤더*/
 .navbar{
 	height: 80px;
     display: flex;
 	margin: auto;
 	background-color: #00462A;
 }
-
 .search_area{
 	width: 250px;
 	height: 40px;
 	margin-left: 50px;
 	margin-top: 19px;
 }
-
 .search_area > input{
 	width: 250px;
 	height: 40px;
@@ -23,18 +24,111 @@
 	padding: 0 80px 0 20px;
     	border-radius: 30px;
 }
-
 .navbar__menu{
 	display: flex;
 	margin-left: 130px;
 	list-style: none;
 }
-
 .navbar__menu > li{
-	margin-left: 100px;
-	margin-top: 20px;
+	margin-left: 85px;
+	margin-top: 12px;
+}
+.navbar__menu > li > a{
+	font-size: 120%;
+	color: #939393;
+	text-decoration: none;
+}
+.navbar__menu > li > a.active{
+	color: #ffffff;
+	font-weight: bold;
+}
+.navbar__logo {
+	margin-top: 10px;
 }
 
-.navbar__menu > li > a{
-	color: #ffffff;
+
+/*리스트*/
+.list_section {
+	position: absolute;
+	text-align: right;
+	left: 68rem;
+	top: 8.5rem;
+}
+#list_title {
+	font-size: 130%;
+	font-weight: bold;
+}
+#list_info {
+	font-size: 80%;
+	color: #737373;
+}
+
+.category-nav {
+	display: flex;
+	padding: 1rem;
+	margin-top: 0.5vh;
+	margin-left: 13rem;
+	font-size: 1.2rem;
+}
+.category-nav a {
+	padding-left: 1.2rem;
+	padding-right: 1.2rem;
+	font-weight: bold;
+	text-decoration: none;
+	color: black;
+}
+.category-nav a.active {
+	background-color: #6ab04c;
+	color: white;
+	font-size: 110%;
+}
+.subcategory-nav {
+	display: flex;
+	gap: 5rem;
+	padding-left: 2.5rem; padding-bottom: 0.6rem; padding-top: 0.6rem;
+	margin-left: 13.5rem; margin-right: 44rem; margin-bottom: 1rem;
+	background-color: #f0f0f0;
+}
+.subcategory-nav a {
+	text-decoration: none;
+	color: #737373;
+}
+.product-list {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+	place-items: center;
+	margin-left: 14vw;
+	margin-right: 14vw;
+}
+.product-item {
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+.product-item img {
+	background-color: #ddd;
+	width: 14vw;
+	height: 14vw;
+	border-radius: 5px;
+}
+.product-name {
+	font-weight: bold;
+}
+.pagination {
+	display: flex;
+	justify-content : center;
+	gap: 0.5rem;
+	padding: 1rem;
+}
+.pagination a {
+	text-decoration: none;
+	color: #888;
+	padding: 0.5rem;
+	border-radius: 30px;
+}
+.pagination a.active {
+	background-color: #6ab04c;
+	color: white;
+	font-weight: bold;
 }
