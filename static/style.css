@@ -6,6 +6,7 @@ body>:not(.navbar) {justify-content: center;}
 
 /*헤더*/
 .navbar{
+	width: 1422px;
 	height: 80px;
     display: flex;
 	margin: auto;
@@ -24,6 +25,10 @@ body>:not(.navbar) {justify-content: center;}
 	padding: 0 80px 0 20px;
     	border-radius: 30px;
 }
+#search {
+	position: absolute;
+	left: 591px; top: 29px;
+}
 .navbar__menu{
 	display: flex;
 	margin-left: 130px;
@@ -34,7 +39,7 @@ body>:not(.navbar) {justify-content: center;}
 	margin-top: 12px;
 }
 .navbar__menu > li > a{
-	font-size: 120%;
+	font-size: 19.2px;
 	color: #939393;
 	text-decoration: none;
 }
@@ -51,28 +56,29 @@ body>:not(.navbar) {justify-content: center;}
 .list_section {
 	position: absolute;
 	text-align: right;
-	left: 68rem;
-	top: 8.5rem;
+	left: 1088px; top: 136px;
 }
 #list_title {
-	font-size: 130%;
+	font-size: 20.8px;
 	font-weight: bold;
 }
 #list_info {
-	font-size: 80%;
+	font-size: 12.8px;
 	color: #737373;
 }
 
 .category-nav {
 	display: flex;
-	padding: 1rem;
-	margin-top: 0.5vh;
-	margin-left: 13rem;
-	font-size: 1.2rem;
+	padding: 16px;
+	margin-top: 16px;
+	margin-left: 193.6px;
+	font-size: 19.2px;
+	height: 24px;
+	align-items: center;
 }
-.category-nav a {
-	padding-left: 1.2rem;
-	padding-right: 1.2rem;
+.category-nav a, p {
+	padding-left: 19.2px;
+	padding-right: 19.2px;
 	font-weight: bold;
 	text-decoration: none;
 	color: black;
@@ -80,13 +86,13 @@ body>:not(.navbar) {justify-content: center;}
 .category-nav a.active {
 	background-color: #6ab04c;
 	color: white;
-	font-size: 110%;
+	font-size: 21px;
 }
 .subcategory-nav {
 	display: flex;
-	gap: 5rem;
-	padding-left: 2.5rem; padding-bottom: 0.6rem; padding-top: 0.6rem;
-	margin-left: 13.5rem; margin-right: 44rem; margin-bottom: 1rem;
+	gap: 80px;
+	padding-left: 40px; padding-bottom: 9.6px; padding-top: 9.6px;
+	margin-left: 195.2px; margin-right: 704px; margin-bottom: 16px;
 	background-color: #f0f0f0;
 }
 .subcategory-nav a {
@@ -99,12 +105,12 @@ body>:not(.navbar) {justify-content: center;}
     grid-template-rows: repeat(2, 1fr);
     gap: 5px;
 	place-items: center;
-	margin-left: 14vw;
-	margin-right: 14vw;
+	margin-left: 195.2px;
+	margin-right: 195.2px;
 }
 .product-item {
 	border-radius: 5px;
-	margin-bottom: 20px;
+	margin-bottom: 16px;
 }
 .product-item img {
 	background-color: #ddd;
@@ -118,13 +124,13 @@ body>:not(.navbar) {justify-content: center;}
 .pagination {
 	display: flex;
 	justify-content : center;
-	gap: 0.5rem;
-	padding: 1rem;
+	gap: 8px;
+	padding: 16px;
 }
 .pagination a {
 	text-decoration: none;
 	color: #888;
-	padding: 0.5rem;
+	padding: 8px;
 	border-radius: 30px;
 }
 .pagination a.active {
