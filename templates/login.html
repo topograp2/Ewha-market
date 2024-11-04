@@ -1,0 +1,44 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이화마켓:로그인</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <div class="main-logo">
+        <img src="../static/svg/loginLogo.svg" alt="loginLogo" />
+    </div>
+    <div class="container">
+        <div class="title">로그인</div>
+        <div class="form-container">
+            <form>
+                <input id="id-input" type="text" value="" name="id" placeholder="아이디를 입력하세요">
+                <div class="pw-container">
+                    <input id="password-input"
+                    type="password" name="password" 
+                    placeholder="비밀번호를 입력하세요"
+                >
+                <i class="pwHide"><img src="../static/svg/pwHide.svg" alt="pwHiveBtn"></i>
+                </div>
+                <div>
+                    <input type="checkbox" id="loginmaintain" name="loginmaintain">
+                    <label for="loginmaintain"></label>
+                    <label for="loginmaintain">로그인 유지</label>
+                </div>
+                
+                <input id="loginBtn" type="submit" value="로그인">
+            </form>
+            <div class="btn-container">
+                <hr class="hr-style">
+                <button class="id-search">아이디 찾기</button>
+                <div class ="fake-hr"></div>
+                <button class="pw-search">비밀번호 찾기</button>
+                <div class ="fake-hr"></div>
+                <button class="user-reg">회원가입</button>
+                <hr class="hr-style">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
