@@ -1,0 +1,80 @@
+@font-face{
+    font-family: 'Pretendard-Bold';
+    src:url('../static/font/Pretendard-Bold.woff2');
+}
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../static/font/Pretendard-Medium.woff2');
+}
+
+body{
+    font-family: 'Pretendard-Medium';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-logo{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+input:focus {
+    outline: none;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-family: 'Pretendard-Bold';
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.form-container{
+    display: flex;
+    flex-direction: column;
+}
+#id-input{
+    padding-left: 10px;
+    width: 500px;
+    height: 50px;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 0;
+}
+.pw-container{
+    margin-top: 10px;
+    width: 500px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid;
+    align-items: center;
+    margin-bottom: 10px;
+}
+#password-input{
+    height: 50px;
+    width: 425px;
+    border: none;
+    font-size: 15px;
+}
+input[type="checkbox"]{
+    display: none;
+}
+input[type="checkbox"] + label{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #00462A;
+    cursor : pointer;
+    border-radius: 15px;
+    display: inline-block;
+    user-select: none;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:checked + label{
+    background: #00462A;
+    border-color: white;
+}
