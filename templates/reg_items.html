@@ -1,62 +1,65 @@
 {% extends "index.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reg_items.css') }}">
+{% endblock %}
+
 {% block section %}
-<form method="post" enctype="multipart/form-data" action="/submit_item_post">
-    <div><br><br>
-    <label for="name">Item name: </label>
-    <input type="text" name="name" id="name" required><br><br>
+<div class="main-container">
+    <div class="reg-item-container">
+        <div class="btn-container">
+            <a href="/list"><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
+        </div>
+        <form method="post" enctype="multipart/form-data" action="/submit_item_post">
+
+            <div class="left">
+                <input class="hidden" type="file" class="image-upload" accept="image/*">
+                <div class="upload"><div>(이미지 등록)</div></div>
+                <div>
+                    <div class="delivery-method">배송 방법 선택</div>
+                    <div class="radio-div">
+                        <input type="radio" name="배송 방법" id="직거래" value="직거래"><label for="직거래">직거래</label>
+                        <input class="mg" type="radio" name="배송 방법" id="택배 거래" value="택배 거래"><label for="택배 거래">택배
+                            거래</label>
+                    </div>
+                    <input type="submit" value="상품 등록">
+                </div>
+            </div>
+            <div class="right">
+                <div class="catagory">
+                    <div>카테고리1</div>
+                    <div>카테고리2</div>
+                    <div>주문 후 제작</div>
+                </div>
+                <div>
+                    <div>
+                        <input type="text" id="item-name" placeholder="상품 이름을 등록해주세요.">
+                        <div class="won"><input type="number">원</div>
+                        <hr class="hr-style">
+                        <div class="seller-info">
+                            <div>판매자 ID</div>
+                            <hr class="hr-style2">
+                            <div>email@gmail.com</div>
+                        </div>
+                        <div class="seller-info">
+                            <div>판매 지역</div>
+                            <hr class="hr-style2">
+                            <input type="text" placeholder="주소를 입력하세요">
+                        </div>
+                        <hr class="hr-style">
+                        <div class="explain-container">
+                            <div class="item-explain">상품 설명</div>
+                            <textarea placeholder="상품 설명을 입력해 주세요.&#13;&#10;(카테고리를 선택하면 기본 정보 템플릿을 가져올 수 있어요.)" id="textarea" name="itemExpain" cols="60" rows="9"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
     </div>
-    <div>
-    <label for="seller"> Seller ID: </label>
-    <input type="text" name="seller" id="seller" required><br><br>
-    </div>
-    <div>
-    <label for="addr"> Address: </label>
-    <input type="text" name="addr" id="addr" required><br><br>
-    </div>
-    <div>
-    <label for="tel">Email: </label>
-    <input type="text" name=”email" id=”email" required><br><br>
-    </div>
-    <div>
-    <label for="category">Category: </label>
-    <br>
-    <select id="category" name="category">
-    <option value="Clothes" selected> Clothes </option>
-    <option value="Beauty"> Beauty </option>
-    <option value="Books"> Books </option>
-    <option value="Furniture"> Furniture </option>
-    <option value="Electronics"> Electronics </option>
-    <option value="ETC"> ETC </option>
-    </select><br><br>
-    </div>
-    <div>
-    <label for="card">Credit Card? (Y/N): </label>
-    <br>
-    <select id="card" name="card">
-    <option value="Y" selected>Yes</option>
-    <option value="N">No</option>
-    </select><br><br>
-    </div>
-    <div>
-    <label for="status">Status? </label>
-    <br>
-    <select id="status" name="status">
-    <option value="new" selected>New</option>
-    <option value="lnew">Likely New</option>
-    <option value="used">Used</option>
-    </select><br><br>
-    </div>
-    <div>
-    <label for="phone">Phone : </label>
-    <input type="text" name="phone" id="phone"><br><br>
-    </div>
-    <div>
-    <input type="submit" value="Submit!"><br><br>
-    </div>
-    <div>
-        <label for="img">Representative Image upload : </label>
-        <input type="file" name="file" /><br><br>
-    </div>
-    </form>
+
+
+</div>
+
 {% endblock section %}
