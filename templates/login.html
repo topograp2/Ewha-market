@@ -7,12 +7,14 @@
 </head>
 <body>
     <div class="main-logo">
-        <img src="../static/svg/loginLogo.svg" alt="loginLogo" />
-    </div>
+        <a href="/">
+            <img src="../static/svg/loginLogo.svg" alt="loginLogo" />
+            </a>
+       </div>
     <div class="container">
         <div class="title">로그인</div>
         <div class="form-container">
-            <form>
+            <form action="" method="post">
                 <input id="id-input" type="text" value="" name="id" placeholder="아이디를 입력하세요">
                 <div class="pw-container">
                     <input id="password-input"
@@ -21,23 +23,27 @@
                 >
                 <i class="pwHide"><img src="../static/svg/pwHide.svg" alt="pwHiveBtn"></i>
                 </div>
-                <div>
-                    <input type="checkbox" id="loginmaintain" name="loginmaintain">
-                    <label for="loginmaintain"></label>
-                    <label for="loginmaintain">로그인 유지</label>
+                <div class="control-container">
+                    <input type="checkbox" id="a" class="screen-reader">
+                    <div class="label-box">
+                        <span class="check-icon" aria-hidden="true"></span>
+                        <label for="a">로그인 유지</label>
+                    </div>
                 </div>
                 
                 <input id="loginBtn" type="submit" value="로그인">
             </form>
+            <hr class="hr-style">
             <div class="btn-container">
-                <hr class="hr-style">
-                <button class="id-search">아이디 찾기</button>
-                <div class ="fake-hr"></div>
-                <button class="pw-search">비밀번호 찾기</button>
-                <div class ="fake-hr"></div>
-                <button class="user-reg">회원가입</button>
-                <hr class="hr-style">
+                
+                <button class="btn">아이디 찾기</button>
+                <hr class ="fake-hr">
+                <button class="btn">비밀번호 찾기</button>
+                <hr class ="fake-hr">
+                <button class="btn" onclick="location.href = '/reg_user'">회원가입</button>
+                
             </div>
+            <hr class="hr-style">
         </div>
     </div>
 </body>
