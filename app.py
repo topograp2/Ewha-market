@@ -32,5 +32,8 @@ def reg_item_submit_post():
 @application.route("/login")
 def login():
     return render_template("login.html")
+@application.route("/reg_user")
+def reg_user():
+    return render_template("user_reg.html")
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)

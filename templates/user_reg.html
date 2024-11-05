@@ -1,0 +1,39 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이화마켓:회원가입</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='user_reg.css') }}">
+</head>
+<body>
+    <div class="main-logo">
+        <a href="/">
+            <img src="../static/svg/loginLogo.svg" alt="loginLogo" />
+            </a>
+    </div>
+    <div class="container">
+        <div class="title">회원가입</div>
+        <form action="" method="">
+            <div class="direction-row">
+                <input class="input" type="id" placeholder="아이디">
+                <div class="check-icon"></div>
+            </div>
+            <div class="direction-row">
+                <input class="input" type="password" placeholder="비밀번호(영문, 숫자, 특수기호)">
+                <div class="check-icon"></div>
+            </div>
+            <div class="direction-row">
+                <input class="input" type="password" placeholder="비밀번호를 한번 더 입력해주세요">
+                <div class="check-icon"></div>
+            </div>
+            <div class="email-container">
+                <input class="email-input" type="email" placeholder="이메일">
+                @
+                <input class="email-input" type="text" placeholder="직접 입력">
+            </div>
+            <input class="tel-container" type="tel" placeholder="휴대폰 번호">
+            <input class="submit-btn" type="submit" value="회원가입">
+        </form>
+    </div>
+</body>
+</html>
