@@ -16,19 +16,17 @@ body>:not(.navbar) {justify-content: center;}
 .container {
 	position: absolute;
 	left: 50%;
-	top: 5rem;
 	transform: translate(-50%, 0);
 	width: 88.75rem;
 	height: 37.5rem;
 }
 .navbar {
-	position: absolute;
+	position: relative;
 	left: 50%;
 	transform: translate(-50%, 0);
 	width: 88.875rem;
 	height: 5rem;
 	display: flex;
-	margin: auto;
 	background-color: #00462A;
 }
 .search_area {
