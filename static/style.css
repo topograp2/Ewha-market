@@ -16,12 +16,15 @@ body>:not(.navbar) {justify-content: center;}
 .container {
 	position: absolute;
 	left: 50%;
+	top: 5rem;
 	transform: translate(-50%, 0);
 	width: 88.75rem;
 	height: 37.5rem;
 }
-
 .navbar {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
 	width: 88.875rem;
 	height: 5rem;
 	display: flex;
@@ -45,7 +48,7 @@ body>:not(.navbar) {justify-content: center;}
 	position: absolute;
 	left: 50%;
 	transform: translate(-320%, 0);
-	top: 1.8rem;
+	top: 1.3rem;
 }
 .navbar__menu {
 	display: flex;
