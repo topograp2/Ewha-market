@@ -13,6 +13,11 @@
 
 body>:not(.navbar) {justify-content: center;}
 
+.container {
+	width: 1420px;
+	height: 600px;
+}
+
 /*헤더*/
 .navbar{
 	width: 1422px;
@@ -65,7 +70,9 @@ body>:not(.navbar) {justify-content: center;}
 .list_section {
 	position: absolute;
 	text-align: right;
-	left: 1088px; top: 136px;
+	width: 200px;
+	height: 100px;
+	left: 1020px; top: 140px;
 }
 #list_title {
 	font-size: 20.8px;
@@ -123,8 +130,8 @@ body>:not(.navbar) {justify-content: center;}
 }
 .product-item img {
 	background-color: #ddd;
-	width: 14vw;
-	height: 14vw;
+	width: 200px;
+	height: 200px;
 	border-radius: 5px;
 }
 .product-name {
