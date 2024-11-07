@@ -35,8 +35,15 @@ def login():
 @application.route("/reg_user")
 def reg_user():
     return render_template("user_reg.html")
-@application.route("/reg_reivews")
-def reg_reviews():
-    return render_template("reg_reviews.html")
+
+@application.route('/product_detail')
+def product_detail():
+    return render_template('product_detail.html')
+
+@application.route('/review_detail')
+def review_detail():
+    return render_template('review_detail.html')
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
+
