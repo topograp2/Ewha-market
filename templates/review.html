@@ -1,5 +1,100 @@
 {% extends "index.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
+    <title>리뷰 전체 페이지</title>
+{% endblock %}
+
 {% block section %}
-    등록된 리뷰 리스트 조회 화면 입니다.
-{% endblock section %}
+    <!-- 카테고리 내비게이션 -->
+    <nav class="category-nav">
+        <a href="#" class="active">의류</a>
+        <p>|</p>
+        <a href="#">문구</a>
+        <p>|</p>
+        <a href="#">뷰티</a>
+        <p>|</p>
+        <a href="#">푸드</a>
+        <p>|</p>
+        <a href="#">디지털</a>
+        <p>|</p>
+        <a href="#">잡화</a>
+    </nav>
+    
+    <!-- 서브 카테고리 내비게이션 -->
+    <nav class="subcategory-nav">
+        <a href="#">세부1</a>
+        <a href="#">세부2</a>
+        <a href="#">세부3</a>
+        <a href="#">세부4</a>
+    </nav>
+
+    <div class="review-container">
+        <div class="review-header">
+            <p class="review-count">현재까지 n개 리뷰 등록됨</p>
+            <a href="reg.reviews.html" class="add-review-btn">+ 새 리뷰 등록</a>
+        </div>
+        
+        <!-- 리뷰 목록 -->
+        <div class="review-list">
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <a href="{{ url_for('review_detail') }}"><strong>상품 : 2온스 영어 금사 학잠</strong></a>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <strong>상품 : 2온스 영어 금사 학잠</strong>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <strong>상품 : 2온스 영어 금사 학잠</strong>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <strong>상품 : 2온스 영어 금사 학잠</strong>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <strong>상품 : 2온스 영어 금사 학잠</strong>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+            <div class="review-item">
+                <div class="review-image"></div>
+                <div class="review-text">
+                    <strong>상품 : 2온스 영어 금사 학잠</strong>
+                    <p><strong>제목 : m사이즈 학잠 후기</strong></p>
+                    <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+                </div>
+            </div>
+        </div>
+        <!-- 페이지네이션 -->
+        <div class="pagination">
+            <a href="#">&lt;</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">&gt;</a>
+        </div>
+    </div>
+{% endblock %}
