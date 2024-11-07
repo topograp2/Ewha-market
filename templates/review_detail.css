@@ -1,0 +1,113 @@
+/* 전체 페이지를 중앙에 배치하기 위한 설정 */
+.review-detail-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* 중앙 정렬을 위한 컨테이너 */
+.review-detail-container {
+    display: flex;
+    gap: 2rem;
+    max-width: 800px;
+    width: 90%;
+    align-items: flex-start;
+    padding-left: 2rem; /* 전체 컨테이너 좌측에 여백 추가 */
+}
+
+/* 뒤로가기 버튼 */
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 1.2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* 왼쪽 영역: 리뷰 정보 */
+.review-info {
+    flex: 2;
+    padding-left: 0;
+}
+
+.review-info h1 {
+    font-size: 1.7rem;
+    margin-bottom: 0rem;
+    padding-left: 0;
+}
+
+.review-info h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+
+.review-info p {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    line-height: 2.2;
+    font-family: 'Pretendard-Medium';
+    align-items: flex-start;
+    padding-left: 0;
+    color: #656565d3;
+
+}
+
+/* 키워드 스타일 */
+.keyword {
+    display: inline-block;
+    background-color: #00462a;
+    color: #ffffff;
+    padding: 0.4rem 0.7rem;
+    border-radius: 15px;
+    margin: 0.3rem;
+    font-size: 0.8rem;
+    font-family: 'Pretendard-Medium';
+}
+.keyword2 {
+    display: inline-block;
+    background-color: #46c97b;
+    color: #ffffff;
+    padding: 0.4rem 0.7rem;
+    border-radius: 15px;
+    margin: 0.3rem;
+    font-size: 0.8rem;
+    font-family: 'Pretendard-Medium';
+}
+
+/* 리뷰 내용 */
+.review-content {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 720px;
+    margin-top: 1.5rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: left;
+    font-family: 'Pretendard-Medium';
+}
+
+/* 오른쪽 영역: 이미지 */
+.review-images {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.image-box {
+    width: 330px;
+    height: 250px;
+    background-color: #d7d5d5;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
