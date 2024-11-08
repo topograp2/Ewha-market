@@ -5,6 +5,7 @@ import sys
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "onionstu"
+DB = DBhandler()
 
 @application.route("/")
 def hello():
