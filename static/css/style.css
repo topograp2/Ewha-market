@@ -1,11 +1,13 @@
 @font-face{
     font-family: 'Pretendard-Bold';
-    src:url('../static/font/Pretendard-Bold.woff2');
+    src:url('../font/Pretendard-Bold.woff2');
 }
+
 @font-face {
     font-family: 'Pretendard-Medium';
-    src: url('../static/font/Pretendard-Medium.woff2');
+    src: url('../font/Pretendard-Medium.woff2');
 }
+
 
 *{
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -110,18 +112,18 @@ body>:not(.navbar) {justify-content: center;}
 }
 .subcategory-nav {
 	display: flex;
-	gap: 5rem;
-	padding-left: 2.5rem;
-	padding-bottom: 0.6rem;
-	padding-top: 0.6rem;
-	margin-left: 12.2rem;
-	margin-right: 44rem;
-	margin-bottom: 1rem;
+	width: 400px;
+	height: 30px;
+	margin-bottom: 10px;
+	justify-content: space-around;
+	align-items: center;
+	margin-left: 195px;
 	background-color: #f0f0f0;
 }
 .subcategory-nav a {
 	text-decoration: none;
 	color: #737373;
+	
 }
 .product-list {
 	display: grid;
@@ -131,6 +133,10 @@ body>:not(.navbar) {justify-content: center;}
 	place-items: center;
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
+}
+.product-list a {
+	text-decoration: none;
+	color: black;
 }
 .product-item {
 	border-radius: 0.3125rem;
