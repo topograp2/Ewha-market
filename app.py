@@ -46,7 +46,7 @@ def review_detail():
 
 @application.route("/login")
 def login():
-    return render_template("login2.html")
+    return render_template("login.html")
 
 @application.route("/signup")
 def signup():
@@ -73,7 +73,7 @@ def login_user():
         return redirect(url_for('view_list'))
     else:
         flash("wrong ID or PW!")
-        return render_template("login2.html")
+        return render_template("login.html")
     
 @application.route("/logout")
 def logout_user():
