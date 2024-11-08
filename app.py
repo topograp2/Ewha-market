@@ -44,6 +44,34 @@ def product_detail():
 def review_detail():
     return render_template('review_detail.html')
 
+@application.route('/my_post')
+def my_post():
+    return render_template('my_post.html')
+
+@application.route('/my_purchase')
+def my_post():
+    return render_template('my_purchase.html')
+
+@application.route('/my_purchase')
+def my_post():
+    return render_template('my_purchase.html')
+
+@application.route('/demand_survey')
+def my_post():
+    return render_template('demand_survey.html')
+
+@application.route('/purchase')
+def my_post():
+    return render_template('purchase.html')
+
+@application.route('/my_page')
+def my_post():
+    return render_template('my_page.html')
+
+@application.route('/profile_edit')
+def my_post():
+    return render_template('profile_edit.html')
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
 
