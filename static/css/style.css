@@ -134,6 +134,10 @@ body>:not(.navbar) {justify-content: center;}
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
 }
+.product-list a {
+	text-decoration: none;
+	color: black;
+}
 .product-item {
 	border-radius: 0.3125rem;
 	margin-bottom: 1rem;
