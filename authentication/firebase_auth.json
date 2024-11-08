@@ -1,0 +1,9 @@
+{
+    "apiKey" : "AIzaSyBSKqwQYYQnlUAClhH6J3hMj0Y-8pajG00",
+    "authDomain" : "ewha-market-onionstu.firebaseapp.com",
+    "databaseURL" : "https://ewha-market-onionstu-default-rtdb.firebaseio.com",
+    "projectId" : "ewha-market-onionstu",
+    "storageBucket" : "ewha-market-onionstu.firebasestorage.app",
+    "messagingSenderId" : "955870809806",
+    "appId" : "1:955870809806:web:dd50633107562529824a9f"
+  }
