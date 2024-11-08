@@ -1,7 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for, session
+from database import DBhandler
+import hashlib
 import sys
 
 application = Flask(__name__)
+application.config["SECRET_KEY"] = "onionstu"
 
 @application.route("/")
 def hello():
@@ -23,19 +26,6 @@ def reg_item():
 def reg_review():
     return render_template("reg_reviews.html")
 
-@application.route("/submit_item_post", methods=['POST'])
-def reg_item_submit_post():
-    image_file=request.files["file"]
-    image_file.save("static/images/{}".format(image_file.filename))
-    data=request.form
-    return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
-@application.route("/login")
-def login():
-    return render_template("login.html")
-@application.route("/reg_user")
-def reg_user():
-    return render_template("user_reg.html")
-
 @application.route('/product_detail')
 def product_detail():
     return render_template('product_detail.html')
@@ -44,6 +34,49 @@ def product_detail():
 def review_detail():
     return render_template('review_detail.html')
 
+@application.route("/submit_item_post", methods=['POST'])
+def reg_item_submit_post():
+    image_file=request.files["file"]
+    image_file.save("static/images/{}".format(image_file.filename))
+    data=request.form
+    return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
+
+@application.route("/login")
+def login():
+    return render_template("login.html")
+
+@application.route("/login_comfirm", methods = ['POST'])
+def login_user():
+    id_ = request.form['id']
+    pw = request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.find_user(id_ , pw_hash):
+        session['id'] = id_
+        return redirect(url_for('view_list'))
+    else:
+        flash("wrong ID or PW!")
+        return render_template("login.html")
+    
+@application.route("/logout")
+def logout_user():
+    session.clear()
+    return redirect(url_for('view_list'))
+
+@application.route("/reg_user")
+def reg_user():
+    return render_template("user_reg.html")
+
+@application.route("/reg_user_post", methods = ['POST'])
+def register_user():
+    data=request.form
+    pw=request.form['pw']
+    pw_hash = hashlib.sha256(pw.encode('utf-8')).hexdigest()
+    if DB.insert_user(data,pw_hash):
+        return render_template("login.html")
+    else:
+        flash("user id already exist!")
+        return render_template("user_reg.html")
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
-
+    
