@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/.css') }}">
+{% endblock %}
+{% block section %}
+<div class="mp-container">
+    <div class="mp-nav">
+        <a href=""><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
+        <a href="">내가 게시한 상품</a>
+        <a href="" class="active">내가 구매한 상품</a>
+        <select class="select-view">
+            <option value="all-view">전체 보기</option> 
+            <option value="gume-view">구매한 상품만 보기</option> 
+            <option value="suyo-view">참여한 수요조사만 보기</option>
+        </select>
+    </div>
+    <hr>
+    <div class="mp-list">
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p>30000원</p><p>| 택배 배송</p><br><br>
+                <a href="">거래 내역 확인하기</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p>수요조사 참여 완료</p><p>| 3개</p><br><br>
+                <a href="">수요조사 내역 확인/변경</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p>30000원</p><p>| 직거래</p><br>
+                <p>이화여자대학교 아산공학관</p><br>
+                <a href="">거래 내역 확인하기</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p>수요조사 참여 완료</p><p>| 3개</p><br><br>
+                <a href="">수요조사 내역 확인</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p>30000원</p><p>| 거래 완료</p><br><br>
+                <a href="">거래 내역 확인하기</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p>판매 중</p><p>| 3개 참여</p><br><br>
+                <a href="">구매하러 가기</a>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="#">&lt;&lt;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">&gt;&gt;</a>
+    </div>
+</div>
+{% endblock section %}
