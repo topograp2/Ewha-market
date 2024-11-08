@@ -112,18 +112,18 @@ body>:not(.navbar) {justify-content: center;}
 }
 .subcategory-nav {
 	display: flex;
-	gap: 5rem;
-	padding-left: 2.5rem;
-	padding-bottom: 0.6rem;
-	padding-top: 0.6rem;
-	margin-left: 12.2rem;
-	margin-right: 44rem;
-	margin-bottom: 1rem;
+	width: 400px;
+	height: 30px;
+	margin-bottom: 10px;
+	justify-content: space-around;
+	align-items: center;
+	margin-left: 195px;
 	background-color: #f0f0f0;
 }
 .subcategory-nav a {
 	text-decoration: none;
 	color: #737373;
+	
 }
 .product-list {
 	display: grid;
