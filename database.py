@@ -11,13 +11,10 @@ class DBhandler:
 
     def insert_item(self, name, data, img_path):
         item_info ={
-            "seller": data['seller'],
             "addr": data['addr'],
-            "email": data['email'],
-            "category": data['category'],
-            "card": data['card'],
-            "status": data['status'],
-            "phone": data['phone'],
+            "delivery-method": data['delivery-method'],
+            "item": data['item'],
+            # "itemexp": data['itemexp'],
             "img_path": img_path
         }
 
