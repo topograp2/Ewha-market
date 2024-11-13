@@ -8,20 +8,10 @@
     src: url('../font/Pretendard-Medium.woff2');
 }
 
-
 *{
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
-body>:not(.navbar) {justify-content: center;}
-
-.container {
-	position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
-	width: 88.75rem;
-	height: 37.5rem;
-}
 .navbar {
 	position: relative;
 	left: 50%;
@@ -70,101 +60,4 @@ body>:not(.navbar) {justify-content: center;}
 }
 .navbar__logo {
 	margin-top: 0.625rem;
-}
-
-.list_section {
-	position: absolute;
-	text-align: right;
-	width: 12.5rem;
-	height: 6.25rem;
-	left: 63.75rem;
-	top: 4rem;
-}
-#list_title {
-	font-size: 1.3rem;
-	font-weight: bold;
-}
-#list_info {
-	font-size: 0.8rem;
-	color: #737373;
-}
-
-.category-nav {
-	display: flex;
-	padding: 1rem;
-	margin-top: 1rem;
-	margin-left: 12.1rem;
-	font-size: 1.2rem;
-	height: 1.5rem;
-	align-items: center;
-}
-.category-nav a, p {
-	padding-left: 1.2rem;
-	padding-right: 1.2rem;
-	font-weight: bold;
-	text-decoration: none;
-	color: black;
-}
-.category-nav a.active {
-	background-color: #6ab04c;
-	color: white;
-	font-size: 1.3125rem;
-}
-.subcategory-nav {
-	display: flex;
-	width: 400px;
-	height: 30px;
-	margin-bottom: 10px;
-	justify-content: space-around;
-	align-items: center;
-	margin-left: 195px;
-	background-color: #f0f0f0;
-}
-.subcategory-nav a {
-	text-decoration: none;
-	color: #737373;
-	
-}
-.product-list {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(2, 1fr);
-	gap: 0.3125rem;
-	place-items: center;
-	margin-left: 12.2rem;
-	margin-right: 12.2rem;
-}
-.product-list a {
-	text-decoration: none;
-	color: black;
-}
-.product-item {
-	border-radius: 0.3125rem;
-	margin-bottom: 1rem;
-}
-.product-item img {
-	background-color: #ddd;
-	width: 12.5rem;
-	height: 12.5rem;
-	border-radius: 0.3125rem;
-}
-.product-name {
-	font-weight: bold;
-}
-.pagination {
-	display: flex;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 1rem;
-}
-.pagination a {
-	text-decoration: none;
-	color: #888;
-	padding: 0.5rem;
-	border-radius: 1.875rem;
-}
-.pagination a.active {
-	background-color: #6ab04c;
-	color: white;
-	font-weight: bold;
 }
