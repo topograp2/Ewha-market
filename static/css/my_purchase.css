@@ -8,47 +8,92 @@
     src: url('../font/Pretendard-Medium.woff2');
 }
 
+*{
+    font-family: 'Pretendard-Medium';
+}
+
 .mp-container {
-    display: flex;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
+    position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
     width: 88.75rem;
 	height: 37.5rem;
 }
 
+.mp-nav {
+    display: flex;
+    align-items: center;
+    margin-left: 9rem;
+}
 .mp-nav a {
     color: #737373;
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
+    margin-left: 3rem;
+    text-decoration: none;
+    font-family: 'Pretendard-Bold';
+    font-size: 1.2rem;
 }
 .mp-nav a.active {
     color: black;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.select-view {
+    margin-top: 1.4rem;
+    margin-left: 28rem;
+    padding: 5px;
+    font-size: 0.8rem;
 }
 
 .mp-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    height: 30rem;
+	margin-top: 1.5rem;
+    margin-left: 16rem;
+	margin-right: 16rem;
+    column-gap: 2.4rem;
 }
 
-.review-item {
+.mp-item {
     display: flex;
     background-color: #FFFFFF;
-    padding: 1rem;
-    justify-items: start;
-    box-sizing: border-box;
-    height: 140px;
     border-radius: 10px;
-
+    margin: 5px;
 }
 
-.review-image {
-    width: 120px;
-    height: 120px;
+.mp-image {
+    width: 140px;
+    height: 140px;
     background-color: #d9d9d9;
     border-radius: 10px;
-    flex-shrink: 0;
-    margin-right: 1rem;
+}
+
+.mp-text {
+    margin-top: 0.5rem;
+    margin-left: 1.6rem;
+}
+.mp-text a,p {
+    margin: 0.5rem;
+}
+.mp-text a {
+    color: black;
+}
+.mp-color {
+    color: #6ab04c;
+    font-family: 'Pretendard-Bold';
+}
+.mp-color2 {
+    color: #737373;
+}
+.item-title {
+    font-family: 'Pretendard-Bold';
+    font-size: 1.6rem;
+    text-decoration: none;
+}
+
+hr {
+    width: 65%;
 }
 
 .pagination {
@@ -56,6 +101,7 @@
 	justify-content: center;
 	gap: 0.5rem;
 	padding: 1rem;
+    margin-top: 1rem;
 }
 .pagination a {
 	text-decoration: none;
