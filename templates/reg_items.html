@@ -2,6 +2,7 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/reg_items.css') }}">
+<script src="{{ url_for('static', filename='reg_items.js') }}" defer></script>
 {% endblock %}
 
 {% block section %}
@@ -13,7 +14,7 @@
         <form method="post" enctype="multipart/form-data" action="/submit_item_post">
 
             <div class="left">
-                <input name="img_path" type="file" class="image-upload" accept="image/*">
+                <input name="img_path" type="file" class="image-upload hidden" accept="image/*">
                 <div class="upload"><div>(이미지 등록)</div></div>
                 <div>
                     <div class="delivery-method">배송 방법 선택</div>
