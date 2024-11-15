@@ -1,20 +1,3 @@
-{% extends "index.html" %}
-{% block section %}
-{% with mesg = get_flashed_messages() %}
-{% if mesg !=[] %}
-    <script>alert("{{ mesg[0] }}")</script>
-{% endif %}
-{% endwith %}
-<form action = “/login_confirm” method="post">
-    <p>ID : <input type="text" name = "id"></p>
-    <p>password : <input type="password" name = "pw"></p>
-    <p>아이디와 비밀번호를 입력하고 로그인버튼을 누르세요.<br><input type = "submit" value
-    = "로그인"/> </p>
-</form>
-<a href="/signup"><button onclick="/signup">
-회원가입
-</button></a>
-{% endblock section %}
 
 <html lang="ko">
 <head>
@@ -24,6 +7,11 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 </head>
 <body>
+    
+{% with mesg = get_flashed_messages() %} {% if mesg !=[] %}
+<script>alert("{{ mesg[0] }}")</script> {% endif %}
+{% endwith %}
+
     <div class="main-logo">
         <a href="/">
             <img src="../static/svg/loginLogo.svg" alt="loginLogo" />
@@ -58,7 +46,7 @@
                 <hr class ="fake-hr">
                 <button class="btn">비밀번호 찾기</button>
                 <hr class ="fake-hr">
-                <button class="btn" onclick="location.href = '/reg_user'">회원가입</button>
+                <button class="btn" onclick="location.href = '/signup'">회원가입</button>
                 
             </div>
             <hr class="hr-style">
