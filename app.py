@@ -10,10 +10,30 @@ DB = DBhandler()
 @application.route("/")
 def hello():
     return render_template("index.html")
+    # return redirect(url_for('view_list'))
 
 @application.route("/list")
 def view_list():
-    return render_template("list.html")
+    page = request.args.get("page", 0, type=int)
+    per_page=6 # item count to display per page
+    per_row=3 # item count to display per row
+    row_count=int(per_page/per_row)
+    start_idx=per_page*page
+    end_idx=per_page*(page+1)
+    data = DB.get_items() #read the table
+    item_counts = len(data)
+    data = dict(list(data.items())[start_idx:end_idx])
+    tot_count = len(data)
+    for i in range(row_count):#last row
+        if (i == row_count-1) and (tot_count%per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else:
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template( "list.html", datas=data.items(),
+                           row1=locals()['data_0'].items(),
+                           row2=locals()['data_1'].items(),
+                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
+                           total=item_counts)
 
 @application.route("/review")
 def view_review():
@@ -35,9 +55,12 @@ def reg_item_submit_post():
 def reg_review():
     return render_template("reg_reviews.html")
 
-@application.route('/product_detail')
-def product_detail():
-    return render_template('product_detail.html')
+@application.route('/product_detail/<name>/')
+def product_detail(name):
+    print("###name:",name)
+    data = DB.get_item_byname(str(name))
+    print("####data:",data)
+    return render_template('product_detail.html', name=name, data=data)
 
 @application.route('/review_detail')
 def review_detail():
