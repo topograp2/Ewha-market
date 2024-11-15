@@ -66,7 +66,7 @@ def register_user():
         flash("user id already exist!")
         return render_template("signup.html")
 
-@application.route("/login_comfirm", methods = ['POST'])
+@application.route("/login_confirm", methods = ['POST'])
 def login_user():
     id_ = request.form['id']
     pw = request.form['pw']
