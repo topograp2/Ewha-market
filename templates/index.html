@@ -23,7 +23,12 @@
     <li><a href="/review">상품 리뷰</a></li>
     <li><a href="/reg_items">상품 등록</a></li>
     {% if session['id'] %}
-    
+    <li class="mypage-container">
+        <div class="white-container">
+            <div class="id-container">{{session['id']}}</div>
+            <div class="logout-container"><a href="/logout"><img src="../static/svg/logout.svg" alt="로그아웃"></a></div>
+        </div>
+    </li>
     {% else %}
     <li><a href="/login">로그인</a></li>
     {% endif %}

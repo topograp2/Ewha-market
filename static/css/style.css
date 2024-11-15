@@ -42,12 +42,14 @@
 }
 .navbar__menu {
 	display: flex;
+	align-items: center;
+	
 	margin-left: 8.125rem;
 	list-style: none;
 }
 .navbar__menu > li {
 	margin-left: 5.3125rem;
-	margin-top: 0.75rem;
+	
 }
 .navbar__menu > li > a {
 	font-size: 1.2rem;
@@ -60,4 +62,35 @@
 }
 .navbar__logo {
 	margin-top: 0.625rem;
+}
+
+.white-container{
+	display: flex;
+	justify-content: space-between;
+	text-align: center;
+	align-items: center;
+	background-color: #ffffff;
+	min-width: 120px;
+	height: 40px;
+	border-radius: 20px;
+	color: #939393;
+}
+.id-container{
+	margin-left: 25px;
+}
+.mypage-container{
+	margin-top:0;
+	
+}
+
+.logout-container{
+	margin-left: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #00462A;
+	width: 35px;
+	height: 35px;
+	border-radius: 20px;
+	margin-right: 1px;
 }
