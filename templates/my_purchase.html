@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/my_purchase.css') }}">
 {% endblock %}
 {% block section %}
 <div class="mp-container">
@@ -20,7 +20,7 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p>30000원</p><p>| 택배 배송</p><br><br>
+                <p><span class="mp-color">30000원</span> | 택배 배송</p><br>
                 <a href="">거래 내역 확인하기</a>
             </div>
         </div>
@@ -28,7 +28,7 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p>수요조사 참여 완료</p><p>| 3개</p><br><br>
+                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
                 <a href="">수요조사 내역 확인/변경</a>
             </div>
         </div>
@@ -36,8 +36,8 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p>30000원</p><p>| 직거래</p><br>
-                <p>이화여자대학교 아산공학관</p><br>
+                <p><span class="mp-color">30000원</span> | 직거래 (12.01 14:00)</p>
+                <p><span class="mp-color2">이화여자대학교 아산공학관</span></p>
                 <a href="">거래 내역 확인하기</a>
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p>수요조사 참여 완료</p><p>| 3개</p><br><br>
+                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
                 <a href="">수요조사 내역 확인</a>
             </div>
         </div>
@@ -53,7 +53,7 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p>30000원</p><p>| 거래 완료</p><br><br>
+                <p><span class="mp-color">30000원</span> | 거래 완료</p><br>
                 <a href="">거래 내역 확인하기</a>
             </div>
         </div>
@@ -61,7 +61,7 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p>판매 중</p><p>| 3개 참여</p><br><br>
+                <p><span class="mp-color">판매 중</span> | <span class="mp-color2">3개 참여</span></p><br>
                 <a href="">구매하러 가기</a>
             </div>
         </div>
