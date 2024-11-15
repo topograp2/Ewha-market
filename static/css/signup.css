@@ -1,10 +1,10 @@
 @font-face{
     font-family: 'Pretendard-Bold';
-    src:url('../static/font/Pretendard-Bold.woff2');
+    src:url('../font/Pretendard-Bold.woff2');
 }
 @font-face {
     font-family: 'Pretendard-Medium';
-    src: url('../static/font/Pretendard-Medium.woff2');
+    src: url('../font/Pretendard-Medium.woff2');
 }
 
 body{
