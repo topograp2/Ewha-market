@@ -22,7 +22,10 @@ body>:not(.navbar) {justify-content: center;}
 	height: 37.5rem;
 }
 
-.list_section {
+#list_title {
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin:0;
 	position: absolute;
 	text-align: right;
 	width: 12.5rem;
@@ -30,15 +33,16 @@ body>:not(.navbar) {justify-content: center;}
 	left: 64rem;
 	top: 4rem;
 }
-#list_title {
-	font-size: 1.3rem;
-	font-weight: bold;
-	margin:0;
-}
 #list_info {
 	font-size: 0.8rem;
 	color: #737373;
 	margin-top: 0.3rem;
+	position: absolute;
+	text-align: right;
+	width: 12.5rem;
+	height: 3rem;
+	left: 64rem;
+	top: 5.5rem;
 }
 
 .category-nav {
@@ -66,7 +70,6 @@ body>:not(.navbar) {justify-content: center;}
 	display: flex;
 	width: 400px;
 	height: 30px;
-	margin-bottom: 10px;
 	justify-content: space-around;
 	align-items: center;
 	margin-left: 195px;
@@ -78,65 +81,35 @@ body>:not(.navbar) {justify-content: center;}
 	color: #737373;
 }
 .product-list {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(2, 1fr);
 	height: 30rem;
 	place-items: center;
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
-	margin-top: 1rem;
+	margin-top: 0;
 }
-.product-list a {
-	text-decoration: none;
-	color: black;
-}
-.product-item {
-	border-radius: 0.3125rem;
-	margin-bottom: 1rem;
-}
-.product-item img {
-	background-color: #ddd;
-	width: 12.5rem;
-	height: 12.5rem;
-	border-radius: 0.3125rem;
+.product-list td {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
 }
 .product-name {
-	font-weight: bold;
+	padding-bottom: 1rem;
 }
 
-/*구페이지네이션*/
-.pagination {
-	display: flex;
-	justify-content: center;
-	gap: 0.5rem;
-	padding: 1rem;
-}
-.pagination a {
-	text-decoration: none;
-	color: #888;
-	padding: 0.5rem;
-	border-radius: 1.875rem;
-}
-.pagination a.active {
-	background-color: #6ab04c;
-	color: white;
-	font-weight: bold;
-}
-
-/*신페이지네이션(임시)*/
 .page-nation li{
 	list-style: none;
 }
 .page-wrap{
 	text-align: center;
 	font-size: 0;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	top: 39rem;
 }
 .page-nation{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 20px;
 }
 .page-nation a{
 	display: block;
@@ -145,7 +118,6 @@ body>:not(.navbar) {justify-content: center;}
 	padding: 0.5rem;
 	border-radius: 1.875rem;
 	text-align: center;
-	background-color: #fff;
 	font-size: 13px;
 	color: black;
 	text-decoration: none;

@@ -15,8 +15,8 @@ def hello():
 @application.route("/list")
 def view_list():
     page = request.args.get("page", 0, type=int)
-    per_page=6 # item count to display per page
-    per_row=3 # item count to display per row
+    per_page=10 # item count to display per page
+    per_row=5 # item count to display per row
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)

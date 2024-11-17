@@ -28,102 +28,76 @@
     <a href="#">세부4</a>
   </nav>
   
-  <div class="list_section">
-    <a id="list_title">상품 리스트</a><br>
-    {% if total > 0 %}
-    <a id="list_info">전체 상품은 {{total}}개입니다.</a>
-      <table>
-      <tr>
-        {% for key, value in row1 %}
-          <td>{{key}}</td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for key, value in row1 %}
-        <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=140, height=200></td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for key, value in row2 %}
-          <td>{{key}}</td>
-        {% endfor %}
-      </tr>
-      <tr>
-        {% for key, value in row2 %}
-        <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=140, height=200></td>
-        {% endfor %}
-      </tr>
-      </table>
-      <div class="page-wrap">
-        <div class="page-nation">
-          <ul>
-            <li>
-              {% for i in range(page_count)%}
-              <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
-              {% endfor %}
-            </li>
-          </ul>
-        </div>
-      </div>
-    {% else %}
-    <a id="list_info">등록된 상품이 없습니다. </a>
-    {% endif %}
-    
-  </div>
-
-  <!-- 상품 리스트 
+  <a id="list_title">상품 리스트</a><br>
+  {% if total > 0 %}
+  <a id="list_info">전체 상품은 {{total}}개입니다.</a>
   <div class="product-list">
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name"><a href="/product_detail">컴공 학잠 공구</a></div>
+    <table>
+    <tr>
+      {% for key, value in row1 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row1 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row3 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row3 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row4 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row4 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row5 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row5 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    </table>
+  </div>
+  <div class="page-wrap">
+    <div class="page-nation">
+      <ul>
+        <li>
+          {% for i in range(page_count)%}
+          <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+          {% endfor %}
+        </li>
+      </ul>
     </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-        <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-    <div class="product-item">
-      <img src="../static/images/temp.png" alt="상품 이미지">
-      <div class="product-name">컴공 학잠 공구</div>
-    </div>
-  </div> -->
-
-  <!-- 페이지네이션 
-  <div class="pagination">
-    <a href="#">&lt;&lt;</a>
-    <a href="#" class="active">1</a>
-    <a href="#">2</a>
-    <a href="#">3</a>
-    <a href="#">4</a>
-    <a href="#">5</a>
-    <a href="#">&gt;&gt;</a>
-  </div> -->
+  </div>
+  {% else %}
+  <a id="list_info">등록된 상품이 없습니다. </a>
+  {% endif %}
 </div>
 {% endblock section %}
