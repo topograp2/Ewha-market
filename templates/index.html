@@ -12,11 +12,11 @@
 <body>
 <nav class="navbar">
 <div class="navbar__logo">
-    <a href="/"><img src="../static/svg/rogo.svg" alt = "rogo"></a>
+    <a href="/"><img src="{{ url_for('static', filename='svg/rogo.svg') }}" alt = "rogo"></a>
 </div>
 <div class = "search_area">
     <input type="text" placeholder="상품, 판매자, 지역 검색">
-    <a id="search" href=""><img src="../static/svg/search.svg" alt = "search"></a>
+    <a id="search" href=""><img src="{{ url_for('static', filename='svg/search.svg') }}"  alt = "search"></a>
 </div>
 <ul class="navbar__menu">
     <li><a href="/list">상품 목록</a></li>
@@ -26,7 +26,7 @@
     <li class="mypage-container">
         <div class="white-container">
             <div class="id-container">{{session['id']}}</div>
-            <div class="logout-container"><a href="/logout"><img src="../static/svg/logout.svg" alt="로그아웃"></a></div>
+            <div class="logout-container"><a href="/logout"><img src="{{ url_for('static', filename='svg/logout.svg') }}"alt="로그아웃"></a></div>
         </div>
     </li>
     {% else %}
