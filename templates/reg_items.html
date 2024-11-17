@@ -17,33 +17,33 @@
                 <input name="img_path" type="file" class="image-upload hidden" accept="image/*">
                 <div class="upload"><div>(이미지 등록)</div></div>
                 <div>
-                    <div class="delivery-method">배송 방법 선택</div>
+                    <div class="delivery_method">배송 방법 선택</div>
                     <div class="radio-div">
-                        <input type="radio" name="delivery-method" id="직거래" value="직거래"><label for="직거래">직거래</label>
-                        <input class="mg" type="radio" name="delivery-method" id="택배 거래" value="택배 거래"><label for="택배 거래">택배
+                        <input type="radio" name="delivery_method" id="직거래" value="직거래"><label for="직거래">직거래</label>
+                        <input class="mg" type="radio" name="delivery_method" id="택배 거래" value="택배 거래"><label for="택배 거래">택배
                             거래</label>
                     </div>
                     <input type="submit" value="상품 등록">
                 </div>
             </div>
             <div class="right">
-                <div class="catagory">
-                    <select>
-                        <option>의류</option>
-                        <option>문구</option>
-                        <option>뷰티</option>
-                        <option>디지털</option>
-                        <option>잡화</option>
+                <div class="category">
+                    <select name = "major_category" id = "major_category">
+                        <option value = "clothes">의류</option>
+                        <option value = "stationary">문구</option>
+                        <option value = "beauty">뷰티</option>
+                        <option value = "digitals">디지털</option>
+                        <option value = "others">잡화</option>
                     </select>
-                    <select>
-                        <option>세부1</option>
-                        <option>세부2</option>
-                        <option>세부3</option>
-                        <option>세부4</option>
+                    <select name = "detail_category" id = "detail_category">
+                        <option value = "detail1">세부1</option>
+                        <option value = "detail2">세부2</option>
+                        <option value = "detail3">세부3</option>
+                        <option value = "detail4">세부4</option>
                     </select>
-                    <select>
-                        <option>주문 후 제작</option>
-                        <option>제작 완료</option>
+                    <select name = "is_preorder" id = "is_preorder">
+                        <option value = "preorder">주문 후 제작</option>
+                        <option value = "ready-made">제작 완료</option>
                     </select>
                     
                 </div>

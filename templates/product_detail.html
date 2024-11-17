@@ -8,18 +8,20 @@
 <div class="product-detail-container">
     <a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
     <div class="image-container">
-        <div class="product-image">상품 사진</div>
+        <div class="product-image">
+            <img src="../../static/images/{{data.img_path}}", width=140, height=200>
+        </div>
     </div>
     <div class="details-container">
-        <div class="breadcrumbs">카테고리명 > 세부카테고리</div>
-        <h1 class="product-title">이화곰돌이 키링</h1>
-        <p class="price">30,000원</p>
+        <div class="breadcrumbs"> {{data.major_category}} > {{data.detail_category}}</div>
+        <h1 class="product-title">{{name}}</h1>
+        <p class="price">{{data.price}} 원</p>
         
         <div class="product-info">
             <p><strong>판매자 ID</strong> email@gmail.com</p>
-            <p><strong>배송 방법</strong> 직거래</p>
-            <p><strong>판매 지역</strong> 서울특별시 서대문구 이화여대길 52</p>
-            <p><strong>제품 상태</strong> 주문 후 제작</p>
+            <p><strong>배송 방법</strong> {{data.delivery_method}}</p>
+            <p><strong>판매 지역</strong> {{data.addr}}</p>
+            <p><strong>제품 상태</strong> {{data.is_preorder}} </p>
         </div>
         
         <div class="button-container">
@@ -29,7 +31,7 @@
 
         <div class="product-description">
             <h2>상품 설명</h2>
-            <p>이화기념품샵에서 구매한 이화곰돌이 키링입니다! 가방에 1일 정도 달고 다니다가 판매해요! 교내 장소에서 직거래 희망합니다! 이화기념품샵에서 구매한 정품 이화곰돌이 키링입니다!</p>
+            <p>{{data.itemexp}}</p>
         </div>
     </div>
 </div>

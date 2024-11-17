@@ -12,12 +12,15 @@ class DBhandler:
     def insert_item(self, name, data, img_path):
         item_info ={
             "addr": data['addr'],
-            "delivery-method": data['delivery-method'],
+            "delivery_method": data['delivery_method'],
+            "price": data['price'],
             "item": data['item'],
-            # "itemexp": data['itemexp'],
+            "itemexp": data['itemexp'],
+            "major_category": data['major_category'],
+            "detail_category": data['detail_category'],
+            "is_preorder": data['is_preorder'],
             "img_path": img_path
         }
-
         self.db.child("item").child(name).set(item_info)
         print(data,img_path)
         return True
@@ -26,8 +29,7 @@ class DBhandler:
         user_info ={
             "id": data['id'],
             "pw": pw,
-            "email" : data['email'],
-            "tel" : data['tel'],
+            "nickname": data['nickname']
         }
         if self.user_duplicate_check(str(data['id'])):
             self.db.child("user").push(user_info)
@@ -57,3 +59,17 @@ class DBhandler:
             if value['id'] == id_ and value['pw'] == pw_:
                 return True
         return False
+    
+    def get_items(self):
+        items = self.db.child("item").get().val()
+        return items
+    
+    def get_item_byname(self, name):
+        items = self.db.child("item").get()
+        target_value=""
+        print("###########",name)
+        for res in items.each():
+            key_value = res.key()
+            if key_value == name:
+                target_value=res.val()
+        return target_value
