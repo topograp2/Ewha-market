@@ -23,8 +23,9 @@
 <ul class="navbar__menu">
     <li><a href="/list">상품 목록</a></li>
     <li><a href="/review">상품 리뷰</a></li>
-    <li><a href="/reg_items">상품 등록</a></li>
+    
     {% if session['id'] %}
+    <li><a href="/reg_items">상품 등록</a></li>
     <li class="mypage-container">
         <div class="white-container">
             <div class="id-container">{{session['id']}}</div>
