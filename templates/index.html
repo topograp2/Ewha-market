@@ -19,15 +19,19 @@
     <a id="search" href=""><img src="../static/svg/search.svg" alt = "search"></a>
 </div>
 <ul class="navbar__menu">
-    {% if session['id'] %}
-    <li><a href="/logout"><b>{{session['id']}}님 반갑습니다!</b>logout</a></li>
-    {% else %}
-    <li><a href="/login">로그인</a></li>
-    {% endif %}
     <li><a href="/list">상품 목록</a></li>
     <li><a href="/review">상품 리뷰</a></li>
     <li><a href="/reg_items">상품 등록</a></li>
-    
+    {% if session['id'] %}
+    <li class="mypage-container">
+        <div class="white-container">
+            <div class="id-container">{{session['id']}}</div>
+            <div class="logout-container"><a href="/logout"><img src="../static/svg/logout.svg" alt="로그아웃"></a></div>
+        </div>
+    </li>
+    {% else %}
+    <li><a href="/login">로그인</a></li>
+    {% endif %}
 </ul>
 <a href="#" class="navbar__toogleBtn">
 <i class="fas fa-bars"></i>
