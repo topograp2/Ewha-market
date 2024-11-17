@@ -9,7 +9,7 @@
 <div class="main-container">
     <div class="reg-item-container">
         <div class="btn-container">
-            <a href="/list"><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
+            <a href="/list"><img src="{{ url_for('static', filename='svg/goback.svg') }}" alt="gobackbtn"></a>
         </div>
         <form method="post" enctype="multipart/form-data" action="/submit_item_post">
 
@@ -55,7 +55,7 @@
                         <div class="seller-info">
                             <div>판매자 ID</div>
                             <hr class="hr-style2">
-                            <div>email@gmail.com</div>
+                            <div>{{session['id']}}</div>
                         </div>
                         <div class="seller-info">
                             <div>판매 지역</div>
