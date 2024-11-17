@@ -18,7 +18,7 @@
         <p class="price">{{data.price}} 원</p>
         
         <div class="product-info">
-            <p><strong>판매자 ID</strong> email@gmail.com</p>
+            <p><strong>판매자 ID</strong> {{session['id']}}</p>
             <p><strong>배송 방법</strong> {{data.delivery_method}}</p>
             <p><strong>판매 지역</strong> {{data.addr}}</p>
             <p><strong>제품 상태</strong> {{data.is_preorder}} </p>
