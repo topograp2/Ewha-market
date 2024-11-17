@@ -12,5 +12,14 @@ cateLinks.forEach(link => {
     event.preventDefault();
     cateLinks.forEach(link => link.classList.remove('active'));
     link.classList.add('active');
+    updateSubcategoryPosition();
   });
 });
+
+function updateSubcategoryPosition() {
+  const activeElement = document.querySelector('.category-nav a.active');
+  const subcategoryNav = document.getElementById('subcategory');
+  const rect = activeElement.getBoundingClientRect();
+  subcategoryNav.style.marginLeft = `${rect.left-70}px`;
+  subcategoryNav.style.visibility = 'visible';
+}
