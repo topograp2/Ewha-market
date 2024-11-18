@@ -3,6 +3,9 @@ const signupForm = document.querySelector('form');
 const pwCheckBtn = document.querySelector('#pw-check-btn');
 const idCheckMsg = document.querySelector('#id-check-msg');
 const pwCheckMsg = document.querySelector('#pw-check-msg');
+const idInputField = document.querySelector("input[name='id']");
+const pwInputField = document.querySelector("input[name='pw']");
+const pwConfirmInputField = document.querySelector(".pw-confirm-input");
 
 let isIdValid = false;
 let isPwValid = false;
@@ -37,7 +40,7 @@ async function checkId(event){
 
 }
 
-async function checkPw(event){
+function checkPw(event){
     event.preventDefault();
     const pwInput = document.querySelector("input[name='pw']").value;
     const pwConfirmInput = document.querySelector(".pw-confirm-input").value;
@@ -50,6 +53,16 @@ async function checkPw(event){
         isPwValid = true;
     }
 
+}
+
+function resetIdValidity() {
+    isIdValid = false;
+    idCheckMsg.innerHTML = "";
+}
+
+function resetPwValidity() {
+    isPwValid = false;
+    pwCheckMsg.innerHTML = ""; 
 }
 
 function handleFormSubmit(event){
@@ -67,4 +80,7 @@ function handleFormSubmit(event){
 
 idCheckBtn.addEventListener("click", checkId);
 pwCheckBtn.addEventListener("click", checkPw);
+idInputField.addEventListener("input", resetIdValidity); 
+pwInputField.addEventListener("input", resetPwValidity); 
+pwConfirmInputField.addEventListener("input", resetPwValidity); 
 signupForm.addEventListener("submit", handleFormSubmit);
