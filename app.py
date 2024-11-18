@@ -101,10 +101,21 @@ def login_user():
         flash("wrong ID or PW!")
         return render_template("login.html")
     
+@application.route("/check_id", methods=["POST"])
+def check_id():
+    data = request.get_json()
+    user_id = data.get("id")
+
+    if DB.user_duplicate_check(user_id):
+        return {"exists": False}
+    else:
+        return {"exists": True}
+    
 @application.route("/logout")
 def logout_user():
     session.clear()
     return redirect(url_for('view_list'))
+
 
 
 if __name__ == "__main__":

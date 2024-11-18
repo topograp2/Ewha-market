@@ -50,7 +50,7 @@ class DBhandler:
 
                 if value['id'] == id_string:
                     return False
-                return True
+            return True
     
     def find_user(self, id_, pw_):
         users = self.db.child("user").get()

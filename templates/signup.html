@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이화마켓:회원가입</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/signup.css') }}">
+    <script src="{{ url_for('static', filename='signup.js') }}" defer></script>
 </head>
 
 <body>
@@ -23,15 +24,22 @@
         <form action="/signup_post" method="post">
             <div class="direction-row">
                 <input class="input" type="id" name="id" placeholder="아이디" required>
-                <div class="check-icon"></div>
+                <button type="button" class="check-btn" id="id-check-btn">중복<br>확인</button>
+            </div>
+
+            <div id="id-check-msg">
+                
+            </div>
+            <div class="direction-row margin-bottom">
+                <input class="input " type="password" name="pw" placeholder="비밀번호(영문, 숫자, 특수기호)" required>
+                <div class=""></div>
             </div>
             <div class="direction-row">
-                <input class="input" type="password" name="pw" placeholder="비밀번호(영문, 숫자, 특수기호)" required>
-                <div class="check-icon"></div>
+                <input class="input pw-confirm-input" type="password" placeholder="비밀번호를 한번 더 입력해주세요" required>
+                <button class="check-btn" id="pw-check-btn">pw<br>확인</button>
             </div>
-            <div class="direction-row">
-                <input class="input" type="password" placeholder="비밀번호를 한번 더 입력해주세요" required>
-                <div class="check-icon"></div>
+            <div id="pw-check-msg">
+                
             </div>
             <div class="email-container">
                 <input class="email-input" name="email" type="text" placeholder="이메일">
