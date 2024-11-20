@@ -48,7 +48,8 @@ def reg_item_submit_post():
     image_file=request.files["img_path"]
     image_file.save("static/images/{}".format(image_file.filename))
     data=request.form
-    DB.insert_item(data['item'], data, image_file.filename)
+    id = session['id']
+    DB.insert_item(data['item'], data, id, image_file.filename)
     return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
 
 @application.route("/reg_reviews")

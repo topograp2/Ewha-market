@@ -9,7 +9,7 @@ class DBhandler:
         firebase = pyrebase.initialize_app(config)
         self.db = firebase.database()
 
-    def insert_item(self, name, data, img_path):
+    def insert_item(self, name, data, id, img_path):
         item_info ={
             "addr": data['addr'],
             "delivery_method": data['delivery_method'],
@@ -19,6 +19,7 @@ class DBhandler:
             "major_category": data['major_category'],
             "detail_category": data['detail_category'],
             "is_preorder": data['is_preorder'],
+            "seller_id": id,
             "img_path": img_path
         }
         self.db.child("item").child(name).set(item_info)
@@ -29,7 +30,8 @@ class DBhandler:
         user_info ={
             "id": data['id'],
             "pw": pw,
-            "email": data['email'],
+           # "nickname": data['nickname'],
+            "email": (data['email'] + '@' + data['email_domain']),
             "tel": data['tel']
         }
         if self.user_duplicate_check(str(data['id'])):
@@ -50,7 +52,7 @@ class DBhandler:
 
                 if value['id'] == id_string:
                     return False
-            return True
+                return True
     
     def find_user(self, id_, pw_):
         users = self.db.child("user").get()
