@@ -1,17 +1,17 @@
 {% extends "index.html" %}
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/my_purchase.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/my_post.css') }}">
 {% endblock %}
 {% block section %}
 <div class="mp-container">
     <div class="mp-nav">
         <a href=""><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
-        <a href="/my_post">내가 게시한 상품</a>
-        <a href="" class="active">내가 구매한 상품</a>
+        <a href="" class="active">내가 게시한 상품</a>
+        <a href="/my_purchase">내가 구매한 상품</a>
         <select class="select-view">
             <option value="all-view">전체 보기</option> 
-            <option value="gume-view">구매한 상품만 보기</option> 
-            <option value="suyo-view">참여한 수요조사만 보기</option>
+            <option value="gume-view">판매 상품만 보기</option> 
+            <option value="suyo-view">작성한 수요조사만 보기</option>
         </select>
     </div>
     <hr>
@@ -20,49 +20,48 @@
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 택배 배송</p><br>
-                <a href="">거래 내역 확인하기</a>
+                <p><span class="mp-color">판매 중</span> | 8 개 남음</p><br>
+                <a href="">신규 주문 3 건이 있습니다</a>
             </div>
         </div>
         <div class="mp-item">
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
-                <a href="">수요조사 내역 확인/변경</a>
+                <p><span class="mp-color">수요조사 중</span> | <span class="mp-color2">D-3</span></p><br>
+                <a href="">7 건의 수요가 집계되었습니다</a>
             </div>
         </div>
         <div class="mp-item">
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 직거래 (12.01 14:00)</p>
-                <p><span class="mp-color2">이화여자대학교 아산공학관</span></p>
-                <a href="">거래 내역 확인하기</a>
+                <p><span class="mp-color">판매 개시까지 00:25:14</span> | 15 개 남음</p><br>
+                <a href="">주문 리스트 보기</a>
             </div>
         </div>
         <div class="mp-item">
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
-                <a href="">수요조사 내역 확인</a>
+                <p><span class="mp-color">수요조사 개시까지 00:19:00</span> | <span class="mp-color2">5일</span></p><br>
+                <a href="">수요조사 리스트 보기</a>
             </div>
         </div>
         <div class="mp-item">
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 거래 완료</p><br>
-                <a href="">거래 내역 확인하기</a>
+                <p><span class="mp-color2">품절</span> | 0 개 남음</p><br>
+                <a href="">신규 주문 3 건이 있습니다</a>
             </div>
         </div>
         <div class="mp-item">
             <div class="mp-image"></div>
             <div class="mp-text">
                 <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">판매 중</span> | <span class="mp-color2">3개 참여</span></p><br>
-                <a href="">구매하러 가기</a>
+                <p><span class="mp-color2">수요 조사 마감</span> | <span class="mp-color2">D+1</span></p><br>
+                <a href="">11 건의 수요가 집계되었습니다</a>
             </div>
         </div>
     </div>

@@ -71,6 +71,10 @@ def review_detail():
 def my_purchase():
     return render_template('my_purchase.html')
 
+@application.route('/my_post')
+def my_post():
+    return render_template('my_post.html')
+
 @application.route("/login")
 def login():
     return render_template("login.html")
