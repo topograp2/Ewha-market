@@ -94,3 +94,12 @@
 	border-radius: 20px;
 	margin-right: 1px;
 }
+
+#heart{
+    color:grey;
+    font-size: 50px;
+}
+
+#heart.red {
+    color:red;
+}
