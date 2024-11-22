@@ -20,19 +20,22 @@ def view_list():
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    data = DB.get_items() #read the table
-    item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    for i in range(row_count):#last row
-        if (i == row_count-1) and (item_counts%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-    return render_template( "list.html", datas=data.items(),
-                           row1=locals()['data_0'].items(),
-                           row2=locals()['data_1'].items(),
-                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
-                           total=item_counts)
+    if DB.get_items():
+        data = DB.get_items() #read the table
+        item_counts = len(data)
+        data = dict(list(data.items())[start_idx:end_idx])
+        for i in range(row_count):#last row
+            if (i == row_count-1) and (item_counts%per_row != 0):
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+            else:
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+        return render_template( "list.html", datas=data.items(),
+                            row1=locals()['data_0'].items(),
+                            row2=locals()['data_1'].items(),
+                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
+                            total=item_counts)
+    else:
+        return render_template("list.html",total=0)
 
 @application.route("/review")
 def view_review():
@@ -42,7 +45,6 @@ def view_review():
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    print("############",DB.get_reviews())
     if DB.get_reviews():
         data = DB.get_reviews() #read the table
     
