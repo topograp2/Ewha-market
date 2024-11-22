@@ -42,20 +42,25 @@ def view_review():
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    data = DB.get_reviews() #read the table
-    review_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    for i in range(row_count):#last row
-        if (i == row_count-1) and (review_counts%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-    return render_template( "review.html", datas=data.items(),
-                           row1=locals()['data_0'].items(),
-                           row2=locals()['data_1'].items(),
-                           row3=locals()['data_2'].items(),
-                           limit=per_page, page=page, page_count=int((review_counts/per_page)+1),
-                           total=review_counts)
+    print("############",DB.get_reviews())
+    if DB.get_reviews():
+        data = DB.get_reviews() #read the table
+    
+        review_counts = len(data)
+        data = dict(list(data.items())[start_idx:end_idx])
+        for i in range(row_count):#last row
+            if (i == row_count-1) and (review_counts%per_row != 0):
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+            else:
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+        return render_template( "review.html", datas=data.items(),
+                            row1=locals()['data_0'].items(),
+                            row2=locals()['data_1'].items(),
+                            row3=locals()['data_2'].items(),
+                            limit=per_page, page=page, page_count=int((review_counts/per_page)+1),
+                            total=review_counts)
+    else:
+        return render_template( "review.html",total=0)
 
 @application.route("/reg_items")
 def reg_item():
