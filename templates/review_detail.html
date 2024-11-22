@@ -6,11 +6,17 @@
 {% endblock %}
 
 {% block section %}
-    <div class="review-detail-wrapper">
-        <button class="back-btn" onclick="window.history.back();">←</button>
-        
-        <!-- 리뷰 상세 페이지 컨테이너 -->
-        <div class="review-detail-container">
+<div class="review-detail-wrapper">
+    <!-- 뒤로가기 버튼 -->
+    <div class="btn-container">
+        <a href="/list" class="back-btn">
+            <img src="../static/svg/goBack.svg" alt="뒤로가기 버튼">
+        </a>
+    </div>
+
+    <!-- 리뷰 상세 페이지 컨테이너 -->
+    <div class="review-detail-container">
+        <form>
             <!-- 왼쪽 영역: 리뷰 정보 -->
             <div class="review-info">
                 <h1>상품 : 2온스 영어 금사 학잠 <span>(m size)</span></h1>
@@ -29,14 +35,16 @@
             <div class="review-images">
                 <div class="image-box"></div> <!-- 이미지 공간 -->
             </div>
-        </div>
-
-        <!-- 하단 리뷰 내용 박스 -->
-        <div class="review-content">
-            <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다.</p>
-            <p>생각보다 도톰한 누빔이 있어 봄, 가을에 입기 좋습니다.</p>
-            <p>일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
-            <p>실착 사진 첨부합니다.</p>
-        </div>
+        </form>
     </div>
+        
+    <!-- 하단 리뷰 내용 박스 -->
+    <div class="review-content">
+        <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다.</p>
+        <p>생각보다 도톰한 누빔이 있어 봄, 가을에 입기 좋습니다.</p>
+        <p>일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
+        <p>실착 사진 첨부합니다.</p>
+    </div>
+</div>
+
 {% endblock %}
