@@ -9,14 +9,8 @@
     src: url('../font/Pretendard-Medium.woff2');
 }
 
-/* 공통 스타일 설정 */
-body {
-    font-family: 'Pretendard-Medium';
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
+
+
 
 /* 상품 상세 페이지 컨테이너 */
 .product-detail-container {

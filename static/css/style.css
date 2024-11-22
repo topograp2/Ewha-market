@@ -94,3 +94,9 @@
 	border-radius: 20px;
 	margin-right: 1px;
 }
+
+section{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

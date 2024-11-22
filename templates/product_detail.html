@@ -1,10 +1,10 @@
 {% extends "index.html" %}
 
+{% block section %}
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product_detail.css') }}">
 {% endblock %}
 
-{% block section %}
 <div class="product-detail-container">
     <a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
     <div class="image-container">
