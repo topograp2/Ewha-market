@@ -70,9 +70,20 @@ def reg_item_submit_post():
     DB.insert_item(data['item'], data, id, image_file.filename)
     return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
 
-@application.route("/reg_reviews")
+@application.route("/reg_review_init/<name>/")
+def reg_review_init(name):
+    return render_template("reg_reviews.html", name=name)
+
+@application.route("/reg_reviews", methods=['GET', 'POST'])
 def reg_review():
-    return render_template("reg_reviews.html")
+    if request.method == "GET":
+        return render_template("reg_reviews.html")
+    elif request.method == "POST":
+        data=request.form
+        image_file=request.files["img_path"]
+        image_file.save("static/images/{}".format(image_file.filename))
+        DB.reg_review(data['reviewTitle'], data, image_file.filename)
+        return redirect(url_for('view_review'))
 
 @application.route('/product_detail/<name>/')
 def product_detail(name):

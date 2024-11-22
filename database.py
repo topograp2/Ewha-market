@@ -77,14 +77,15 @@ class DBhandler:
                 target_value=res.val()
         return target_value
     
-    def reg_review(self, data, img_path):
+    def reg_review(self, name, data, img_path):
         review_info={
-            "title": data['title'],
-            "rate": data['reviewStar'],
+            "title": data['reviewTitle'],
+            "rate-item": data['itemStar'],
+            "rate-deliver": data['deliverStar'],
             "review": data['reviewContents'],
             "img_path": img_path
         }
-        self.db.child("review").child(data['name']).set(review_info)
+        self.db.child("review").child(name).set(review_info)
         return True
     
     def get_reviews(self):
