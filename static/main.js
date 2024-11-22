@@ -19,7 +19,10 @@ cateLinks.forEach(link => {
 function updateSubcategoryPosition() {
   const activeElement = document.querySelector('.category-nav a.active');
   const subcategoryNav = document.getElementById('subcategory');
+
+  const parentRect = activeElement.parentElement.getBoundingClientRect();
   const rect = activeElement.getBoundingClientRect();
-  subcategoryNav.style.marginLeft = `${rect.left-70}px`;
+
+  subcategoryNav.style.marginLeft = `${rect.left - parentRect.left+150}px`;
   subcategoryNav.style.visibility = 'visible';
 }
