@@ -101,7 +101,7 @@ body {
     margin-top: 1.5rem;
 }
 
-.review-btn, .buy-btn {
+.review-btn, .buy-btn, .main-btn {
     display: inline-block;
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
@@ -119,6 +119,9 @@ body {
 
 .buy-btn {
     background-color: #00462A;
+}
+.main-btn{
+    background-color: #6c6c6c;
 }
 
 /* 상품 설명 섹션 */

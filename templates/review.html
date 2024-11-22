@@ -30,10 +30,64 @@
 
     <div class="review-header">
         <a href="/reg_reviews" class="add-review-btn">+ 새 리뷰 등록</a>
-        <p class="review-count">현재까지 n개 리뷰 등록됨</p>
+        <p class="review-count">현재까지 {{total}}개 리뷰 등록됨</p>
     </div>
+
+    <a id="review_title">리뷰 리스트</a><br>
+    {% if total > 0 %}
+    <a id="review_info">전체 리뷰는 {{total}}개입니다.</a>
+    <div class="product-list">
+      <table>
+        <tr>
+            {% for key, value in row1 %}
+                <td class="product-name">{{value.title}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row1 %}
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row2 %}
+            <td class="product-name">{{value.title}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row2 %}
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row3 %}
+            <td class="product-name">{{value.title}}</td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row3 %}
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+            {% endfor %}
+        </tr>
+      </table>
+    </div>
+    <div class="page-wrap">
+      <div class="page-nation">
+        <ul>
+          <li>
+            {% for i in range(page_count)%}
+            <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
+            {% endfor %}
+          </li>
+        </ul>
+      </div>
+    </div>
+    {% else %}
+    <a id="review_info">등록된 리뷰가 없습니다. </a>
+    {% endif %}
+  </div>
+  {% endblock section %}
     
-    <!-- 리뷰 목록 -->
+    <!-- 리뷰 목록 
     <div class="review-list">
         <div class="review-item">
             <div class="review-image"></div>
@@ -83,9 +137,9 @@
                 <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다. 생각보다 도톰한 누빔이 있어 겨울에 입기 좋습니다. 일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <!-- 페이지네이션 -->
+    <!-- 페이지네이션 
     <div class="pagination">
         <a href="#">&lt;&lt;</a>
         <a href="#" class="active">1</a>
@@ -94,8 +148,6 @@
         <a href="#">4</a>
         <a href="#">5</a>
         <a href="#">&gt;&gt;</a>
-    </div>
+    </div> -->
 </div>
-
-
-{% endblock %}
+{% endblock %} 
