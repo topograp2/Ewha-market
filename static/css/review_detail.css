@@ -3,41 +3,52 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 2rem;
-    width: 100%;
-    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+form {
+    display: flex;
+    width: 100%; /* 전체 영역 사용 */
+    max-width: 1200px; /* 적당한 최대 너비 지정 */
+    margin: 0 auto; /* 가운데 정렬 */
+}
+
+/* 뒤로가기 버튼 스타일 */
+.btn-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 1000px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.back-btn img {
+    width: 24px; /* 아이콘 크기 */
+    height: auto;
+    cursor: pointer;
+    display: block;
 }
 
 /* 중앙 정렬을 위한 컨테이너 */
 .review-detail-container {
     display: flex;
-    gap: 2rem;
-    max-width: 800px;
-    width: 90%;
-    align-items: flex-start;
+    justify-content: center; /* 텍스트와 이미지가 가운데로 가까워지도록 정렬 */
+    align-items: flex-start; /* 상단 정렬 */
+    max-width: 800px; /* 전체 너비 제한 */
+    width: 90%; /* 컨테이너 너비 */
     padding-left: 2rem; /* 전체 컨테이너 좌측에 여백 추가 */
-}
-
-/* 뒤로가기 버튼 */
-.back-btn {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    font-size: 1.2rem;
-    background: none;
-    border: none;
-    cursor: pointer;
 }
 
 /* 왼쪽 영역: 리뷰 정보 */
 .review-info {
-    flex: 2;
-    padding-left: 0;
+    flex: 2; /* 텍스트 영역 비율 */
+    padding-right: 10px; /* 오른쪽 여백 줄임 */
 }
 
 .review-info h1 {
-    font-size: 1.7rem;
-    margin-bottom: 0rem;
+    font-size: 1.8rem; /* 제목 크기 */
+    margin-bottom: 1rem; /* 아래 여백 */
     padding-left: 0;
 }
 
@@ -48,14 +59,13 @@
 }
 
 .review-info p {
-    font-size: 1rem;
-    margin: 0.5rem 0;
-    line-height: 2.2;
+    font-size: 1rem; /* 텍스트 크기 */
+    margin: 0.5rem 0; /* 텍스트 간 여백 */
+    line-height: 1.6; /* 줄 간격 */
     font-family: 'Pretendard-Medium';
     align-items: flex-start;
     padding-left: 0;
     color: #656565d3;
-
 }
 
 /* 키워드 스타일 */
@@ -97,17 +107,17 @@
 
 /* 오른쪽 영역: 이미지 */
 .review-images {
-    flex: 1;
+    flex: 1; /* 이미지 영역 비율 */
     display: flex;
-    justify-content: flex-start;
+    justify-content: center; /* 이미지를 가운데로 정렬 */
     align-items: center;
 }
 
 .image-box {
-    width: 330px;
-    height: 250px;
-    background-color: #d7d5d5;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 350px; /* 이미지 너비 */
+    height: 250px; /* 이미지 높이 */
+    background-color: #d7d5d5; /* 임시 배경색 */
+    border-radius: 10px; /* 둥근 모서리 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 */
     margin-top: 20px;
 }
