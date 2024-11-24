@@ -11,6 +11,7 @@
         <div class="product-image">
             <img src="../../static/images/{{data.img_path}}" width="300px"height="300px">
         </div>
+        <button onclick="location.href='/reg_review_init/{{name}}/';">리뷰등록</button>
     </div>
     <div class="details-container">
         <div class="breadcrumbs"> {{data.major_category}} > {{data.detail_category}}</div>
@@ -27,7 +28,62 @@
         <div class="button-container">
             <a href="/review" class="review-btn">이 제품의 리뷰 보러 가기</a>
             <a href="/purchase" class="buy-btn">제품 구매하기</a>
+            <i class="fa fa-heart" id="heart"></i>
         </div>
+
+        <script>
+            function showHeart() {
+                $.ajax({
+                    type: 'GET',
+                    url: '/show_heart/{{name}}/',
+                     data: {}, 
+                     //JSON 형식의 보낼 데이터
+                     success: function (response) { //백엔드에서 response로 클릭 정보를 넘겨줌
+                        let my_heart = response['my_heart'];
+                        if (my_heart['interested'] == 'Y')
+                        {
+                            $("#heart").css("color","red");
+                            $("#heart").attr("onclick","unlike()");
+                        }
+                        else
+                        {
+                            $("#heart").css("color","grey");
+                            $("#heart").attr("onclick","like()");
+                        }
+                        //alert("showheart!")
+                    }
+                });
+            }
+            
+            function like() {
+                $.ajax({
+                    type:'POST',
+                    url:'/like/{{name}}/', 
+                    data: {interested: "Y"}, 
+                    success: function(response) {
+                        alert(response['msg']); 
+                        window.location.reload()
+                    }
+                });
+            }
+            
+            function unlike() {
+                $.ajax({
+                    type:'POST',
+                    url:'/unlike/{{name}}/', 
+                    data: {interested: "N"}, 
+                    success: function(response) {
+                        alert(response['msg']); 
+                        window.location.reload()
+                    }
+                });
+            }
+            
+            $(document).ready(function () {
+                showHeart();
+            });  
+            <!--처음 페이지 로딩시 호출-->
+        </script>
 
         <div class="product-description">
             <h2>상품 설명</h2>

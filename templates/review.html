@@ -29,13 +29,11 @@
     </nav>
 
     <div class="review-header">
-        <a href="/reg_reviews" class="add-review-btn">+ 새 리뷰 등록</a>
-        <p class="review-count">현재까지 {{total}}개 리뷰 등록됨</p>
+      <a href="/reg_reviews" class="add-review-btn">+ 새 리뷰 등록</a>
+      {% if total > 0 %}
+      <p class="review-count">현재까지 {{total}}개 리뷰 등록됨</p>
     </div>
 
-    <a id="review_title">리뷰 리스트</a><br>
-    {% if total > 0 %}
-    <a id="review_info">전체 리뷰는 {{total}}개입니다.</a>
     <div class="product-list">
       <table>
         <tr>
@@ -81,11 +79,10 @@
         </ul>
       </div>
     </div>
-    {% else %}
-    <a id="review_info">등록된 리뷰가 없습니다. </a>
-    {% endif %}
   </div>
-
+  {% else %}
+  <a id="review_info">등록된 리뷰가 없습니다. </a>
+  {% endif %}
 </div>
 {% endblock section %}
 

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, url_for, session
+from flask import Flask, render_template, request, flash, redirect, url_for, session, jsonify
 from database import DBhandler
 import hashlib
 import sys
@@ -20,19 +20,22 @@ def view_list():
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    data = DB.get_items() #read the table
-    item_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    for i in range(row_count):#last row
-        if (i == row_count-1) and (item_counts%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-    return render_template( "list.html", datas=data.items(),
-                           row1=locals()['data_0'].items(),
-                           row2=locals()['data_1'].items(),
-                           limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
-                           total=item_counts)
+    if DB.get_items():
+        data = DB.get_items() #read the table
+        item_counts = len(data)
+        data = dict(list(data.items())[start_idx:end_idx])
+        for i in range(row_count):#last row
+            if (i == row_count-1) and (item_counts%per_row != 0):
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+            else:
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+        return render_template( "list.html", datas=data.items(),
+                            row1=locals()['data_0'].items(),
+                            row2=locals()['data_1'].items(),
+                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
+                            total=item_counts)
+    else:
+        return render_template("list.html",total=0)
 
 @application.route("/review")
 def view_review():
@@ -42,20 +45,24 @@ def view_review():
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    data = DB.get_reviews() #read the table
-    review_counts = len(data)
-    data = dict(list(data.items())[start_idx:end_idx])
-    for i in range(row_count):#last row
-        if (i == row_count-1) and (review_counts%per_row != 0):
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-        else:
-            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-    return render_template( "review.html", datas=data.items(),
-                           row1=locals()['data_0'].items(),
-                           row2=locals()['data_1'].items(),
-                           row3=locals()['data_2'].items(),
-                           limit=per_page, page=page, page_count=int((review_counts/per_page)+1),
-                           total=review_counts)
+    if DB.get_reviews():
+        data = DB.get_reviews() #read the table
+    
+        review_counts = len(data)
+        data = dict(list(data.items())[start_idx:end_idx])
+        for i in range(row_count):#last row
+            if (i == row_count-1) and (review_counts%per_row != 0):
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+            else:
+                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+        return render_template( "review.html", datas=data.items(),
+                            row1=locals()['data_0'].items(),
+                            row2=locals()['data_1'].items(),
+                            row3=locals()['data_2'].items(),
+                            limit=per_page, page=page, page_count=int((review_counts/per_page)+1),
+                            total=review_counts)
+    else:
+        return render_template( "review.html",total=0)
 
 @application.route("/reg_items")
 def reg_item():
@@ -70,9 +77,20 @@ def reg_item_submit_post():
     DB.insert_item(data['item'], data, id, image_file.filename)
     return render_template("submit_item_result.html", data=data, img_path="static/images/{}".format(image_file.filename))
 
-@application.route("/reg_reviews")
+@application.route("/reg_review_init/<name>/")
+def reg_review_init(name):
+    return render_template("reg_reviews.html", name=name)
+
+@application.route("/reg_reviews", methods=['GET', 'POST'])
 def reg_review():
-    return render_template("reg_reviews.html")
+    if request.method == "GET":
+        return render_template("reg_reviews.html")
+    elif request.method == "POST":
+        data=request.form
+        image_file=request.files["img_path"]
+        image_file.save("static/images/{}".format(image_file.filename))
+        DB.reg_review(data['reviewTitle'], data, image_file.filename)
+        return redirect(url_for('view_review'))
 
 @application.route('/product_detail/<name>/')
 def product_detail(name):
@@ -136,6 +154,21 @@ def check_id():
         return {"exists": False}
     else:
         return {"exists": True}
+    
+@application.route('/show_heart/<name>/', methods=['GET'])
+def show_heart(name):
+    my_heart = DB.get_heart_byname(session['id'],name)
+    return jsonify({'my_heart': my_heart})
+
+@application.route('/like/<name>/', methods=['POST'])
+def like(name):
+    my_heart = DB.update_heart(session['id'],'Y',name)
+    return jsonify({'msg': '좋아요 완료!'})
+ 
+@application.route('/unlike/<name>/', methods=['POST'])
+def unlike(name):
+ my_heart = DB.update_heart(session['id'],'N',name)
+ return jsonify({'msg': '안좋아요 완료!'})
     
 @application.route("/logout")
 def logout_user():
