@@ -100,3 +100,11 @@ section{
 	justify-content: center;
 	align-items: center;
 }
+#heart{
+    color:grey;
+    font-size: 50px;
+}
+
+#heart.red {
+    color:red;
+}
