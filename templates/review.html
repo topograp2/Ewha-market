@@ -2,82 +2,84 @@
 
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/review.css') }}">
-    <title>리뷰 전체 페이지</title>
 {% endblock %}
 
 {% block section %}
 <div class="main">
         
-    <nav class="category-nav">
-        <a href="#">의류</a>
-        <p>|</p>
-        <a href="#">문구</a>
-        <p>|</p>
-        <a href="#">뷰티</a>
-        <p>|</p>
-        <a href="#">푸드</a>
-        <p>|</p>
-        <a href="#">디지털</a>
-        <p>|</p>
-        <a href="#">잡화</a>
-    </nav>
+  <nav class="category-nav">
+    <a href="#" data-target="subcategory1">의류</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory2">문구</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory3">푸드</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory4">잡화</a>
+  </nav>
 
-    <nav class="subcategory-nav" id="subcategory">
-        <a href="#">세부1</a>
-        <a href="#">세부2</a>
-        <a href="#">세부3</a>
-    </nav>
+  <!-- 서브 카테고리 내비게이션 -->
+  <nav class="subcategory-nav" id="subcategory1">
+    <a href="#">학잠/과잠</a>
+    <a href="#">후리스</a>
+    <a href="#">주경바막/돕바</a>
+    <a href="#">기타</a>
+  </nav>
 
-    <div class="review-header">
-      <a href="/reg_reviews" class="add-review-btn">+ 새 리뷰 등록</a>
-      {% if total > 0 %}
-      <p class="review-count">현재까지 {{total}}개 리뷰 등록됨</p>
-    </div>
+  <nav class="subcategory-nav" id="subcategory2">
+    <a href="#">노트/플래너</a>
+    <a href="#">필기구</a>
+    <a href="#">엽서/스티커</a>
+    <a href="#">기타</a>
+  </nav>
 
-    <div class="product-list">
-      <table>
-        <tr>
-            {% for key, value in row1 %}
-                <td class="product-name">{{value.title}}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for key, value in row1 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for key, value in row2 %}
-            <td class="product-name">{{value.title}}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for key, value in row2 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for key, value in row3 %}
-            <td class="product-name">{{value.title}}</td>
-            {% endfor %}
-        </tr>
-        <tr>
-            {% for key, value in row3 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
-            {% endfor %}
-        </tr>
-      </table>
-    </div>
-    <div class="page-wrap">
-      <div class="page-nation">
-        <ul>
-          <li>
-            {% for i in range(page_count)%}
-            <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
-            {% endfor %}
-          </li>
-        </ul>
-      </div>
+  <nav class="subcategory-nav" id="subcategory3">
+    <a href="#">베이킹</a>
+    <a href="#">음료</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory4">
+    <a href="#">인형/키링/뱃지</a>
+    <a href="#">에코백/파우치</a>
+    <a href="#">텀블러/머그컵</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <a href="/reg_reviews" class="add-review-btn">+ 새 리뷰 등록</a>
+  {% if total > 0 %}
+  <p class="review-count">전체 리뷰는 {{total}}개입니다</p>
+
+  <div class="review-list">
+    <table>
+    <tr>
+      {% for key, value in row1 %}
+      <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+      <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row3 %}
+      <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      {% endfor %}
+    </tr>
+    </table>
+  </div>
+  <div class="page-wrap">
+    <div class="page-nation">
+      <ul>
+        <li>
+          {% for i in range(page_count)%}
+          <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
+          {% endfor %}
+        </li>
+      </ul>
     </div>
   </div>
   {% else %}

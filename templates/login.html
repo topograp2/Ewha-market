@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이화마켓:로그인</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <script src="{{ url_for('static', filename='login.js') }}" defer></script>
 </head>
 <body>
     
@@ -27,7 +28,7 @@
                     type="password" name="pw" 
                     placeholder="비밀번호를 입력하세요"
                 >
-                <i class="pwHide"><img src="../static/svg/pwHide.svg" alt="pwHiveBtn"></i>
+                <i id="pw-toggle-btn"><img src="../static/svg/pwHide.svg" alt="pwHiveBtn"></i>
                 </div>
                 <div class="control-container">
                     <input type="checkbox" id="a" class="screen-reader">
