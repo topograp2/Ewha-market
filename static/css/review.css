@@ -14,9 +14,7 @@
 
 /* 전체 컨테이너 */
 .main{
-    position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
+    position: relative;
     width: 88.75rem;
 	height: 37.5rem;
 }
@@ -24,15 +22,15 @@
 .category-nav {
 	display: flex;
 	padding: 1rem;
-	margin-top: 1rem;
-	margin-left: 11rem;
-	font-size: 1.3rem;
+	margin-top: 0.7rem;
+	margin-left: 13.5rem;
+	font-size: 1.4rem;
 	height: 1.5rem;
 	align-items: center;
 }
 .category-nav a, p {
-	padding-left: 1.2rem;
-	padding-right: 1.2rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 	font-weight: bold;
 	text-decoration: none;
 	color: black;
@@ -42,30 +40,38 @@
 	color: white;
 }
 .subcategory-nav {
-	display: flex;
-	width: 300px;
+	width: 500px;
 	height: 30px;
 	justify-content: space-around;
 	align-items: center;
 	background-color: #f0f0f0;
 	padding: 5px;
-	visibility: hidden;
+	display: none;
+  	z-index: 1;
 }
 .subcategory-nav a {
 	text-decoration: none;
 	color: #737373;
+	padding: 5px;
 }
+.subcategory-nav.active {
+	display: flex;
+}
+#subcategory1 {
+	margin-left: 12.5rem;
+}
+#subcategory2 {
+	margin-left: 14.5rem;
+}
+#subcategory3 {
+	margin-left: 16.5rem;
+}
+#subcategory4 {
+	margin-left: 18.5rem;
+}
+
 
 /* 새 리뷰 등록 버튼 */
-.review-header {
-    position: absolute;
-	text-align: right;
-	width: 12.5rem;
-	height: 6.25rem;
-	left: 65rem;
-	top: 3.5rem;
-}
-
 .add-review-btn {
     background-color: #00462A;
     color: white;
@@ -73,78 +79,81 @@
     padding: 0.6rem 1rem;
     border: none;
     border-radius: 8px;
-    cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin-right: 1rem;
-    font-weight: bold;
+    font-family: 'Pretendard-Bold';
+	margin:0;
+	position: absolute;
+	text-align: right;
+	left: 67rem;
+	top: 3rem;
+	text-decoration: none;
+}
+.review-count {
+	font-size: 0.9rem;
+	color: #737373;
+	margin-top: 0.3rem;
+	position: absolute;
+	width: 12.5rem;
+	height: 3rem;
+	left: 65rem;
+	top: 5.5rem;
 }
 
-/* 리뷰 목록 그리드 */
+/* 리뷰 목록 */
 .review-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
     height: 30rem;
 	place-items: center;
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
-	margin-top: 1rem;
+	margin-top: 1.5rem;
 }
-
-.review-item {
-    display: flex;
-    background-color: #FFFFFF;
-    justify-items: start;
-    border-radius: 10px;
-    margin: 5px;
+.review-list td {
+	padding: 0.25rem;
+	padding-bottom: 0.5rem;
 }
-
-.review-image {
-    width: 140px;
-    height: 140px;
-    background-color: #d9d9d9;
-    border-radius: 10px;
+.review-list img {
+	object-fit: cover;
 }
-
 .review-text {
-    margin-top: 10px;
-    flex: 1;
+	width: 285px;
+	height: 110px;
+	margin-top: 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+	overflow: hidden;
+}
+.title-text {
+	font-family: 'Pretendard-Bold';
+	font-size: 1.2rem;
 }
 
-.review-text strong {
-    font-size: 1.2rem;
-    color: #333;
-    display: block;
-    margin-bottom: 0rem;
-    margin-top: 0rem;
-    text-align: center;
+.page-nation li{
+	list-style: none;
 }
-
-.review-text p {
-    font-size: 0.8rem;
-    color: #737373;
-    display: block;
-    text-align: center;
-    margin-top: 0.6px;
+.page-wrap{
+	text-align: center;
+	font-size: 0;
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0);
+	top: 39rem;
 }
-
-a {
-    text-decoration: none;
-}
-
-.pagination {
+.page-nation{
 	display: flex;
 	justify-content: center;
-	gap: 0.5rem;
-	padding: 1rem;
+	align-items: center;
 }
-.pagination a {
-	text-decoration: none;
-	color: #888;
+.page-nation a{
+	display: block;
+	margin: 0 0.5rem;
+	float: left;
 	padding: 0.5rem;
 	border-radius: 1.875rem;
-}
-.pagination a.active {
-	background-color: #6ab04c;
-	color: white;
-	font-weight: bold;
+	text-align: center;
+	font-size: 13px;
+	color: black;
+	text-decoration: none;
+	font-family: 'Pretendard-Bold';
 }

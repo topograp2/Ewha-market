@@ -12,8 +12,6 @@
 	font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
 }
 
-body>:not(.navbar) {justify-content: center;}
-
 .container {
 	position: relative;
 	width: 88.75rem;
@@ -22,7 +20,7 @@ body>:not(.navbar) {justify-content: center;}
 
 #list_title {
 	font-size: 1.3rem;
-	font-weight: bold;
+	font-family: 'Pretendard-Bold';
 	margin:0;
 	position: absolute;
 	text-align: right;
@@ -55,7 +53,7 @@ body>:not(.navbar) {justify-content: center;}
 .category-nav a, p {
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
-	font-weight: bold;
+	font-family: 'Pretendard-Bold';
 	text-decoration: none;
 	color: black;
 }
@@ -105,6 +103,9 @@ body>:not(.navbar) {justify-content: center;}
 .product-list td {
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
+}
+.product-list img {
+	object-fit: cover;
 }
 .product-name {
 	padding-bottom: 1rem;
