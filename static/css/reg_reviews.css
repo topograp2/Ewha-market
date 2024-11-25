@@ -15,6 +15,9 @@
     align-items: center;
 
 }
+.hidden{
+    display: none;
+}
 
 .btn-container {
     display: flex;
@@ -117,8 +120,10 @@ form {
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
+    
 }
-.tag-select>button{
+.tag-select>label{
+    display: inline-block;
     font-size: 11px;
     border: 0;
     padding: 5px;
@@ -128,6 +133,14 @@ form {
     cursor: pointer;
     background-color: #D4E4CF;
     border-radius: 10px;
+}
+.tag-select>.active{
+    background-color: #00462A;
+    color: #F3F1F1;
+}
+.tag-select>label:hover{
+    background-color: #00462A;
+    color: #F3F1F1;
 }
 .right-container{
     margin-left: 20px;
@@ -157,6 +170,15 @@ textarea{
 .hidden{
     display: none;
 }
+.cursor{
+    cursor: pointer;
+}
+.btn-container>button{
+    outline: none;
+    border: 0;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
 .upload{
     display: flex;
     justify-content: center;
@@ -165,6 +187,7 @@ textarea{
     width: 120px;
     height: 70px;
     border-radius: 10px;
+    cursor: pointer;
 }
 .submit-container{
     display: flex;
@@ -182,4 +205,58 @@ input[type="submit"]{
     border-radius:7px;
     font-size: 20px;
     
+}
+
+.deliver>.star{
+    cursor: pointer;
+}
+
+/* 팝업의 기본 스타일 */
+.popup {
+    display: none; /* 초기에는 숨김 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* 팝업 내용 스타일 */
+.popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+}
+
+/* X 버튼 스타일 */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 삭제 버튼 스타일 */
+#delete-btn {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #00462A;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.small-font{
+    font-size: 12px;
+    margin: 0;
+    margin-top: 5px;
 }

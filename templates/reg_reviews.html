@@ -7,59 +7,65 @@
 <div class="main-container">
     <div class="reg-review-container">
         <div class="btn-container">
-            <a href="/list"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="gobackbtn"></a>
+            <button class="gobackbtn" onclick="goBack()"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="gobackbtn"></button>
         </div>
-        <form action="/reg_reviews" method="post" enctype="multipart/form-data">
+        <form class="review-form" action="/reg_reviews" method="post" enctype="multipart/form-data">
             <div class="title-container">
                 <div class="title-div"><label for="title">상품 이름</label>
-                    <input type="text" name="item" id="item" value="{{name}}">
+                    <input type="text" name="item" id="item" value="{{name}}" required>
                 </div>
                 <div class="title-div margin-little"><label for="reviewTitle">리뷰 제목</label>
-                    <input placeholder="제목을 입력해주세요." type="text" name="reviewTitle" id="reviewTitle">
+                    <input placeholder="제목을 입력해주세요." type="text" name="reviewTitle" id="reviewTitle" required>
                 </div>
             </div>
             <div class="review-container">
                 <div class="left-container">
                     <div>
                         <div><span>상품</span>은 만족하셨나요?</div>
-                        <div class="star-container">
-                            <input type="radio" name="itemStar" value="1" id="itemrate5">
-                            <label for="itemrate5"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="itemStar" value="2" id="itemrate4">
-                            <label for="itemrate4"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="itemStar" value="3" id="itemrate3">
-                            <label for="itemrate3"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="itemStar" value="4" id="itemrate2">
-                            <label for="itemrate2"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="itemStar" value="5" id="itemrate1">
-                            <label for="itemrate1"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                        <div class="star-container goods">
+                            <input class="hidden" type="radio" name="itemStar" value="1" id="itemrate5">
+                            <label class="cursor star" for="itemrate5"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="itemStar" value="2" id="itemrate4">
+                            <label class="cursor  star"  for="itemrate4"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="itemStar" value="3" id="itemrate3">
+                            <label class="cursor star "  for="itemrate3"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="itemStar" value="4" id="itemrate2">
+                            <label class="cursor star" for="itemrate2"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="itemStar" value="5" id="itemrate1">
+                            <label class="cursor star" for="itemrate1"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
                         </div> 
                     </div>
                     <div>
                         <div><span>배송상태</span>는<br>만족하셨나요?</div>
-                        <div class="star-container">
-                            <input type="radio" name="deliverStar" value="5" id="deliverrate1">
-                            <label for="deliverrate1"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="deliverStar" value="4" id="deliverrate2">
-                            <label for="deliverrate2"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="deliverStar" value="3" id="deliverrate3">
-                            <label for="deliverrate3"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="deliverStar" value="2" id="deliverrate4">
-                            <label for="deliverrate4"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
-                            <input type="radio" name="deliverStar" value="1" id="deliverrate5">
-                            <label for="deliverrate5"><img src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                        <div class="star-container deliver">
+                            <input class="hidden" type="radio" name="deliverStar" value="5" id="deliverrate1">
+                            <label class="star" for="deliverrate1"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="deliverStar" value="4" id="deliverrate2">
+                            <label class="star"  for="deliverrate2"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="deliverStar" value="3" id="deliverrate3">
+                            <label class="star"  for="deliverrate3"><img class="star-icon"  src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="deliverStar" value="2" id="deliverrate4">
+                            <label class="star"  for="deliverrate4"><img class="star-icon"  src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
+                            <input class="hidden" type="radio" name="deliverStar" value="1" id="deliverrate5">
+                            <label class="star" for="deliverrate5"><img class="star-icon" src="{{ url_for('static', filename='svg/starIcon.svg') }}" alt="reviewStar"></label>
                         </div> 
 
                     </div>
                     <div>
                         <div>키워드 선택</div>
                         <div class="tag-select">
-                            <button>판매자 친절함</button>
-                            <button>판매자 불친절</button>
-                            <button>상품 정보 일치</button>
-                            <button>상품 정보 불일치</button>
-                            <button>강주!</button>
-                            <button>비추!</button>
+                            <input class="hidden" type="checkbox" name="keyword" value="판매자 친절함" id="seller-good">
+                            <label class="keyword-set" for="seller-good">판매자 친절함</label>
+                            <input class="hidden" type="checkbox" name="keyword" value="판매자 불친절" id="seller-bad">
+                            <label class="keyword-set" for="seller-bad">판매자 불친절</label>
+                            <input class="hidden" type="checkbox" name="keyword" value="상품 정보 일치" id="info-good">
+                            <label class="keyword-set" for="info-good">상품 정보 일치</label>
+                            <input class="hidden" type="checkbox" name="keyword" value="상품 정보 불일치" id="info-bad">
+                            <label class="keyword-set" for="info-bad">상품 정보 불일치</label>
+                            <input class="hidden" type="checkbox" name="keyword" value="강추!" id="recom">
+                            <label class="keyword-set" for="recom">강주!</label>
+                            <input class="hidden" type="checkbox" name="keyword" value="비추!" id="no-recom">
+                            <label class="keyword-set" for="no-recom">비추!</label>
                         </div>
 
                     </div>
@@ -69,27 +75,36 @@
                     <div>
                         <div class="title">리뷰 내용 작성</div>
                         <textarea
+                        class="review-text"
                         name="reviewContents"
                         cols="80"
                         rows="10"
                         placeholder="자세한 후기는 다른 사용자에게 큰 도움이 되며 부적절한 후기는 관리자 검토 후 비공개 조치 될 수 있습니다."></textarea>
-                        <div class="limit-content"><span>0</span>자/최소 10자</div>
+                        <div class="limit-content"><span class="text-count">0</span>자/최소 10자</div>
                     </div>
                     <div>
-                        <div class="title">사진 등록</div>
-                        <input name="img_path" type="file" accept="image/*">
+                        <div class="title">사진 등록 <div class="small-font">사진을 눌러 삭제 가능합니다.</div></div>
+                        
+                        <input class="hidden real-upload" name="img_path" type="file" accept="image/*">
                         <div class="upload"><img src="{{ url_for('static', filename='svg/plusIcon.svg') }}" alt="uploadBtn"></div>
-                        <div class="limit-content"><span>0</span>자/최대 8장</div>
+                        <div class="limit-content"><span id="img-count">0</span>장/최대 8장</div>
                     </div>
                     <div class="submit-container">
-                        <input type="submit" value="등록하기">
+                        <input class="review-submit" type="submit" value="등록하기">
                     </div>
                     
                 </div>
             </div>
 
         </form>
+        
 
-
+    </div>
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">X</span>
+            <img id="popup-image" src="" alt="Popup Image" style="width: 300px; height: auto;">
+            <button id="delete-btn">삭제</button>
+        </div>
     </div>
     {% endblock section %}
