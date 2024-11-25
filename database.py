@@ -109,8 +109,8 @@ class DBhandler:
             return target_value
         for res in hearts.each():
             key_value = res.key()
-        if key_value == name:
-            target_value = res.val()
+            if key_value == name:
+                target_value = res.val()
         return target_value
     
     def update_heart(self, user_id, isHeart, item):
