@@ -24,10 +24,12 @@
 
 /* 뒤로가기 버튼 */
 .back-arrow {
+    margin-top: 10px;
     font-size: 1.5rem;
     color: #333;
     text-decoration: none;
-    margin-right: 1rem;
+    margin-left: 20px;
+    display: inline-block;
 }
 
 /* 상품 이미지 */
@@ -66,7 +68,6 @@
 .product-title {
     font-size: 2rem;
     font-family: 'Pretendard-Bold';
-    margin-bottom: 0.5rem;
 }
 
 .price {

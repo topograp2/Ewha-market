@@ -5,8 +5,10 @@
 {% endblock %}
 
 {% block section %}
+<div style="flex-direction: column; width: 1000px; border: 1px solid black;">
+<a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
 <div class="product-detail-container">
-    <a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
+    
     <div class="image-container">
         <div class="product-image">
             <img src="{{img_path}}" width="300px" height="300px">
@@ -14,11 +16,11 @@
     </div>
     <div class="details-container">
         <div class="breadcrumbs"> {{data.major_category}} > {{data.detail_category}}</div>
-        <h1 class="product-title">{{name}}</h1>
+        <h1 class="product-title">{{data.item}}</h1>
         <p class="price">{{data.price}} 원</p>
         
         <div class="product-info">
-            <p><strong>판매자 ID</strong> {{id}}</p>
+            <p><strong>판매자 ID</strong> {{session['id']}}</p>
             <p><strong>배송 방법</strong> {{data.delivery_method}}</p>
             <p><strong>판매 지역</strong> {{data.addr}}</p>
             <p><strong>제품 상태</strong> {{data.is_preorder}} </p>
@@ -30,9 +32,10 @@
         </div>
 
         <div class="button-container">
-            <a href="/list" class="main-btn"> 상품 등록 완료!\n 메인으로 돌아가기 </a>
+            <a href="/list" class="main-btn"> 상품 등록 완료! </a>
         </div>
 
     </div>
+</div>
 </div>
 {% endblock section %}
