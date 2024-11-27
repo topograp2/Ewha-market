@@ -87,9 +87,10 @@ def reg_review():
         return render_template("reg_reviews.html")
     elif request.method == "POST":
         data=request.form
+        keywords = request.form.getlist("keyword[]")
         image_file=request.files["img_path"]
-        image_file.save("static/images/{}".format(image_file.filename))
-        DB.reg_review(data['reviewTitle'], data, image_file.filename)
+        image_file.save("./static/images/{}".format(image_file.filename))
+        DB.reg_review(data['reviewTitle'], data, image_file.filename, keywords)
         return redirect(url_for('view_review'))
 
 @application.route('/product_detail/<name>/')
