@@ -85,9 +85,9 @@
                     <div>
                         <div class="title">사진 등록 <div class="small-font">사진을 눌러 삭제 가능합니다.</div></div>
                         
-                        <input class="hidden real-upload" name="img_path" type="file" accept="image/*">
-                        <div class="upload"><img src="{{ url_for('static', filename='svg/plusIcon.svg') }}" alt="uploadBtn"></div>
-                        <div class="limit-content"><span id="img-count">0</span>장/최대 8장</div>
+                        <input class="real-upload hidden" name="img_path" type="file" accept="image/*">
+                        <div class="upload"><img id="imagePreview" src="{{ url_for('static', filename='svg/plusIcon.svg') }}" alt="uploadBtn"></div>
+                        <div class="limit-content"><span id="img-count"></span></div>
                     </div>
                     <div class="submit-container">
                         <input class="review-submit" type="submit" value="등록하기">
@@ -100,11 +100,10 @@
         
 
     </div>
-    <div id="popup" class="popup">
-        <div class="popup-content">
-            <span class="close-btn">X</span>
-            <img id="popup-image" src="" alt="Popup Image" style="width: 300px; height: auto;">
-            <button id="delete-btn">삭제</button>
-        </div>
-    </div>
+    <!-- 이미지 삭제 확인 팝업 -->
+<div id="deletePopup" class="popup" style="display:none;">
+    <p>이미지를 삭제하시겠습니까?</p>
+    <button id="confirmDelete">삭제</button>
+    <button id="cancelDelete">취소</button>
+</div>
     {% endblock section %}

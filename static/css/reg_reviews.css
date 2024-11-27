@@ -188,6 +188,7 @@ textarea{
     height: 70px;
     border-radius: 10px;
     cursor: pointer;
+    object-fit: cover;
 }
 .submit-container{
     display: flex;
@@ -225,38 +226,25 @@ input[type="submit"]{
     z-index: 1000;
 }
 
-/* 팝업 내용 스타일 */
-.popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: center;
-    position: relative;
-}
-
-/* X 버튼 스타일 */
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-/* 삭제 버튼 스타일 */
-#delete-btn {
-    margin-top: 10px;
-    padding: 10px;
-    background-color: #00462A;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-}
 
 .small-font{
     font-size: 12px;
     margin: 0;
     margin-top: 5px;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#deletePopup button {
+    margin: 10px;
 }
