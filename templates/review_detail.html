@@ -9,7 +9,7 @@
 <div class="review-detail-wrapper">
     <!-- 뒤로가기 버튼 -->
     <div class="btn-container">
-        <a href="/list" class="back-btn">
+        <a href="/review" class="back-btn">
             <img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="뒤로가기 버튼">
         </a>
     </div>
@@ -19,31 +19,53 @@
         <form>
             <!-- 왼쪽 영역: 리뷰 정보 -->
             <div class="review-info">
-                <h1>상품 : 2온스 영어 금사 학잠 <span>(m size)</span></h1>
-                <h2>제목 : m사이즈 학잠 후기</h2>
-                <p>상품 만족도 : ★★★★★</p>
-                <p>배송 상태 만족도 : ★★★★☆</p>
+                <h1>{{data.title}}</span></h1>
+                <h2>{{data.review_item}}</h2>
+                <p>상품 만족도 : {% if data.rate_item == 0 %}
+                    ☆☆☆☆☆
+                    {% elif data.rate_item == 1 %}
+                    ★☆☆☆☆
+                    {% elif data.rate_item == 2 %}
+                    ★★☆☆☆
+                    {% elif data.rate_item == 3 %}
+                    ★★★☆☆
+                    {% elif data.rate_item == 4 %}
+                    ★★★★☆
+                    {% elif data.rate_item == 5 %}
+                     ★★★★★
+                    {% endif %} </p>
+                <p>배송 상태 만족도 : {% if data.rate_deliver == 0 %}
+                    ☆☆☆☆☆
+                    {% elif data.rate_deliver == 1 %}
+                    ★☆☆☆☆
+                    {% elif data.rate_deliver == 2 %}
+                    ★★☆☆☆
+                    {% elif data.rate_deliver == 3 %}
+                    ★★★☆☆
+                    {% elif data.rate_deliver == 4 %}
+                    ★★★★☆
+                    {% elif data.rate_deliver == 5 %}
+                    ★★★★★
+                    {% endif %} </p>
                 <p>키워드 : 
                     <span class="keyword">판매자 친절함</span>
                     <span class="keyword">강추!</span>
                     <span class="keyword2">+ 더보기</span>
                 </p>
-                <p>작성자 : ewhagreen</p>
+                <p>작성자 : {{data.reviewer_id}} </p>
             </div>
 
             <!-- 오른쪽 영역: 이미지 -->
             <div class="review-images">
-                <div class="image-box"></div> <!-- 이미지 공간 -->
+                <div class="image-box"><img src="../../static/images/{{data.img_path}}" width="350px"height="250px"></div> <!-- 이미지 공간 -->
             </div>
         </form>
     </div>
         
     <!-- 하단 리뷰 내용 박스 -->
     <div class="review-content">
-        <p>2온스 영어 금사 학잠 m사이즈 사용 후기입니다.</p>
-        <p>생각보다 도톰한 누빔이 있어 봄, 가을에 입기 좋습니다.</p>
-        <p>일반 여성 사이즈로는 m이 가장 적당할 것 같아요.</p>
-        <p>실착 사진 첨부합니다.</p>
+        <p>{{data.review}}</p>
+        
     </div>
 </div>
 
