@@ -54,19 +54,19 @@
     <tr>
       {% for key, value in row1 %}
       <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
-      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- {{value.review_item}}<br><br>{{value.review}}</td>
       {% endfor %}
     </tr>
     <tr>
       {% for key, value in row2 %}
       <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
-      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- {{value.review_item}}<br><br>{{value.review}}</td>
       {% endfor %}
     </tr>
     <tr>
       {% for key, value in row3 %}
       <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=186, height=130></td>
-      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- 상품이름<br><br>{{value.review}}</td>
+      <td class="review-text"><span class="title-text">{{value.title}}</span><br>- {{value.review_item}}<br><br>{{value.review}}</td>
       {% endfor %}
     </tr>
     </table>

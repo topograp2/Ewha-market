@@ -12,7 +12,7 @@
         <form class="review-form" action="/reg_reviews" method="post" enctype="multipart/form-data">
             <div class="title-container">
                 <div class="title-div"><label for="title">상품 이름</label>
-                    <input type="text" name="item" id="item" value="{{name}}" required>
+                    <input type="text" name="review_item" id="item" value="{{name}}" required>
                 </div>
                 <div class="title-div margin-little"><label for="reviewTitle">리뷰 제목</label>
                     <input placeholder="제목을 입력해주세요." type="text" name="reviewTitle" id="reviewTitle" required>
@@ -63,7 +63,7 @@
                             <input class="hidden" type="checkbox" name="keyword[]" value="상품 정보 불일치" id="info-bad">
                             <label class="keyword-set" for="info-bad">상품 정보 불일치</label>
                             <input class="hidden" type="checkbox" name="keyword[]" value="강추!" id="recom">
-                            <label class="keyword-set" for="recom">강주!</label>
+                            <label class="keyword-set" for="recom">강추!</label>
                             <input class="hidden" type="checkbox" name="keyword[]" value="비추!" id="no-recom">
                             <label class="keyword-set" for="no-recom">비추!</label>
                         </div>
