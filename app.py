@@ -173,12 +173,12 @@ def show_heart(name):
 @application.route('/like/<name>/', methods=['POST'])
 def like(name):
     my_heart = DB.update_heart(session['id'],'Y',name)
-    return jsonify({'msg': '좋아요 완료!'})
+    return jsonify({'msg': '마음에 들어요 완료!'})
  
 @application.route('/unlike/<name>/', methods=['POST'])
 def unlike(name):
  my_heart = DB.update_heart(session['id'],'N',name)
- return jsonify({'msg': '안좋아요 완료!'})
+ return jsonify({'msg': '마음에 들어요 취소 완료!'})
     
 @application.route("/logout")
 def logout_user():
