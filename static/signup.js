@@ -14,6 +14,11 @@ async function checkId(event){
     event.preventDefault(); // 기본 동작 방식
     // 사용자가 input에 입력한 id
     const idInput = document.querySelector("input[name='id']").value;
+    if(idInput === ""){
+        isIdValid = false;
+        idCheckMsg.innerHTML="아이디를 입력해주세요."
+        return;
+    }
     try{
         const response = await fetch("check_id", {
             method: "POST",
@@ -44,6 +49,11 @@ function checkPw(event){
     event.preventDefault();
     const pwInput = document.querySelector("input[name='pw']").value;
     const pwConfirmInput = document.querySelector(".pw-confirm-input").value;
+    if(pwInput==="" || pwConfirmInput===""){
+        pwCheckMsg.innerHTML = "비밀번호를 입력해주세요."
+        isPwValid = false;
+        return;
+    }
     
     if(pwInput != pwConfirmInput){
         pwCheckMsg.innerHTML="일치하지 않는 비밀번호입니다.";
