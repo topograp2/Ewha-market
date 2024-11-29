@@ -21,36 +21,37 @@
             <div class="review-info">
                 <h1>{{data.title}}</span></h1>
                 <h2>{{data.review_item}}</h2>
-                <p>상품 만족도 : {% if data.rate_item == 0 %}
+                <p>상품 만족도 : {% if data.rate_item == "0" %}
                     ☆☆☆☆☆
-                    {% elif data.rate_item == 1 %}
+                    {% elif data.rate_item == "1" %}
                     ★☆☆☆☆
-                    {% elif data.rate_item == 2 %}
+                    {% elif data.rate_item == "2" %}
                     ★★☆☆☆
-                    {% elif data.rate_item == 3 %}
+                    {% elif data.rate_item == "3" %}
                     ★★★☆☆
-                    {% elif data.rate_item == 4 %}
+                    {% elif data.rate_item == "4" %}
                     ★★★★☆
-                    {% elif data.rate_item == 5 %}
+                    {% elif data.rate_item == "5" %}
                      ★★★★★
                     {% endif %} </p>
-                <p>배송 상태 만족도 : {% if data.rate_deliver == 0 %}
+                <p>배송 상태 만족도 : {% if data.rate_deliver == "0" %}
                     ☆☆☆☆☆
-                    {% elif data.rate_deliver == 1 %}
+                    {% elif data.rate_deliver == "1" %}
                     ★☆☆☆☆
-                    {% elif data.rate_deliver == 2 %}
+                    {% elif data.rate_deliver == "2" %}
                     ★★☆☆☆
-                    {% elif data.rate_deliver == 3 %}
+                    {% elif data.rate_deliver == "3" %}
                     ★★★☆☆
-                    {% elif data.rate_deliver == 4 %}
+                    {% elif data.rate_deliver == "4" %}
                     ★★★★☆
-                    {% elif data.rate_deliver == 5 %}
+                    {% elif data.rate_deliver == "5" %}
                     ★★★★★
                     {% endif %} </p>
                 <p>키워드 : 
-                    <span class="keyword">판매자 친절함</span>
-                    <span class="keyword">강추!</span>
-                    <span class="keyword2">+ 더보기</span>
+                    <span class="keyword">{{data.keywords[0]}}</span>
+                    <span class="keyword">{{data.keywords[1]}}</span>
+                    <span class="keyword">{{data.keywords[2]}}</span>
+                    <!--<span class="keyword2">+ 더보기</span> -->
                 </p>
                 <p>작성자 : {{data.reviewer_id}} </p>
             </div>

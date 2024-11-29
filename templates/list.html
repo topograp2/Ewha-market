@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block section %}
+<script>
+  $(document).ready(function () {
+    //alert("{{category}}");
+  $('#category option:contains("{{category}}")').prop("selected", true); });
+</script>
+
 <div class="container">
   <!-- 상단 카테고리 내비게이션 -->
   <nav class="category-nav">
