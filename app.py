@@ -124,6 +124,14 @@ def login():
 def signup():
     return render_template("signup.html")
 
+@application.route('/purchase')
+def purchase():
+    return render_template('purchase.html')
+
+@application.route('/purchase_list')
+def purchase_list():
+    return render_template('purchase_list.html')
+
 @application.route("/signup_post", methods = ['POST'])
 def register_user():
     data=request.form
