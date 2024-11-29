@@ -132,6 +132,14 @@ def purchase():
 def purchase_list():
     return render_template('purchase_list.html')
 
+@application.route('/my_page')
+def my_page():
+    return render_template('my_page.html')
+
+@application.route('/profile_edit')
+def profile_edit():
+    return render_template('profile_edit.html')
+
 @application.route("/signup_post", methods = ['POST'])
 def register_user():
     data=request.form
