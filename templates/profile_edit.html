@@ -15,7 +15,7 @@
     <div class="back-btn-container">
         <div onclick="goback"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
     </div>
-    <form action="/profile_edit_post", method="post" enctype="multipart/form-data" action="#" class="profile-edit-container">
+    <form action="/profile_edit_post", method="post" enctype="multipart/form-data" class="profile-edit-container">
         <div class="profile_edit_title">
             프로필 편집
         </div>
@@ -41,14 +41,14 @@
             <div class="row">
                 <div class="input-title">이메일</div>
                 <div class="row ">
-                    <input class="email-area"required type="text" name="email" placeholder="현재 이메일">
+                    <input class="email-area"required type="text" name="email" placeholder="{{ email }}">
                     <div class="golbangi">@</div>
-                    <input class="email-area" required type="text" name="email_domain" placeholder="xxxx.com">
+                    <input class="email-area" required type="text" name="email_domain" placeholder="{{ email_domain }}">
                 </div>
             </div>
             <div class="row little-margin-top">
                 <div class="input-title">휴대폰 번호</div>
-                <input required type="tel" name="tel" placeholder="010-1234-5678(현재 번호)">
+                <input required type="tel" name="tel" placeholder="{{ tel }}">
             </div>
         </div>
         <div class="submit-container">
