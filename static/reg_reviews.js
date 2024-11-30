@@ -5,6 +5,10 @@ const deletePopup = document.getElementById('deletePopup');
 const confirmDeleteBtn = document.getElementById('confirmDelete');
 const cancelDeleteBtn = document.getElementById('cancelDelete');
 let imgCount = 0;
+// 상품 이름의 placeholder 설정
+const itemName = document.querySelector('.item-name-input');
+itemName.placeholder = "상품 이름을 입력해주세요";
+
 
 // 업로드 버튼 클릭 시 파일 선택
 uploadButton.addEventListener('click', function () {
@@ -42,7 +46,7 @@ imageInput.addEventListener('change', function(event) {
 // 삭제 확인 버튼 클릭 시 이미지 삭제
 confirmDeleteBtn.addEventListener('click', function() {
     imgCount = 0;
-    imagePreview.src = "static/svg/plusIcon.svg";  // 기본 아이콘으로 초기화
+    imagePreview.src = plusIcon;  // 기본 아이콘으로 초기화
     imagePreview.style.width = '25px';
     imagePreview.style.height = '25px';
 
@@ -56,7 +60,7 @@ cancelDeleteBtn.addEventListener('click', function() {
     deletePopup.style.display = 'none';  // 팝업 닫기
 });
 
-// 글자수 count -> 폼 제출 시 10자 미만이면 제출 거부해야 함.
+
 
 // 글자수 세기
 const reviewText = document.querySelector(".review-text");
@@ -81,7 +85,8 @@ checkBoxes.forEach(checkbox =>{
     })
 })
 
-
+// 글자수 count -> 폼 제출 시 10자 미만이면 제출 거부해야 함.
+// 체크박스 미 선택 시 -> 폼 제출 거부
 const submitBtn = document.querySelector(".review-form");
 submitBtn.addEventListener("submit", (e) => {
     if(isItValidTextCnt < 10){
@@ -103,7 +108,7 @@ function goBack() {
     history.go(-1);
 }
 
-//별점 관련
+//별점 누르면 별 채워지도록 설정
 const goodsStars = document.querySelectorAll(".goods .star");
 const deliverStars = document.querySelectorAll(".deliver .star");
 let selectGoodsStar = 0;
@@ -111,10 +116,10 @@ for (let i = 0; i < 5; i++) {
     goodsStars[i].addEventListener("click", () => {
         selectGoodsStar = i;
         for (let t = 0; t <= i; t++) {
-            goodsStars[t].querySelector("img").src = "static/svg/fullStarIcon.svg";
+            goodsStars[t].querySelector("img").src = fullStarIcon;
         }
         for (let t = i + 1; t < 5; t++) {
-            goodsStars[t].querySelector("img").src = "static/svg/starIcon.svg";
+            goodsStars[t].querySelector("img").src = emptyStarIcon;
         }
     })
 }
@@ -122,10 +127,10 @@ for (let i = 0; i < 5; i++) {
 for (let i = 0; i < 5; i++) {
     deliverStars[i].addEventListener("click", () => {
         for (let t = 0; t <= i; t++) {
-            deliverStars[t].querySelector("img").src = "static/svg/fullStarIcon.svg";
+            deliverStars[t].querySelector("img").src = fullStarIcon;
         }
         for (let t = i + 1; t < 5; t++) {
-            deliverStars[t].querySelector("img").src = "static/svg/starIcon.svg";
+            deliverStars[t].querySelector("img").src = emptyStarIcon;
         }
     })
 }

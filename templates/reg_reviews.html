@@ -12,7 +12,7 @@
         <form class="review-form" action="/reg_reviews" method="post" enctype="multipart/form-data">
             <div class="title-container">
                 <div class="title-div"><label for="title">상품 이름</label>
-                    <input type="text" name="review_item" id="item" value="{{name}}" required>
+                    <input class="item-name-input" type="text" name="review_item" id="item" value="{{name}}" required>
                 </div>
                 <div class="title-div margin-little"><label for="reviewTitle">리뷰 제목</label>
                     <input placeholder="제목을 입력해주세요." type="text" name="reviewTitle" id="reviewTitle" required>
@@ -106,4 +106,9 @@
     <button id="confirmDelete">삭제</button>
     <button id="cancelDelete">취소</button>
 </div>
+<script>
+    const fullStarIcon = "{{ url_for('static', filename='svg/fullStarIcon.svg') }}";
+    const emptyStarIcon = "{{ url_for('static', filename='svg/starIcon.svg') }}";
+    const plusIcon = "{{ url_for('static', filename='svg/plusIcon.svg') }}"
+</script>
     {% endblock section %}
