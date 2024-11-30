@@ -1,0 +1,38 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이화마켓:아이디찾기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/id_find.css') }}">
+    <script src="{{ url_for('static', filename='id_find.js') }}" defer></script>
+</head>
+<body>
+    <div class="main-logo">
+        <a href="/">
+            <img src="{{ url_for('static', filename='svg/loginLogo.svg') }}" alt="loginLogo" />
+        </a>
+    </div>
+    <div class="container">
+        <div class="title">아이디 찾기</div>
+        <div class="form-group">
+            <form id="findForm" action="/find-id" method="post">
+                <label for="email-input">이메일<input class="email-input" name="email" type="text" placeholder="이메일"></label>
+                <label for="tel-container">전화번호<input class="tel-container" name="tel" type="tel" placeholder="휴대폰 번호"></label><br>
+                <input class="submit-btn" type="submit" value="확인">
+            </form>
+            <div id="result"></div>
+            <hr class="hr-style">
+                <div class="btn-container">
+                    
+                    <button class="btn" onclick="location.href = '/login'">로그인하기</button>
+                    <hr class ="fake-hr">
+                    <button class="btn">비밀번호 찾기</button>
+                    <hr class ="fake-hr">
+                    <button class="btn" onclick="location.href = '/signup'">회원가입</button>
+                    
+                </div>
+            <hr class="hr-style">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+@font-face{
+    font-family: 'Pretendard-Bold';
+    src:url('../font/Pretendard-Bold.woff2');
+}
+@font-face {
+    font-family: 'Pretendard-Medium';
+    src: url('../font/Pretendard-Medium.woff2');
+}
+
+body{
+    font-family: 'Pretendard-Medium';
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main-logo{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+input:focus {
+    outline: none;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    font-family: 'Pretendard-Bold';
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+#findform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.email-input{
+    padding-left: 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 0;
+    margin-left: 60px;
+}
+.tel-container{
+    margin-top: 15px;
+    padding-left: 10px;
+    width: 400px;
+    height: 50px;
+    font-size: 15px;
+    border: 1px solid;
+    border-radius: 0;
+    margin-left: 47px;
+}
+
+.submit-btn {
+    margin-top: 10px;
+    width: 150px;
+    height: 50px;
+    font-family: 'Pretendard-Bold';
+    font-size: 20px;
+    background-color: #00462A;
+    color: #fff2ff;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#result {
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Pretendard-Bold';
+}
+
+.hr-style{
+    border: 0px;
+    width: 500px;
+    height: 1px;
+    background-color: black;
+}
+.btn-container{
+    display: flex;
+    justify-content: space-around;    
+}
+.btn{
+    font-size: 15px;
+    width:150px;
+    background-color: #fff;
+    cursor: pointer;
+    border: 0;
+    text-align: center;
+    align-items: center;
+
+}
+
+.fake-hr{
+    margin: 0;
+    height: 20px;
+}
