@@ -6,138 +6,105 @@
 {% endblock %}
 
 <div class="con">
-
-
     <div class="back-btn-container">
-        <div><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
+        <div onclick="goBack()"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
     </div>
     <div class="profile-container">
-        <div>
-            <div>이화인</div>
-        </div>
-        <div>
-            <div>
-                <div>이화인</div>
-                <div>
-                    <div>총 구매 5건</div>
-                    <div>총 판매 3건</div>
-                </div>
+        <div class="title margin-left">My Page</div>
+        <div class="user-info-container margin-left">
+            <div class="row">
+                <div class="info-title">아이디</div>
+                <div class="gray-color">{{session['id']}}</div>
             </div>
-            <div>
-                <div>
-                    <div>아이디</div>
-                    <div>{{session['id']}}</div>
-                </div>
-                <div>
-                    <div>이메일</div>
-                    <div>{{session['id']}}</div>
-                </div>
-                <div>
-                    <div>휴대폰 번호</div>
-                    <div>{{session['id']}}</div>
-                </div>
+            <div class="row">
+                <div class="info-title">이메일</div>
+                <div class="gray-color">ewhain@ewhain.net</div>
             </div>
-            <div>
-                <button onclick="location.href='/profile_edit';">프로필 편집</button>
+            <div class="row">
+                <div class="info-title">휴대폰 번호</div>
+                <div class="gray-color">010-1234-5678</div><button class="profile-edit-button"
+                    onclick="location.href='/profile_edit'">프로필편집</button>
             </div>
         </div>
+        <div class="item-info">
+            <div class="one-third">
+                <hr class="small-hr">
+                <div class="center item-title"><span class="green-heart">♥</span>좋아요한 상품</div>
+                <div class="center">
+                    <div class="row margin-bottom">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div class="row  margin-bottom">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div class="row  big-margin-bottom ">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div><button class="detail-button">상세보기</button></div>
+                </div>
+
+            </div>
+            <div class="one-third">
+                <hr class="small-hr">
+                <div class="center item-title">등록한 상품 (3)</div>
+                <div class="center">
+                    <div class="row  margin-bottom">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div class="row margin-bottom">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div class="row big-margin-bottom">
+                        <div class="image-box1"></div>
+                        <div class="item-name">2온스 영어 학잠</div>
+                    </div>
+                    <div><button class="detail-button">상세보기</button></div>
+                </div>
+
+            </div>
+
+            <div class="one-third">
+                <hr class="small-hr">
+                <div class="center item-title">작성한 리뷰 (2)</div>
+                <div>
+                    <div class="column">
+
+                        <div style="text-align: left; margin-bottom: 15px;">
+                            <div class="review-item">상품: 2온스 영어 금사 학잠</div>
+                            <div class="row">
+                                <div class="image-box1"></div>
+                                <div>
+                                    <div class="green-star">★★★★★</div>
+                                    <div>제목 : m사이즈 학잠 후기</div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="text-align: left;  margin-bottom: 12px;">
+                            <div class="review-item">상품: 2온스 영어 금사 학잠</div>
+                            <div class="row">
+                                <div class="image-box1"></div>
+                                <div>
+                                    <div class="green-star">★★★★★</div>
+                                    <div>제목 : m사이즈 학잠 후기</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div><button class="detail-button">상세보기</button></div>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
-    <div>
-        <div>
-            <hr>
-            <div>
-
-                <div>
-                    <div>구매내역</div>
-                    <div>
-                        <div>수요조사 중<div>1 개</div>
-                        </div>
-                        <div>수요조사 마감<div>0 개</div>
-                        </div>
-                        <div>판매중<div>2 개</div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>판매 내역</div>
-                    <div>
-                        <div>수요조사 중<div>1 개</div>
-                        </div>
-                        <div>수요조사 마감<div>0 개</div>
-                        </div>
-                        <div>판매중<div>2 개</div>
-                        </div>
-                        <div>판매중<div>1 개</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <button>상세보기</button>
-            </div>
-        </div>
-        <div>
-            <hr>
-            <div>
-                <div>받은 리뷰(3)</div>
-                <div>
-                    <div>상품: 2온스 영어 금사 학잠</div>
-                    <div>
-                        <div>
-                            <div>이미지 박스</div>
-                            <div>
-                                <div>★★★★★</div>
-                                <div>제목:m사이즈 학잠 후기</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>이미지 박스</div>
-                            <div>
-                                <div>★★★★★</div>
-                                <div>제목:m사이즈 학잠 후기</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div>
-                    <div>상품: 이화곰돌이키링</div>
-                    <div>
-                        <div>이미지 박스</div>
-                        <div>
-                            <div>★★★★★</div>
-                            <div>제목:되게 귀여워요</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <div>받은 리뷰(3)</div>
-                <div>
-                    <div>상품: 2온스 영어 금사 학잠</div>
-                    <div>
-                        <div>
-                            <div>이미지 박스</div>
-                            <div>
-                                <div>★★★★★</div>
-                                <div>제목:m사이즈 학잠 후기</div>
-                            </div>
-                        </div>
-                        <div>
-                            <div>이미지 박스</div>
-                            <div>
-                                <div>★★★★★</div>
-                                <div>제목:m사이즈 학잠 후기</div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-
+    <hr class="big-hr">
+    <div class="secession"><div>회원 탈퇴</div></div>
 </div>
 {% endblock %}

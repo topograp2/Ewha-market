@@ -2,10 +2,145 @@
     display: flex;
     flex-direction: column;
     width: 1000px;
+    align-items: center;
+}
+.back-btn-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 1000px;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    cursor: pointer;
 }
 
 .profile-container{
     display: flex;
+    flex-direction: column;
+    width: 800px;
+}
 
+.title{
+    font-family: 'Pretendard-Bold';
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.user-info-container{
+    display: flex;
+    flex-direction: column;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.margin-left{
+    margin-left: 30px;
+}
+.info-title{
+    width: 120px;
+    text-align: right;
+    margin-right: 10px;
+}
+.gray-color{
+    color: #4D4D4D
+}
+.profile-edit-button{
+    align-self: flex-end;
+    background-color: #6CA062;
+    border: 0;
+    width: 130px;
+    height: 50px;
+    color: #FFFF;
+    font-size: 20px;
+    margin-left: 340px;
+    cursor: pointer;
+}
+.one-third{
+    width: 290px;
+    justify-self: center;
+    text-align: center;
     
+}
+.item-info{
+    display: flex;
+    flex-direction: row;
+    
+}
+.small-hr{
+    width: 230px;
+    height: 2px;
+    border: 0;
+    background-color: #D9D9D9;
+    margin-bottom: 20px;
+}
+.center{
+    justify-self: center;
+    
+}
+.item-title{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Pretendard-Bold';
+    margin-bottom: 20px;
+}
+.green-heart{
+    color: #6CA062;
+    margin-right: 5px;
+}
+.image-box1{
+    width: 60px;
+    height: 40px;;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+.margin-bottom{
+    margin-bottom: 5px;
+}
+.item-name{
+    text-align: center;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+.big-margin-bottom{
+    margin-bottom: 20px;
+}
+.detail-button{
+    border: 0;
+    width: 80px;
+    height: 30px;
+    color: #FFFF;
+    border-radius: 25px;
+    background-color: #00462A;
+    cursor: pointer;
+}
+.detail-button:hover{
+    background-color: #6CA062;
+    color: #4D4D4D;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.review-item{
+    font-size: 13px;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.green-star{
+    color:#6CA062;
+}
+.big-hr{
+    width: 765px;
+    height: 2px;
+    border: 0;
+    margin-top: 20px;
+    background-color: #D9D9D9;
+}
+.secession{
+    width: 765px;
+    text-align: right;
 }
