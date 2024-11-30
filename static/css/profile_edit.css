@@ -12,6 +12,9 @@
     margin-top: 15px;
     margin-bottom: 25px
 }
+.back-btn-container>div{
+    cursor: pointer;
+}
 .profile-edit-container{
     width: 500px;
     display: flex;
@@ -76,7 +79,7 @@ input[type="password"]{
     margin-right: 10px;
     align-self: center;
 }
-input[type="tel"]{
+#tel-input{
     height: 30px;
     width: 320px;
 }
