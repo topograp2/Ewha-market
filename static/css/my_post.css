@@ -13,9 +13,7 @@
 }
 
 .mp-container {
-    position: absolute;
-	left: 50%;
-	transform: translate(-50%, 0);
+    position: relative;
     width: 88.75rem;
 	height: 37.5rem;
 }

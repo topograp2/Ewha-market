@@ -1,0 +1,82 @@
+{% extends "index.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/purchase.css') }}">
+{% endblock %}
+
+{% block section %}
+<div class="main">
+    <div class="purchase-container">
+        <!-- 상품 이미지 및 제목 -->
+        <div class="product-detail-header">
+            <!-- 이미지 -->
+            <div class="image-container">
+                <div class="product-image">상품 사진</div>
+            </div>
+            <!-- 상품 정보 -->
+            <div class="product-info">
+                <h1 class="product-title">이화곰돌이키링</h1>
+                <p class="price">30,000원</p>
+            </div>
+            <!-- 판매자 정보 -->
+            <div class="seller-info-container">
+                <p><strong>판매자 ID  </strong> email@gmail.com</p>
+                <p><strong>배송 방법  </strong> 직거래</p>
+                <p><strong>판매 지역  </strong> 서울특별시 서대문구 이화여대길 52</p>
+                <p><strong>제품 상태  </strong> 주문 후 제작</p>
+            </div>
+        </div>
+
+        <!-- 구매자 정보와 결제 정보 -->
+        <div class="purchase-details">
+            <!-- 구매자 정보 -->
+            <div class="left-section">
+                <h3>구매자 정보</h3>
+                <div class="buyer-info-form">
+                    <label class="same-as-member">
+                        <input type="checkbox" id="same-as-member"> 회원 정보와 동일합니다
+                    </label>
+                    <div class="form-group">
+                        <label>이름</label>
+                        <input type="text" placeholder="구매자 이름">
+                    </div>
+                    <div class="form-group">
+                        <label>이메일</label>
+                        <input type="email" placeholder="구매자 이메일">
+                    </div>
+                    <div class="form-group">
+                        <label>전화번호</label>
+                        <input type="tel" placeholder="전화번호">
+                    </div>
+                    <div class="form-group">
+                        <label>배송지</label>
+                        <input type="text" placeholder="배송지">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 결제 방법 -->
+            <div class="right-section">
+                <h3>결제 방법</h3>
+                <div>
+                    <label><input type="radio" name="payment" value="transfer"> 계좌이체</label>
+                    <label><input type="radio" name="payment" value="card"> 카드결제</label>
+                    <label><input type="radio" name="payment" value="quick"> 간편결제</label>
+                </div>
+
+                <!-- 판매자 메시지 -->
+                <div class="buyer-message-section">
+                    <h3>판매자에게 남기고 싶은 말</h3>
+                    <textarea placeholder="추가 질문사항이나 부탁사항을 기록하세요."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 주문 버튼 -->
+        <div class="button-container">
+            <button class="order-btn">주문하기</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

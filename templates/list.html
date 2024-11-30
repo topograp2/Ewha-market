@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+{% endblock %}
+
+{% block section %}
+<script>
+  $(document).ready(function () {
+    //alert("{{category}}");
+  $('#category option:contains("{{category}}")').prop("selected", true); });
+</script>
+
+<div class="container">
+  <!-- 상단 카테고리 내비게이션 -->
+  <nav class="category-nav">
+    <a href="#" data-target="subcategory1">의류</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory2">문구</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory3">푸드</a>
+    <p>|</p>
+    <a href="#" data-target="subcategory4">잡화</a>
+  </nav>
+  <!-- 서브 카테고리 내비게이션 -->
+  <nav class="subcategory-nav" id="subcategory1">
+    <a href="#">학잠/과잠</a>
+    <a href="#">후리스</a>
+    <a href="#">주경바막/돕바</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory2">
+    <a href="#">노트/플래너</a>
+    <a href="#">필기구</a>
+    <a href="#">엽서/스티커</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory3">
+    <a href="#">베이킹</a>
+    <a href="#">음료</a>
+    <a href="#">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory4">
+    <a href="#">인형/키링/뱃지</a>
+    <a href="#">에코백/파우치</a>
+    <a href="#">텀블러/머그컵</a>
+    <a href="#">기타</a>
+  </nav>
+  
+  <a id="list_title">상품 리스트</a><br>
+  {% if total > 0 %}
+  <a id="list_count">전체 상품은 {{total}}개입니다</a>
+  
+  <div class="product-list">
+    <table>
+    <tr>
+      {% for key, value in row1 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row1 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+      <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;"><img src="static/images/{{value.img_path}}", width=200, height=200></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+        <td class="product-name">{{key}}</td>
+      {% endfor %}
+    </tr>
+    </table>
+  </div>
+  <div class="page-wrap">
+    <div class="page-nation">
+      <ul>
+        <li>
+          {% for i in range(page_count)%}
+          <a href="{{url_for('view_list', page=i)}}" color="black">{{i+1}}</a>
+          {% endfor %}
+        </li>
+      </ul>
+    </div>
+  </div>
+  {% else %}
+  <a id="list_info">등록된 상품이 없습니다. </a>
+  {% endif %}
+</div>
+{% endblock section %}

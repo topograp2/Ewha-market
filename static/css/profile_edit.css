@@ -1,0 +1,102 @@
+.con{
+    display: flex;
+    align-items: center;
+    width: 1000px;
+    justify-content: center;
+    flex-direction: column;
+}
+.back-btn-container{
+    display: flex;
+    justify-content: flex-start;
+    width: 1000px;
+    margin-top: 15px;
+    margin-bottom: 25px
+}
+.profile-edit-container{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 20px;
+    margin-top: 40px;
+}
+.profile_edit_title{
+    font-family: 'Pretendard-Bold';
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+hr{
+    width: 500px;
+    margin-bottom: 20px;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+.row
+{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 5px;
+}
+.input-title{
+    width: 130px;
+    text-align: end;
+    padding-right: 30px;
+    font-size: 20px;
+    align-self: center;
+}
+input{
+    padding-left: 15px;
+}
+input[type="password"]{
+    width: 280px;
+    height: 30px;
+}
+.check-icon{
+    margin-left: 20px;
+}
+.check-msg{
+    font-size: 12px;
+    margin-left: 170px;
+    margin-bottom: 5px;
+    color: #FA0000;
+    height: 15px;
+}
+.little-margin{
+    margin-left: 160px;
+}
+.email-area{
+    height: 30px;
+    width: 133px;
+}
+.golbangi{
+    margin-left: 10px;
+    margin-right: 10px;
+    align-self: center;
+}
+input[type="tel"]{
+    height: 30px;
+    width: 320px;
+}
+.submit-container{
+    margin-top: 20px;
+    width: 500px;
+    display: flex;
+    justify-content: flex-end;
+}
+input[type="submit"]{
+    width: 60px;
+    text-align: center;
+    align-self: center;
+    border: 0;
+    height: 30px;
+    padding: 0;
+    border-radius: 10px;
+    background-color: #00462A;
+    color: #FFFF;
+}
+.little-margin-top{
+    margin-top: 15px;
+}
