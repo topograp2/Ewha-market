@@ -40,3 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+const idContainer = document.querySelector(".id-container");
+idContainer.addEventListener("click", ()=>{
+  window.location.href="/my_page";
+})
+
+function goBack(){
+  history.go(-1);
+}
