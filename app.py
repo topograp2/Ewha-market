@@ -138,7 +138,11 @@ def my_page():
 
 @application.route('/profile_edit')
 def profile_edit():
-    return render_template('profile_edit.html')
+    user_id = session['id']
+    email = DB.get_email_byname(user_id)
+    tel = DB.get_tel_byname(user_id)
+    email_parts = email.split('@')
+    return render_template('profile_edit.html', email=email_parts[0], email_domain=email_parts[1], tel=tel)
 
 @application.route("/id_find")
 def id_find():
@@ -203,7 +207,7 @@ def change_pw():
     else:
         flash("이전 비밀번호와 같습니다! 다시 입력해주세요")
         return render_template("profile_edit.html")
-    
+        
 @application.route("/logout")
 def logout_user():
     session.clear()

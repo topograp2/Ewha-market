@@ -122,6 +122,22 @@ class DBhandler:
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+    
+    def get_email_byname(self, id):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value=res.val()
+            if value['id'] == id:
+                email = value['email']
+        return email
+    
+    def get_tel_byname(self, id):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value=res.val()
+            if value['id'] == id:
+                tel = value['tel']
+        return tel
 
     def change_user(self, id, data, cpw):
         users = self.db.child("user").get()
