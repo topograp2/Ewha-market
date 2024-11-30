@@ -146,3 +146,16 @@ class DBhandler:
             return False
         print("pw!=cpw_string")
         return True
+    
+    def find_id_by_email_tel(self, email, tel):
+        users = self.db.child("user").get()
+
+        if not users.val():
+            return None
+
+        for res in users.each():
+            value = res.val()
+            if value['email'] == email and value['tel'] == tel:
+                hidden_id = value['id'][:3] + '*' * (len(value['id']) - 3)
+                return hidden_id
+        return None

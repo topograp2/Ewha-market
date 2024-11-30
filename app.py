@@ -140,6 +140,10 @@ def my_page():
 def profile_edit():
     return render_template('profile_edit.html')
 
+@application.route("/id_find")
+def id_find():
+    return render_template("id_find.html")
+
 @application.route("/signup_post", methods = ['POST'])
 def register_user():
     data=request.form
@@ -204,6 +208,18 @@ def change_pw():
 def logout_user():
     session.clear()
     return redirect(url_for('view_list'))
+
+@application.route('/find-id', methods=['GET', 'POST'])
+def find_id():
+    if request.method == 'POST':
+        email = request.json.get('email')
+        tel = request.json.get('tel')
+        hidden_id = DB.find_id_by_email_tel(email, tel)
+        if hidden_id:
+            return jsonify({"status": "success", "id": hidden_id})
+        else:
+            return jsonify({"status": "fail", "message": "등록된 정보를 찾을 수 없습니다."})
+    return render_template('id_find.html')
 
 
 

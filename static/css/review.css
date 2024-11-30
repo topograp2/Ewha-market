@@ -102,7 +102,6 @@
 /* 리뷰 목록 */
 .review-list {
     height: 30rem;
-	place-items: center;
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
 	margin-top: 1.5rem;
