@@ -49,3 +49,8 @@ idContainer.addEventListener("click", ()=>{
 function goBack(){
   history.go(-1);
 }
+const logoutBtn = document.querySelector('.logout-container');
+logoutBtn.style = "cursor:pointer";
+logoutBtn.addEventListener("click", ()=>{
+  window.location.href="/logout";
+})
