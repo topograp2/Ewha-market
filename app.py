@@ -187,6 +187,18 @@ def like(name):
 def unlike(name):
  my_heart = DB.update_heart(session['id'],'N',name)
  return jsonify({'msg': '마음에 들어요 취소 완료!'})
+
+@application.route("/profile_edit_post", methods=['POST'])
+def change_pw():
+    cdata=request.form
+    cpw=request.form['pw']
+    cpw_hash = hashlib.sha256(cpw.encode('utf-8')).hexdigest()
+    now_id=session['id']
+    if DB.change_user(now_id,cdata,cpw_hash):
+        return render_template("my_page.html")
+    else:
+        flash("이전 비밀번호와 같습니다! 다시 입력해주세요")
+        return render_template("profile_edit.html")
     
 @application.route("/logout")
 def logout_user():

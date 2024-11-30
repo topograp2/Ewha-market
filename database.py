@@ -122,3 +122,27 @@ class DBhandler:
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+
+    def change_user(self, id, data, cpw):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value=res.val()
+            if value['id'] == id:
+                userkey=res.key()
+
+        if self.pw_duplicate_check(str(userkey),str(cpw)):
+            self.db.child("user").child(userkey).update({'email':(data['email']+'@'+data['email_domain']),'pw':cpw,'tel':data['tel']}) 
+            print(data)
+            return True
+        else:
+            return False
+        
+    def pw_duplicate_check(self, userkey, cpw_string):
+        user_infor = self.db.child("user").child(userkey).get()
+        value = user_infor.val()
+        print("user_infor###",value)
+        if value['pw'] == cpw_string:
+            print("pw==cpw_string")
+            return False
+        print("pw!=cpw_string")
+        return True

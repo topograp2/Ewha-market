@@ -30,7 +30,7 @@
     <li><a href="/reg_items">상품 등록</a></li>
     <li class="mypage-container">
         <div class="white-container">
-            <div class="id-container">{{session['id']}}</div>
+            <div class="id-container"><a href="/my_page">{{session['id']}}</a></div>
             <div class="logout-container"><a href="/logout"><img src="{{ url_for('static', filename='svg/logout.svg') }}"alt="로그아웃"></a></div>
         </div>
     </li>
