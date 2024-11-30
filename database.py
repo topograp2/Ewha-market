@@ -77,6 +77,24 @@ class DBhandler:
                 target_value=res.val()
         return target_value
     
+    def get_items_bycategory(self, cate):
+        items = self.db.child("item").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each(): 
+            value = res.val()
+            key_value = res.key()
+            if value['major_category'] == cate:
+                target_value.append(value)
+                target_key.append(key_value)
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+
+        return new_dict
+
+    
     def reg_review(self, name, data, img_path, keywords, id):
         review_info={
             "title": data['reviewTitle'],

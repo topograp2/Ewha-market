@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for, ses
 from database import DBhandler
 import hashlib
 import sys
+import math
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "onionstu"
@@ -15,14 +16,24 @@ def hello():
 @application.route("/list")
 def view_list():
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "all")
     per_page=10 # item count to display per page
     per_row=5 # item count to display per row
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
+    if category=="all":
+        data = DB.get_items() #read the table
+    else:
+        data = DB.get_items_bycategory(category)
     if DB.get_items():
         data = DB.get_items() #read the table
+        data = dict(sorted(data.items(), key=lambda x: x[0], reverse=False))
         item_counts = len(data)
+        if item_counts<=per_page:
+            data = dict(list(data.items())[:item_counts])
+        else:
+            data = dict(list(data.items())[start_idx:end_idx])
         data = dict(list(data.items())[start_idx:end_idx])
         for i in range(row_count):#last row
             if (i == row_count-1) and (item_counts%per_row != 0):
@@ -32,8 +43,8 @@ def view_list():
         return render_template( "list.html", datas=data.items(),
                             row1=locals()['data_0'].items(),
                             row2=locals()['data_1'].items(),
-                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
-                            total=item_counts)
+                            limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)),
+                            total=item_counts, category=category)
     else:
         return render_template("list.html",total=0)
 
