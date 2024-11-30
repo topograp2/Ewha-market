@@ -6,11 +6,16 @@
 <script src="{{ url_for('static', filename='profile_edit.js') }}" defer></script>
 {% endblock %}
 {% if session['id'] %}
+{% with mesg = get_flashed_messages() %}
+{% if mesg !=[] %}
+<script>alert("{{ mesg[0] }}")</script>
+{% endif %}
+{% endwith %}
 <div class="con">
     <div class="back-btn-container">
         <div onclick="goback"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
     </div>
-    <form method="post" enctype="multipart/form-data" action="#" class="profile-edit-container">
+    <form action="/profile_edit_post", method="post" enctype="multipart/form-data" action="#" class="profile-edit-container">
         <div class="profile_edit_title">
             프로필 편집
         </div>
