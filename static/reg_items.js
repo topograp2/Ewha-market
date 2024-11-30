@@ -50,7 +50,8 @@ const detailOptions = {
     others: [
         { value: "인형/키링/뱃지", text: "인형/키링/뱃지" },
         { value: "에코백/파우치", text: "에코백/파우치" },
-        { value: "텀블러/머그컵", text: "텀블러/머그컵" }
+        { value: "텀블러/머그컵", text: "텀블러/머그컵" },
+        { value: "기타", text: "기타" }
     ]
 };
 // select 요소 가져오기
