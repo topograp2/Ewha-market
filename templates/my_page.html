@@ -31,38 +31,26 @@
                 <hr class="small-hr">
                 <div class="center item-title"><span class="green-heart">♥</span>좋아요한 상품</div>
                 <div class="center">
-                    <div class="row margin-bottom">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
+                    {% for key, value in three_hdata %}
+                    <div onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;" class="row margin-bottom">
+                        <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
+                        <div class="item-name">{{key}}</div>
                     </div>
-                    <div class="row  margin-bottom">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
-                    </div>
-                    <div class="row  big-margin-bottom ">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
-                    </div>
+                    {% endfor %}
                     <div><button class="detail-button">상세보기</button></div>
                 </div>
 
             </div>
             <div class="one-third">
                 <hr class="small-hr">
-                <div class="center item-title">등록한 상품 (3)</div>
+                <div class="center item-title">등록한 상품 ({{ptotal}})</div>
                 <div class="center">
-                    <div class="row  margin-bottom">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
+                    {% for key, value in three_pdata %}
+                    <div onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;" class="row margin-bottom">
+                        <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
+                        <div class="item-name">{{key}}</div>
                     </div>
-                    <div class="row margin-bottom">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
-                    </div>
-                    <div class="row big-margin-bottom">
-                        <div class="image-box1"></div>
-                        <div class="item-name">2온스 영어 학잠</div>
-                    </div>
+                    {% endfor %}
                     <div><button class="detail-button">상세보기</button></div>
                 </div>
 
@@ -70,31 +58,33 @@
 
             <div class="one-third">
                 <hr class="small-hr">
-                <div class="center item-title">작성한 리뷰 (2)</div>
+                <div class="center item-title">작성한 리뷰 ({{rtotal}})</div>
                 <div>
                     <div class="column">
-
-                        <div style="text-align: left; margin-bottom: 15px;">
-                            <div class="review-item">상품: 2온스 영어 금사 학잠</div>
+                        {% for key, value in two_rdata %}
+                        <div onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" style="text-align: left; margin-bottom: 15px;">
+                            <div class="review-item">상품: {{key}}</div>
                             <div class="row">
-                                <div class="image-box1"></div>
+                                <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
                                 <div>
-                                    <div class="green-star">★★★★★</div>
-                                    <div>제목 : m사이즈 학잠 후기</div>
+                                    <div class="green-star">{% if value['rate_item'] == "0" %}
+                                        ☆☆☆☆☆ 
+                                        {% elif value['rate_item'] == "1" %}
+                                        ★☆☆☆☆
+                                        {% elif value['rate_item'] == "2" %}
+                                        ★★☆☆☆
+                                        {% elif value['rate_item'] == "3" %}
+                                        ★★★☆☆
+                                        {% elif value['rate_item'] == "4" %}
+                                        ★★★★☆
+                                        {% elif value['rate_item'] == "5" %}
+                                         ★★★★★
+                                        {% endif %}</div>
+                                    <div>{{value['title']}}</div>
                                 </div>
                             </div>
-
                         </div>
-                        <div style="text-align: left;  margin-bottom: 12px;">
-                            <div class="review-item">상품: 2온스 영어 금사 학잠</div>
-                            <div class="row">
-                                <div class="image-box1"></div>
-                                <div>
-                                    <div class="green-star">★★★★★</div>
-                                    <div>제목 : m사이즈 학잠 후기</div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                     <div><button class="detail-button">상세보기</button></div>
                 </div>

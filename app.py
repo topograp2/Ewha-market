@@ -141,14 +141,20 @@ def purchase():
 def purchase_list():
     return render_template('purchase_list.html')
 
-@application.route('/my_page/')
-def my_page():
-    hdata=DB.get_like_items_byuser(session['id'])
+@application.route('/my_page/<name>')
+def my_page(name):
+    hdata=DB.get_like_items_byuser(name)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
-    pdata=DB.get_item_byuser(session['id'])
-    rdata=DB.get_review_byuser(session['id'])
-
-    return render_template('my_page.html', hdata=hdata, pdata=pdata, rdata=rdata)
+    three_hdata=list(hdata.items())[:3]
+    pdata=DB.get_item_byuser(name)
+    three_pdata=list(pdata.items())[:3]
+    rdata=DB.get_review_byuser(name)
+    two_rdata=list(rdata.items())[:2]
+    return render_template('my_page.html',
+                           three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
+                           hdata=hdata, pdata=pdata, rdata=rdata,
+                           ptotal= len(pdata), rtotal= len(rdata),
+                           name=name)
 
 @application.route('/profile_edit')
 def profile_edit():

@@ -194,6 +194,7 @@ class DBhandler:
                 item_data=self.db.child("item").child(item_key).get().val()
                 user_likes_dict[item_key]=item_data
                 user_likes_dict[item_key]["time"]=self.db.child("heart").child(user_id).child(item_key).child("time").get().val()
+        user_likes_dict=dict(sorted(user_likes_dict.items(), key=lambda item: item[1]['time'], reverse=False))
         return user_likes_dict
     
     def get_item_byuser(self, user_id):

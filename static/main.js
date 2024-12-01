@@ -43,7 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 const idContainer = document.querySelector(".id-container");
 idContainer.addEventListener("click", ()=>{
-  window.location.href="/my_page";
+  const userId = idContainer.textContent;
+  window.location.href=`/my_page/${userId}`;
 })
 
 function goBack(){
