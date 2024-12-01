@@ -116,9 +116,10 @@ class DBhandler:
                 target_value = res.val()
         return target_value
     
-    def update_heart(self, user_id, isHeart, item):
+    def update_heart(self, user_id, isHeart, timestamp, item):
         heart_info ={
-            "interested": isHeart
+            "interested": isHeart,
+            "time": timestamp
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
@@ -146,3 +147,33 @@ class DBhandler:
             return False
         print("pw!=cpw_string")
         return True
+    
+    def get_like_items_byuser(self, user_id):
+        hearts = self.db.child("heart").child(user_id).get()
+        user_likes_dict={}
+        for res in hearts.each():
+            value = res.val()
+            item_key=res.key()
+            if value["interested"] == "Y":
+                item_data=self.db.child("item").child(item_key).get().val()
+                user_likes_dict[item_key]=item_data
+                user_likes_dict[item_key]["time"]=self.db.child("heart").child(user_id).child(item_key).child("time").get().val()
+        return user_likes_dict
+    
+    def get_item_byuser(self, user_id):
+        items = self.db.child("item").get()
+        user_sells_dict={}
+        for res in items.each():
+            value=res.val()
+            if value["seller_id"] == user_id:
+                user_sells_dict[value["item"]]=value
+        return user_sells_dict
+    
+    def get_review_byuser(self, user_id):
+        reviews=self.db.child("review").get()
+        user_review_dict={}
+        for res in reviews.each():
+            value=res.val()
+            if value["reviewer_id"] == user_id:
+                user_review_dict[value["title"]]=value
+        return user_review_dict

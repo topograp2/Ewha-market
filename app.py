@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for, session, jsonify
 from database import DBhandler
+from datetime import datetime
 import hashlib
 import sys
 
@@ -132,9 +133,14 @@ def purchase():
 def purchase_list():
     return render_template('purchase_list.html')
 
-@application.route('/my_page')
+@application.route('/my_page/')
 def my_page():
-    return render_template('my_page.html')
+    hdata=DB.get_like_items_byuser(session['id'])
+    hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
+    pdata=DB.get_item_byuser(session['id'])
+    rdata=DB.get_review_byuser(session['id'])
+
+    return render_template('my_page.html', hdata=hdata, pdata=pdata, rdata=rdata)
 
 @application.route('/profile_edit')
 def profile_edit():
@@ -180,7 +186,8 @@ def show_heart(name):
 
 @application.route('/like/<name>/', methods=['POST'])
 def like(name):
-    my_heart = DB.update_heart(session['id'],'Y',name)
+    timestamp = datetime.now().isoformat()
+    my_heart = DB.update_heart(session['id'],'Y',timestamp, name)
     return jsonify({'msg': '마음에 들어요 완료!'})
  
 @application.route('/unlike/<name>/', methods=['POST'])
