@@ -3,7 +3,6 @@
 {% block section %}
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/profile_edit.css') }}">
-<script src="{{ url_for('static', filename='profile_edit.js') }}" defer></script>
 {% endblock %}
 {% if session['id'] %}
 {% with mesg = get_flashed_messages() %}
@@ -13,9 +12,10 @@
 {% endwith %}
 <div class="con">
     <div class="back-btn-container">
-        <div onclick="goback"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
+        <div onclick="goBack()"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
     </div>
-    <form action="/profile_edit_post", method="post" enctype="multipart/form-data" action="#" class="profile-edit-container">
+    <form action="/profile_edit_post", method="post" enctype="multipart/form-data" class="profile-edit-container">
+
         <div class="profile_edit_title">
             프로필 편집
         </div>
@@ -25,38 +25,47 @@
                 <div class="row">
 
                     <div class="input-title">비밀번호 변경</div>
-                    <input required type="password" name="pw" placeholder="새 비밀번호(영문, 숫자, 특수기호)">
-                    <div class="check-icon"><img src="{{ url_for('static', filename='svg/nocheckIcon.svg') }}" alt="nocheck" /></div>
+                    <input autoComplete="off" id="profilePwInput" type="password" name="pw" placeholder="새 비밀번호(영문, 숫자, 특수기호)" >
+                    <div class="check-icon pw-icon"><img src="{{ url_for('static', filename='svg/nocheckIcon.svg') }}" alt="nocheck" /></div>
 
                 </div>
 
-                <div class="check-msg"></div>
+                <div class="check-msg pw-input-msg"></div>
                 <div class="row">
-                    <input class="little-margin" required type="password" placeholder="변경할 비밀번호를 한 번 더 입력해주세요.">
-                    <div class="check-icon"><img src="{{ url_for('static', filename='svg/nocheckIcon.svg') }}" alt="nocheck" /></div>
+                    <input autoComplete="off" id = "check-input"class="little-margin" type="password" placeholder="변경할 비밀번호를 한 번 더 입력해주세요." >
+                    <div class="check-icon pw-check-icon"><img src="{{ url_for('static', filename='svg/nocheckIcon.svg') }}" alt="nocheck" /></div>
                 </div>
-                <div class="check-msg"></div>
+                <div class="check-msg check-input-msg" ></div>
             </div>
 
             <div class="row">
                 <div class="input-title">이메일</div>
                 <div class="row ">
-                    <input class="email-area"required type="text" name="email" placeholder="현재 이메일">
+                    <input autoComplete="off" id = "email-input" class="email-area" type="text" name="email" placeholder="{{ email }}"  required>
                     <div class="golbangi">@</div>
-                    <input class="email-area" required type="text" name="email_domain" placeholder="xxxx.com">
+                    <input id = "domain-input" class="email-area" type="text" name="email_domain" placeholder="{{ email_domain }}" required>
+
                 </div>
             </div>
             <div class="row little-margin-top">
                 <div class="input-title">휴대폰 번호</div>
-                <input required type="tel" name="tel" placeholder="010-1234-5678(현재 번호)">
+
+                <input autoComplete="off" id = "tel-input" required type="text" name="tel" placeholder="{{ tel }}">
+
             </div>
         </div>
         <div class="submit-container">
-            <input type="submit" value="저장">
+            <input id = "submit-btn" type="submit" value="저장">
         </div>
         
     </form>
 </div>
+<script> 
+    const nocheckIcon = "{{ url_for('static', filename='svg/nocheckIcon.svg') }}"
+    const checkIcon = "{{ url_for('static', filename='svg/checkIcon.svg') }}"
+
+</script>
+<script src="{{ url_for('static', filename='profile_edit.js') }}" defer></script>
 {% else %}
 <script>
     if (!alert("로그인 후 이용가능한 페이지입니다.")) document.location = '/';

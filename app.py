@@ -3,6 +3,7 @@ from database import DBhandler
 from datetime import datetime
 import hashlib
 import sys
+import math
 
 application = Flask(__name__)
 application.config["SECRET_KEY"] = "onionstu"
@@ -10,33 +11,40 @@ DB = DBhandler()
 
 @application.route("/")
 def hello():
-    return render_template("index.html")
-    # return redirect(url_for('view_list'))
+    # return render_template("index.html")
+    return redirect(url_for('view_list'))
 
 @application.route("/list")
 def view_list():
     page = request.args.get("page", 0, type=int)
+    category = request.args.get("category", "all")
     per_page=10 # item count to display per page
     per_row=5 # item count to display per row
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
-    if DB.get_items():
+    if category=="all":
         data = DB.get_items() #read the table
-        item_counts = len(data)
-        data = dict(list(data.items())[start_idx:end_idx])
-        for i in range(row_count):#last row
-            if (i == row_count-1) and (item_counts%per_row != 0):
-                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
-            else:
-                locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
-        return render_template( "list.html", datas=data.items(),
-                            row1=locals()['data_0'].items(),
-                            row2=locals()['data_1'].items(),
-                            limit=per_page, page=page, page_count=int((item_counts/per_page)+1),
-                            total=item_counts)
     else:
-        return render_template("list.html",total=0)
+        data = DB.get_items_bycategory(category)
+        
+    data = dict(sorted(data.items(), key=lambda x:x[0], reverse=False))
+    item_counts = len(data)
+    if item_counts<=per_page:
+        data = dict(list(data.items())[:item_counts])
+    else:
+        data = dict(list(data.items())[start_idx:end_idx])
+    for i in range(row_count):#last row
+        if (i == row_count-1) and (item_counts%per_row != 0):
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:])
+        else:
+            locals()['data_{}'.format(i)] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return render_template( "list.html", datas=data.items(),
+                        row1=locals()['data_0'].items(),
+                        row2=locals()['data_1'].items(),
+                        limit=per_page, page=page, page_count=int(math.ceil(item_counts/per_page)),
+                        total=item_counts, category=category)
+
 
 @application.route("/review")
 def view_review():
@@ -144,7 +152,15 @@ def my_page():
 
 @application.route('/profile_edit')
 def profile_edit():
-    return render_template('profile_edit.html')
+    user_id = session['id']
+    email = DB.get_email_byname(user_id)
+    tel = DB.get_tel_byname(user_id)
+    email_parts = email.split('@')
+    return render_template('profile_edit.html', email=email_parts[0], email_domain=email_parts[1], tel=tel)
+
+@application.route("/id_find")
+def id_find():
+    return render_template("id_find.html")
 
 @application.route("/signup_post", methods = ['POST'])
 def register_user():
@@ -206,11 +222,23 @@ def change_pw():
     else:
         flash("이전 비밀번호와 같습니다! 다시 입력해주세요")
         return render_template("profile_edit.html")
-    
+        
 @application.route("/logout")
 def logout_user():
     session.clear()
     return redirect(url_for('view_list'))
+
+@application.route('/find-id', methods=['GET', 'POST'])
+def find_id():
+    if request.method == 'POST':
+        email = request.json.get('email')
+        tel = request.json.get('tel')
+        hidden_id = DB.find_id_by_email_tel(email, tel)
+        if hidden_id:
+            return jsonify({"status": "success", "id": hidden_id})
+        else:
+            return jsonify({"status": "fail", "message": "등록된 정보를 찾을 수 없습니다."})
+    return render_template('id_find.html')
 
 
 

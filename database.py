@@ -77,6 +77,26 @@ class DBhandler:
                 target_value=res.val()
         return target_value
     
+    def get_items_bycategory(self, category):
+        items = self.db.child("item").get()
+        target_value=[]
+        target_key=[]
+        for res in items.each(): 
+            value = res.val()
+            key_value = res.key()
+            if value['major_category'] == category:
+                target_value.append(value)
+                target_key.append(key_value)
+            if value['detail_category'] == category:
+                target_value.append(value)
+                target_key.append(key_value)
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
+
+    
     def reg_review(self, name, data, img_path, keywords, id):
         review_info={
             "title": data['reviewTitle'],
@@ -123,6 +143,22 @@ class DBhandler:
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+    
+    def get_email_byname(self, id):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value=res.val()
+            if value['id'] == id:
+                email = value['email']
+        return email
+    
+    def get_tel_byname(self, id):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value=res.val()
+            if value['id'] == id:
+                tel = value['tel']
+        return tel
 
     def change_user(self, id, data, cpw):
         users = self.db.child("user").get()
@@ -177,3 +213,16 @@ class DBhandler:
             if value["reviewer_id"] == user_id:
                 user_review_dict[value["title"]]=value
         return user_review_dict
+    
+    def find_id_by_email_tel(self, email, tel):
+        users = self.db.child("user").get()
+
+        if not users.val():
+            return None
+
+        for res in users.each():
+            value = res.val()
+            if value['email'] == email and value['tel'] == tel:
+                hidden_id = value['id'][:3] + '*' * (len(value['id']) - 3)
+                return hidden_id
+        return None
