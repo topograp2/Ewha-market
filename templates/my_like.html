@@ -1,0 +1,78 @@
+{% extends "index.html" %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/my_post.css') }}">
+{% endblock %}
+{% block section %}
+<div class="mp-container">
+    <div class="mp-nav">
+        <a href=""><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
+        <a href="" class="active">내가 게시한 상품</a>
+        <a href="/my_purchase">내가 구매한 상품</a>
+        <select class="select-view">
+            <option value="all-view">전체 보기</option> 
+            <option value="gume-view">판매 상품만 보기</option> 
+            <option value="suyo-view">작성한 수요조사만 보기</option>
+        </select>
+    </div>
+    <hr>
+    <div class="mp-list">
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p><span class="mp-color">판매 중</span> | 8 개 남음</p><br>
+                <a href="">신규 주문 3 건이 있습니다</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p><span class="mp-color">수요조사 중</span> | <span class="mp-color2">D-3</span></p><br>
+                <a href="">7 건의 수요가 집계되었습니다</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p><span class="mp-color">판매 개시까지 00:25:14</span> | 15 개 남음</p><br>
+                <a href="">주문 리스트 보기</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p><span class="mp-color">수요조사 개시까지 00:19:00</span> | <span class="mp-color2">5일</span></p><br>
+                <a href="">수요조사 리스트 보기</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">이화 곰돌이 키링</a><br>
+                <p><span class="mp-color2">품절</span> | 0 개 남음</p><br>
+                <a href="">신규 주문 3 건이 있습니다</a>
+            </div>
+        </div>
+        <div class="mp-item">
+            <div class="mp-image"></div>
+            <div class="mp-text">
+                <a class=item-title href="">배꽃 쿠키</a><br>
+                <p><span class="mp-color2">수요 조사 마감</span> | <span class="mp-color2">D+1</span></p><br>
+                <a href="">11 건의 수요가 집계되었습니다</a>
+            </div>
+        </div>
+    </div>
+    <div class="pagination">
+        <a href="#">&lt;&lt;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">&gt;&gt;</a>
+    </div>
+</div>
+{% endblock section %}

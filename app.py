@@ -117,14 +117,6 @@ def review_detail(name):
     print("####data:", data)
     return render_template('review_detail.html', name=name, data=data)
 
-@application.route('/my_purchase')
-def my_purchase():
-    return render_template('my_purchase.html')
-
-@application.route('/my_post')
-def my_post():
-    return render_template('my_post.html')
-
 @application.route("/login")
 def login():
     return render_template("login.html")
@@ -153,7 +145,24 @@ def my_page(user_id):
     return render_template('my_page.html',
                            three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
                            hdata=hdata, pdata=pdata, rdata=rdata,
-                           ptotal= len(pdata), rtotal= len(rdata))
+                           ptotal= len(pdata), rtotal= len(rdata),
+                           user_id=user_id)
+
+@application.route('/my_like/<user_id>/')
+def my_like(user_id):
+    data=DB.get_like_items_byuser(user_id)
+    return render_template('my_like.html')
+
+@application.route('/my_post/<user_id>/')
+def my_post(user_id):
+    data=DB.get_item_byuser(user_id)
+    return render_template('my_post.html')
+
+# my_purchase에서 가져오기
+@application.route('/my_review/<user_id>/')
+def my_review(user_id):
+    data=DB.get_review_byuser(user_id)
+    return render_template('my_review.html')
 
 @application.route('/profile_edit')
 def profile_edit():
