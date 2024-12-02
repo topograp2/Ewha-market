@@ -141,20 +141,19 @@ def purchase():
 def purchase_list():
     return render_template('purchase_list.html')
 
-@application.route('/my_page/<name>')
-def my_page(name):
-    hdata=DB.get_like_items_byuser(name)
+@application.route('/my_page/<user_id>')
+def my_page(user_id):
+    hdata=DB.get_like_items_byuser(user_id)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
     three_hdata=list(hdata.items())[:3]
-    pdata=DB.get_item_byuser(name)
+    pdata=DB.get_item_byuser(user_id)
     three_pdata=list(pdata.items())[:3]
-    rdata=DB.get_review_byuser(name)
+    rdata=DB.get_review_byuser(user_id)
     two_rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
                            three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
                            hdata=hdata, pdata=pdata, rdata=rdata,
-                           ptotal= len(pdata), rtotal= len(rdata),
-                           name=name)
+                           ptotal= len(pdata), rtotal= len(rdata))
 
 @application.route('/profile_edit')
 def profile_edit():
@@ -214,8 +213,9 @@ def like(name):
  
 @application.route('/unlike/<name>/', methods=['POST'])
 def unlike(name):
- my_heart = DB.update_heart(session['id'],'N',name)
- return jsonify({'msg': '마음에 들어요 취소 완료!'})
+    timestamp = datetime.now().isoformat()
+    my_heart = DB.update_heart(session['id'],'N',timestamp, name)
+    return jsonify({'msg': '마음에 들어요 취소 완료!'})
 
 @application.route("/profile_edit_post", methods=['POST'])
 def change_pw():
@@ -224,10 +224,10 @@ def change_pw():
     cpw_hash = hashlib.sha256(cpw.encode('utf-8')).hexdigest()
     now_id=session['id']
     if DB.change_user(now_id,cdata,cpw_hash):
-        return render_template("my_page.html")
+        return redirect(url_for('my_page', user_id=session['id']))
     else:
         flash("이전 비밀번호와 같습니다! 다시 입력해주세요")
-        return render_template("profile_edit.html")
+        return redirect(url_for('profile_edit'))
         
 @application.route("/logout")
 def logout_user():
