@@ -104,18 +104,32 @@
 	padding-left: 0.25rem;
 	padding-right: 0.25rem;
 }
-.product-list p {
-	padding-left: 0.25rem;
-	padding-right: 0.25rem;
-	margin-top: 0;
-	margin-bottom: 0;
-}
 .product-list img {
 	object-fit: cover;
 }
 .product-name {
 	padding-bottom: 1rem;
 	font-family: 'Pretendard-Medium';
+}
+
+.search-list {
+	height: 30rem;
+	margin-left: 12.2rem;
+	margin-right: 12.2rem;
+	margin-top: 0;
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+.search-item p {
+	padding-left: 0.25rem;
+	padding-right: 0.25rem;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.search-list img {
+	object-fit: cover;
 }
 
 .page-nation li{
