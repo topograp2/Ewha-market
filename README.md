@@ -35,7 +35,7 @@ For building and running the application you need:
 
 ### Installation
 ```
-$ git clone https://github.com/topograp2/Ewha-market
+$ git clone https://github.com/topograp2/Ewha-market.git
 $ flask run
 ```
 ## 😺 기술 스택
