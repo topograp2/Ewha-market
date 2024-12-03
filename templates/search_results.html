@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block section %}
+<div class="search-results-container">
+    <h1>Search Results</h1>
+    
+    {% if total > 0 %}
+        <p>Total results for "{{ query }}": {{ total }}</p>
+        
+        <ul>
+            {% for item_name, item_data in datas %}
+                <li>
+                    <strong>{{ item_name }}</strong>
+                    <ul>
+                        {% for key, value in item_data.items() %}
+                            <li>{{ key }}: {{ value }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No results found for "{{ query }}".</p>
+    {% endif %}
+    
+    <a href="{{ url_for('view_list') }}">Back to All Items</a>
+</div>
+{% endblock %}
