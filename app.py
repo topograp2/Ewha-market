@@ -125,9 +125,21 @@ def login():
 def signup():
     return render_template("signup.html")
 
-@application.route('/purchase')
-def purchase():
-    return render_template('purchase.html')
+@application.route('/purchase/<name>/', methods =['GET','POST'])
+def purchase(name):
+    if request.method == 'GET':
+        item_data = DB.get_item_byname(str(name))
+        id=session['id']
+        user_data=DB.get_user_byid(str(id))
+        return render_template('purchase.html', name=name, item_data=item_data,
+                               user_data=user_data)
+    elif request.method == 'POST':
+        item_data = DB.get_item_byname(str(name))
+        purchase_data=request.form
+        id=session['id']
+        DB.place_order(item_data, purchase_data, id)
+        flash("주문을 완료했어요!")
+        return redirect(url_for('product_detail', name=name))
 
 @application.route('/purchase_list')
 def purchase_list():
@@ -135,8 +147,7 @@ def purchase_list():
 
 @application.route('/my_page/<user_id>')
 def my_page(user_id):
-    email = DB.get_email_byname(user_id)
-    tel = DB.get_tel_byname(user_id)
+    user_data = DB.get_user_byid(user_id)
     hdata=DB.get_like_items_byuser(user_id)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
     three_hdata=list(hdata.items())[:3]
@@ -145,7 +156,7 @@ def my_page(user_id):
     rdata=DB.get_review_byuser(user_id)
     two_rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
-                           email = email, tel = tel,
+                           user_data=user_data,
                            three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
                            hdata=hdata, pdata=pdata, rdata=rdata,
                            ptotal= len(pdata), rtotal= len(rdata),
