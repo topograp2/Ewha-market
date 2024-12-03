@@ -229,3 +229,12 @@ class DBhandler:
                 hidden_id = value['id'][:3] + '*' * (len(value['id']) - 3)
                 return hidden_id
         return None
+
+    def search_item_by_name(self, query):
+        items = self.db.child("item").get()
+        matching_items = {}
+        for res in items.each():
+            item_name = res.key()
+            if query.lower() in item_name.lower():
+                matching_items[item_name] = res.val()
+        return matching_items

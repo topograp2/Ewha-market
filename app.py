@@ -258,8 +258,20 @@ def find_id():
             return jsonify({"status": "fail", "message": "등록된 정보를 찾을 수 없습니다."})
     return render_template('id_find.html')
 
-
-
+@application.route("/search", methods=["GET"])
+def search():
+    query = request.args.get("query", "")
+    if query:
+        matching_items = DB.search_item_by_name(query)
+        item_count = len(matching_items)
+        matching_items = dict(sorted(matching_items.items(), key=lambda x: x[0], reverse=False))
+        return render_template("search_results.html", 
+                               datas=matching_items.items(),
+                               total = item_count,
+                               query = query)
+    else:
+        flash("Please enter a search query")
+        return redirect(url_for('view_list'))
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
     
