@@ -270,7 +270,6 @@ def search():
                                total = item_count,
                                query = query)
     else:
-        flash("Please enter a search query")
         return redirect(url_for('view_list'))
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)

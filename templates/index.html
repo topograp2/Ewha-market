@@ -16,10 +16,10 @@
 <div class="navbar__logo">
     <a href="/"><img src="{{ url_for('static', filename='svg/rogo.svg') }}" alt = "logo"></a>
 </div>
-<div class = "search_area">
-    <form action="/search" method="get">
-        <input name="query" type="text" placeholder="상품 검색">
-        <button type="submit"  id="search" href=""><img src="{{ url_for('static', filename='svg/search.svg') }}"  alt = "search"></button>
+<div>
+    <form class = "search_area" action="/search" method="get">
+        <input class = "search-input" name="query" type="text" placeholder="상품 검색">
+        <button class="search-btn" type="submit"  id="search" href=""><img src="{{ url_for('static', filename='svg/search.svg') }}"  alt = "search"></button>
     </form>
 </div>
 <ul class="navbar__menu">
