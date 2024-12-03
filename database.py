@@ -186,6 +186,8 @@ class DBhandler:
     
     def get_like_items_byuser(self, user_id):
         hearts = self.db.child("heart").child(user_id).get()
+        if not hearts or not hearts.each():
+            return {}
         user_likes_dict={}
         for res in hearts.each():
             value = res.val()
