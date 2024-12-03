@@ -135,6 +135,8 @@ def purchase_list():
 
 @application.route('/my_page/<user_id>')
 def my_page(user_id):
+    email = DB.get_email_byname(user_id)
+    tel = DB.get_tel_byname(user_id)
     hdata=DB.get_like_items_byuser(user_id)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
     three_hdata=list(hdata.items())[:3]
@@ -143,6 +145,7 @@ def my_page(user_id):
     rdata=DB.get_review_byuser(user_id)
     two_rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
+                           email = email, tel = tel,
                            three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
                            hdata=hdata, pdata=pdata, rdata=rdata,
                            ptotal= len(pdata), rtotal= len(rdata),
