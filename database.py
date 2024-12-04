@@ -96,6 +96,29 @@ class DBhandler:
             new_dict[k]=v
         return new_dict
     
+    def get_reviews_bycategory(self, category):
+        reviews = self.db.child("review").get()
+        target_value=[]
+        target_key=[]
+        for res in reviews.each(): 
+            value = res.val()
+            key_value = res.key()
+            item = self.db.child("item").child(value['review_item']).get().val()
+            if item:
+                if 'major_category' in item and item['major_category'] == category:
+                    target_value.append(value)
+                    target_key.append(key_value)
+                if 'detail_category' in item and item['detail_category'] == category:
+                    target_value.append(value)
+                    target_key.append(key_value)
+            else:
+                print(f"해당 리뷰의 아이템을 찾을 수 없습니다: {value['review_item']}")
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
+    
     def reg_review(self, name, data, img_path, keywords, id):
         review_info={
             "title": data['reviewTitle'],
