@@ -88,12 +88,20 @@ def reg_item_submit_post():
 
 @application.route("/reg_review_init/<name>/")
 def reg_review_init(name):
-    return render_template("reg_reviews.html", name=name)
+    if not session:
+        flash("로그인이 필요한 기능입니다!")
+        return redirect(url_for('login'))
+    else:
+        return render_template("reg_reviews.html", name=name)
 
 @application.route("/reg_reviews", methods=['GET', 'POST'])
 def reg_review():
     if request.method == "GET":
-        return render_template("reg_reviews.html")
+        if not session:
+            flash("로그인이 필요한 기능입니다!")
+            return redirect(url_for('login'))
+        else:
+            return render_template("reg_reviews.html")
     elif request.method == "POST":
         data=request.form
         keywords = request.form.getlist("keyword[]")
@@ -127,19 +135,23 @@ def signup():
 
 @application.route('/purchase/<name>/', methods =['GET','POST'])
 def purchase(name):
-    if request.method == 'GET':
-        item_data = DB.get_item_byname(str(name))
-        id=session['id']
-        user_data=DB.get_user_byid(str(id))
-        return render_template('purchase.html', name=name, item_data=item_data,
-                               user_data=user_data)
-    elif request.method == 'POST':
-        item_data = DB.get_item_byname(str(name))
-        purchase_data=request.form
-        id=session['id']
-        DB.place_order(item_data, purchase_data, id)
-        flash("주문을 완료했어요!")
-        return redirect(url_for('product_detail', name=name))
+    if not session:
+        flash("로그인이 필요한 기능입니다!")
+        return render_template("login.html")
+    else:
+        if request.method == 'GET':
+            item_data = DB.get_item_byname(str(name))
+            id=session['id']
+            user_data=DB.get_user_byid(str(id))
+            return render_template('purchase.html', name=name, item_data=item_data,
+                                user_data=user_data)
+        elif request.method == 'POST':
+            item_data = DB.get_item_byname(str(name))
+            purchase_data=request.form
+            id=session['id']
+            DB.place_order(item_data, purchase_data, id)
+            flash("주문을 완료했어요!")
+            return redirect(url_for('product_detail', name=name))
 
 @application.route('/purchase_list')
 def purchase_list():
@@ -198,7 +210,7 @@ def my_like(user_id):
 def my_post(user_id):
     page = request.args.get("page", 0, type=int)
     per_page=6
-    per_row=2
+    per_row=3
 
     data=DB.get_item_byuser(user_id)
     item_counts = len(data)
@@ -214,7 +226,7 @@ def my_post(user_id):
 def my_review(user_id):
     page = request.args.get("page", 0, type=int)
     per_page=6
-    per_row=2
+    per_row=3
 
     data=DB.get_review_byuser(user_id)
     item_counts = len(data)

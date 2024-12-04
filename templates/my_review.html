@@ -17,23 +17,24 @@
           <table>
           <tr>
             {% for key, value in row1 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text"><img src="../../static/images/{{value['img_path']}}", width=186, height=130>
-            <div class="green-star">{% if value['rate_item'] == "0" %}
-              ☆☆☆☆☆ 
-              {% elif value['rate_item'] == "1" %}
-              ★☆☆☆☆
-              {% elif value['rate_item'] == "2" %}
-              ★★☆☆☆
-              {% elif value['rate_item'] == "3" %}
-              ★★★☆☆
-              {% elif value['rate_item'] == "4" %}
-              ★★★★☆
-              {% elif value['rate_item'] == "5" %}
-               ★★★★★
-              {% endif %}</div>
-              <span class="title-text">제목: {{value.title}}</span><br>
-              <span class="item-title">상품: {{value.review_item}}</span><br>
-              <span class="review-text">{{value.review}}</span></td>
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text">
+              <img src="../../static/images/{{value['img_path']}}", width=186, height=130>
+              <div class="green-star">{% if value['rate_item'] == "0" %}
+                ☆☆☆☆☆ 
+                {% elif value['rate_item'] == "1" %}
+                ★☆☆☆☆
+                {% elif value['rate_item'] == "2" %}
+                ★★☆☆☆
+                {% elif value['rate_item'] == "3" %}
+                ★★★☆☆
+                {% elif value['rate_item'] == "4" %}
+                ★★★★☆
+                {% elif value['rate_item'] == "5" %}
+                ★★★★★
+                {% endif %}</div>
+                <span class="title-text">제목: {{value.title}}</span><br>
+                <span class="item-title">상품: {{value.review_item}}</span><br>
+                <span class="review-text">{{value.review}}</span></td>
             {% endfor %}
           </tr>
           <tr>

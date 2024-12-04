@@ -59,11 +59,11 @@
     border-radius: 10px;
     margin: 5px;
 }
-.mp-list td {
+.mp-item td {
 	padding: 0.25rem;
 	padding-bottom: 0.5rem;
 }
-.mp-list img {
+.mp-item img {
 	object-fit: cover;
 }
 .review-text {
