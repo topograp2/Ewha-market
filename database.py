@@ -95,7 +95,6 @@ class DBhandler:
         for k,v in zip(target_key,target_value):
             new_dict[k]=v
         return new_dict
-
     
     def reg_review(self, name, data, img_path, keywords, id):
         review_info={
@@ -144,6 +143,15 @@ class DBhandler:
         }
         self.db.child("heart").child(user_id).child(item).set(heart_info)
         return True
+    
+    def get_user_byid(self, id):
+        users = self.db.child("user").get()
+        for res in users.each():
+            value = res.val()
+            if value['id'] == id:
+                target_value = res.val()
+        return target_value
+        
     
     def get_email_byname(self, id):
         users = self.db.child("user").get()
@@ -239,3 +247,17 @@ class DBhandler:
             if query.lower() in item_name.lower():
                 matching_items[item_name] = res.val()
         return matching_items
+    
+    def place_order(self, item_data, purchase_data, id):
+        order_info={
+            "purchasing_item": item_data['item'],
+            "customer_id": id,
+            "customer_name": purchase_data['name'],
+            "customer_email": purchase_data['email'],
+            "customer_tel": purchase_data['tel'],
+            "delivery_addr": purchase_data['delivery_addr'],
+            "payment_method": purchase_data['payment_method'],
+            "customer_request": purchase_data['request']
+        }
+        self.db.child("order").push(order_info)
+        return True

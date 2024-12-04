@@ -1,28 +1,81 @@
 {% extends "index.html" %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/list.css') }}">
+{% endblock %}
+
 {% block section %}
-<div class="search-results-container">
-    <h1>Search Results</h1>
-    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+   $(document).ready(function () {
+            var currentCategory = "{{category}}"; // 현재 선택된 카테고리
+            $('nav a').each(function() {
+                if ($(this).text().trim() === currentCategory) {
+                    $(this).addClass("active");
+                }
+            });
+        });
+</script>
+
+<div id="category" name="category" onchange="location=this.value" class="container">
+  <!-- 상단 카테고리 내비게이션 -->
+  <nav class="category-nav">
+    <a href="{{url_for('view_list', page=i, category='clothes')}}" data-target="subcategory1">의류</a>
+    <p>|</p>
+    <a href="{{url_for('view_list', page=i, category='stationary')}}" data-target="subcategory2">문구</a>
+    <p>|</p>
+    <a href="{{url_for('view_list', page=i, category='food')}}" data-target="subcategory3">푸드</a>
+    <p>|</p>
+    <a href="{{url_for('view_list', page=i, category='others')}}" data-target="subcategory4">잡화</a>
+  </nav>
+  <!-- 서브 카테고리 내비게이션 -->
+  <nav class="subcategory-nav" id="subcategory1">
+    <a href="{{url_for('view_list', page=i, category='학잠/과잠')}}">학잠/과잠</a>
+    <a href="{{url_for('view_list', page=i, category='후리스')}}">후리스</a>
+    <a href="{{url_for('view_list', page=i, category='주경바막/돕바')}}">주경바막/돕바</a>
+    <a href="{{url_for('view_list', page=i, category='기타')}}">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory2">
+    <a href="{{url_for('view_list', page=i, category='노트/플래너')}}">노트/플래너</a>
+    <a href="{{url_for('view_list', page=i, category='필기구')}}">필기구</a>
+    <a href="{{url_for('view_list', page=i, category='엽서/스티커')}}">엽서/스티커</a>
+    <a href="{{url_for('view_list', page=i, category='기타')}}">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory3">
+    <a href="{{url_for('view_list', page=i, category='베이킹')}}">베이킹</a>
+    <a href="{{url_for('view_list', page=i, category='음료')}}">음료</a>
+    <a href="{{url_for('view_list', page=i, category='기타')}}">기타</a>
+  </nav>
+
+  <nav class="subcategory-nav" id="subcategory4">
+    <a href="{{url_for('view_list', page=i, category='인형/키링/뱃지')}}">인형/키링/뱃지</a>
+    <a href="{{url_for('view_list', page=i, category='에코백/파우치')}}">에코백/파우치</a>
+    <a href="{{url_for('view_list', page=i, category='텀블러/머그컵')}}">텀블러/머그컵</a>
+    <a href="{{url_for('view_list', page=i, category='기타')}}">기타</a>
+  </nav>
+
+    <p id="list_title">검색 결과</p><br>
     {% if total > 0 %}
-        <p>Total results for "{{ query }}": {{ total }}</p>
+        <p id="list_count">"{{ query }}"의 검색 결과 {{ total }}개가 검색되었습니다</p>
         
-        <ul>
-            {% for item_name, item_data in datas %}
-                <li>
-                    <strong>{{ item_name }}</strong>
-                    <ul>
-                        {% for key, value in item_data.items() %}
-                            <li>{{ key }}: {{ value }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        </ul>
+        <div class="search-list">
+          {% for item_name, item_data in datas %}
+            <div class="search-item">
+              {% for key, value in item_data.items() %}
+                  {% if key == 'img_path' %}
+                      <p><img onclick="location.href='/product_detail/{{ item_name }}/';" style="cursor:pointer;" src="static/images/{{ value }}", width=200, height=200></p>
+                  {% endif %}
+              {% endfor %}
+              <p class="product-name">{{ item_name }}</p>
+            </div>
+          {% endfor %}
+        </div>
     {% else %}
-        <p>No results found for "{{ query }}".</p>
+        <p id="list_count">"{{ query }}"의 검색 결과가 없습니다</p>
     {% endif %}
     
-    <a href="{{ url_for('view_list') }}">Back to All Items</a>
+    <a class="back_list" href="{{ url_for('view_list') }}">상품 리스트로 돌아가기</a>
 </div>
 {% endblock %}

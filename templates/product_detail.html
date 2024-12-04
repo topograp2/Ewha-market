@@ -22,12 +22,12 @@
             <p><strong>판매자 ID</strong> {{data.seller_id}}</p>
             <p><strong>배송 방법</strong> {{data.delivery_method}}</p>
             <p><strong>판매 지역</strong> {{data.addr}}</p>
-            <p><strong>제품 상태</strong> {{data.is_preorder}} </p>
+            <p><strong>제작 방식</strong> {{data.is_preorder}} </p>
         </div>
         
         <div class="button-container">
             <a href="/review" class="review-btn">이 제품의 리뷰 보러 가기</a>
-            <a href="/purchase" class="buy-btn">제품 구매하기</a>
+            <a onclick="location.href='/purchase/{{name}}/';" class="buy-btn">제품 구매하기</a>
             <i class="fa fa-heart" id="heart"></i>
         </div>
 

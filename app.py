@@ -125,9 +125,21 @@ def login():
 def signup():
     return render_template("signup.html")
 
-@application.route('/purchase')
-def purchase():
-    return render_template('purchase.html')
+@application.route('/purchase/<name>/', methods =['GET','POST'])
+def purchase(name):
+    if request.method == 'GET':
+        item_data = DB.get_item_byname(str(name))
+        id=session['id']
+        user_data=DB.get_user_byid(str(id))
+        return render_template('purchase.html', name=name, item_data=item_data,
+                               user_data=user_data)
+    elif request.method == 'POST':
+        item_data = DB.get_item_byname(str(name))
+        purchase_data=request.form
+        id=session['id']
+        DB.place_order(item_data, purchase_data, id)
+        flash("주문을 완료했어요!")
+        return redirect(url_for('product_detail', name=name))
 
 @application.route('/purchase_list')
 def purchase_list():
@@ -135,8 +147,7 @@ def purchase_list():
 
 @application.route('/my_page/<user_id>')
 def my_page(user_id):
-    email = DB.get_email_byname(user_id)
-    tel = DB.get_tel_byname(user_id)
+    user_data = DB.get_user_byid(user_id)
     hdata=DB.get_like_items_byuser(user_id)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
     hdata=list(hdata.items())[:3]
@@ -319,7 +330,6 @@ def search():
                                total = item_count,
                                query = query)
     else:
-        flash("Please enter a search query")
         return redirect(url_for('view_list'))
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
