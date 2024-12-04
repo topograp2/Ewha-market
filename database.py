@@ -117,6 +117,7 @@ class DBhandler:
     
     def get_review_byname(self, name):
         reviews = self.db.child("review").get()
+        print(reviews.val())
         target_value=""
         print("###########", name)
         for res in reviews.each():

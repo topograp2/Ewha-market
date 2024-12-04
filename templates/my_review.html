@@ -1,79 +1,78 @@
 {% extends "index.html" %}
 {% block head %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/my_purchase.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/my_review.css') }}">
 {% endblock %}
 {% block section %}
 <div class="mp-container">
     <div class="mp-nav">
-        <a href=""><img src="../static/svg/goBack.svg" alt="gobackbtn"></a>
-        <a href="/my_post">내가 게시한 상품</a>
-        <a href="" class="active">내가 구매한 상품</a>
-        <select class="select-view">
-            <option value="all-view">전체 보기</option> 
-            <option value="gume-view">구매한 상품만 보기</option> 
-            <option value="suyo-view">참여한 수요조사만 보기</option>
-        </select>
+        <a href="/my_page/{{user_id}}" class="back-arrow">←</a>
+        <a href="/my_like/{{user_id}}">좋아요한 상품</a>
+        <a href="/my_post/{{user_id}}">내가 게시한 상품</a>
+        <a href="" class="active">내가 작성한 리뷰</a>
     </div>
     <hr>
     <div class="mp-list">
+        {% if total > 0 %}
         <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 택배 배송</p><br>
-                <a href="">거래 내역 확인하기</a>
-            </div>
+          <table>
+          <tr>
+            {% for key, value in row1 %}
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text"><img src="../../static/images/{{value['img_path']}}", width=186, height=130>
+            <div class="green-star">{% if value['rate_item'] == "0" %}
+              ☆☆☆☆☆ 
+              {% elif value['rate_item'] == "1" %}
+              ★☆☆☆☆
+              {% elif value['rate_item'] == "2" %}
+              ★★☆☆☆
+              {% elif value['rate_item'] == "3" %}
+              ★★★☆☆
+              {% elif value['rate_item'] == "4" %}
+              ★★★★☆
+              {% elif value['rate_item'] == "5" %}
+               ★★★★★
+              {% endif %}</div>
+              <span class="title-text">제목: {{value.title}}</span><br>
+              <span class="item-title">상품: {{value.review_item}}</span><br>
+              <span class="review-text">{{value.review}}</span></td>
+            {% endfor %}
+          </tr>
+          <tr>
+            {% for key, value in row2 %}
+            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text"><img src="../../static/images/{{value['img_path']}}", width=186, height=130>
+              <div class="green-star">{% if value['rate_item'] == "0" %}
+                ☆☆☆☆☆ 
+                {% elif value['rate_item'] == "1" %}
+                ★☆☆☆☆
+                {% elif value['rate_item'] == "2" %}
+                ★★☆☆☆
+                {% elif value['rate_item'] == "3" %}
+                ★★★☆☆
+                {% elif value['rate_item'] == "4" %}
+                ★★★★☆
+                {% elif value['rate_item'] == "5" %}
+                 ★★★★★
+                {% endif %}</div>
+                <span class="title-text">제목: {{value.title}}</span><br>
+                <span class="item-title">상품: {{value.review_item}}</span><br>
+                <span class="review-text">{{value.review}}</span></td>
+            {% endfor %}
+          </tr>
+          </table>
         </div>
-        <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
-                <a href="">수요조사 내역 확인/변경</a>
-            </div>
+        <div class="page-wrap">
+          <div class="page-nation">
+            <ul>
+              <li>
+                {% for i in range(page_count)%}
+                <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
+                {% endfor %}
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 직거래 (12.01 14:00)</p>
-                <p><span class="mp-color2">이화여자대학교 아산공학관</span></p>
-                <a href="">거래 내역 확인하기</a>
-            </div>
-        </div>
-        <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">수요조사 참여 완료</span> | <span class="mp-color2">3개</span></p><br>
-                <a href="">수요조사 내역 확인</a>
-            </div>
-        </div>
-        <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">이화 곰돌이 키링</a><br>
-                <p><span class="mp-color">30000원</span> | 거래 완료</p><br>
-                <a href="">거래 내역 확인하기</a>
-            </div>
-        </div>
-        <div class="mp-item">
-            <div class="mp-image"></div>
-            <div class="mp-text">
-                <a class=item-title href="">배꽃 쿠키</a><br>
-                <p><span class="mp-color">판매 중</span> | <span class="mp-color2">3개 참여</span></p><br>
-                <a href="">구매하러 가기</a>
-            </div>
-        </div>
-    </div>
-    <div class="pagination">
-        <a href="#">&lt;&lt;</a>
-        <a href="#" class="active">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">&gt;&gt;</a>
+        {% else %}
+        <li>등록된 리뷰가 없습니다. </li>
+        {% endif %}
     </div>
 </div>
 {% endblock section %}

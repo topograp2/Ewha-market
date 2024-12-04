@@ -139,33 +139,82 @@ def my_page(user_id):
     tel = DB.get_tel_byname(user_id)
     hdata=DB.get_like_items_byuser(user_id)
     hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
-    three_hdata=list(hdata.items())[:3]
+    hdata=list(hdata.items())[:3]
     pdata=DB.get_item_byuser(user_id)
-    three_pdata=list(pdata.items())[:3]
+    pdata=list(pdata.items())[:3]
     rdata=DB.get_review_byuser(user_id)
-    two_rdata=list(rdata.items())[:2]
+    rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
                            email = email, tel = tel,
-                           three_hdata=three_hdata, three_pdata=three_pdata, two_rdata=two_rdata,
                            hdata=hdata, pdata=pdata, rdata=rdata,
                            ptotal= len(pdata), rtotal= len(rdata),
                            user_id=user_id)
 
+# 페이지네이션 함수 따로 뺌
+def paginate(data, page=0, per_page=6, per_row=2):
+    row_count=int(per_page/per_row)
+    start_idx=per_page*page
+    end_idx=per_page*(page+1)
+    item_counts=len(data)
+    rows={}
+
+    if item_counts<=per_page:
+        data=dict(list(data.items())[:item_counts])
+    else:
+        data=dict(list(data.items())[start_idx:end_idx])
+    for i in range(row_count):
+        if (i==row_count-1) and (item_counts%per_row != 0):
+            rows[f'data_{i}'] = dict(list(data.items())[i*per_row:])
+        else:
+            rows[f'data_{i}'] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+    return data, rows, int(math.ceil(item_counts/per_page))
+
 @application.route('/my_like/<user_id>/')
 def my_like(user_id):
     data=DB.get_like_items_byuser(user_id)
-    return render_template('my_like.html')
+    page = request.args.get("page", 0, type=int)
+    per_page=6
+    per_row=2
+    item_counts = len(data)
+    page_data, rows, page_count= paginate(data, page, per_page, per_row)
+    
+    return render_template( "my_like.html", datas=page_data.items(), user_id=user_id,
+                        row1=rows['data_0'].items(),
+                        row2=rows['data_1'].items(),
+                        limit=per_page, page=page, page_count=page_count,
+                        total=item_counts)
 
 @application.route('/my_post/<user_id>/')
 def my_post(user_id):
-    data=DB.get_item_byuser(user_id)
-    return render_template('my_post.html')
+    page = request.args.get("page", 0, type=int)
+    per_page=6
+    per_row=2
 
-# my_purchase에서 가져오기
+    data=DB.get_item_byuser(user_id)
+    item_counts = len(data)
+    page_data, rows, page_count= paginate(data, page, per_page, per_row)
+    
+    return render_template( "my_post.html", datas=page_data.items(), user_id=user_id,
+                        row1=rows['data_0'].items(),
+                        row2=rows['data_1'].items(),
+                        limit=per_page, page=page, page_count=page_count,
+                        total=item_counts)
+
 @application.route('/my_review/<user_id>/')
 def my_review(user_id):
+    page = request.args.get("page", 0, type=int)
+    per_page=6
+    per_row=2
+
     data=DB.get_review_byuser(user_id)
-    return render_template('my_review.html')
+    item_counts = len(data)
+    page_data, rows, page_count= paginate(data, page, per_page, per_row)
+    
+    return render_template( "my_review.html", datas=page_data.items(), user_id=user_id,
+                        row1=rows['data_0'].items(),
+                        row2=rows['data_1'].items(),
+                        limit=per_page, page=page, page_count=page_count,
+                        total=item_counts)
 
 @application.route('/profile_edit')
 def profile_edit():

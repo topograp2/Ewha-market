@@ -59,33 +59,30 @@
     border-radius: 10px;
     margin: 5px;
 }
-
-.mp-item img {
-    object-fit: cover;
-    border-radius: 10px;
+.mp-list td {
+	padding: 0.25rem;
+	padding-bottom: 0.5rem;
+}
+.mp-list img {
+	object-fit: cover;
+}
+.review-text {
+	width: 285px;
+	height: 110px;
+	margin-top: 0.3rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+	overflow: hidden;
+}
+.title-text {
+	font-family: 'Pretendard-Bold';
+	font-size: 1.2rem;
 }
 
-.mp-text {
-    margin-top: 0.5rem;
-    margin-left: 1.6rem;
-}
-.mp-text a,p {
-    margin: 0.5rem;
-}
-.mp-text a {
-    color: black;
-}
-.mp-color {
-    color: #6ab04c;
-    font-family: 'Pretendard-Bold';
-}
-.mp-color2 {
-    color: #737373;
-}
-.item-title {
-    font-family: 'Pretendard-Bold';
-    font-size: 1.6rem;
-    text-decoration: none;
+.green-star{
+    color:#6CA062;
 }
 
 hr {
