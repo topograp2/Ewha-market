@@ -156,10 +156,9 @@ def my_page(user_id):
     rdata=DB.get_review_byuser(user_id)
     rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
-                           email = email, tel = tel,
                            hdata=hdata, pdata=pdata, rdata=rdata,
                            ptotal= len(pdata), rtotal= len(rdata),
-                           user_id=user_id)
+                           user_id=user_id, user_data=user_data)
 
 # 페이지네이션 함수 따로 뺌
 def paginate(data, page=0, per_page=6, per_row=2):
