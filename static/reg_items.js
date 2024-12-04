@@ -30,28 +30,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // major_category 별 subcategory
 const detailOptions = {
-    clothes: [
+    의류: [
         { value: "학잠/과잠", text: "학잠/과잠" },
         { value: "후리스", text: "후리스" },
         { value: "주경바막/돕바", text: "주경바막/돕바" },
-        { value: "기타", text: "기타" }
+        { value: "기타(의류)", text: "기타" }
     ],
-    stationary: [
+    문구: [
         { value: "노트/플래너", text: "노트/플래너" },
         { value: "필기구", text: "필기구" },
         { value: "엽서/스티커", text: "엽서/스티커" },
-        { value: "기타", text: "기타" }
+        { value: "기타(문구)", text: "기타" }
     ],
-    food: [
+    푸드: [
         { value: "베이킹", text: "베이킹" },
         { value: "음료", text: "음료" },
-        { value: "기타", text: "기타" }
+        { value: "기타(푸드)", text: "기타" }
     ],
-    others: [
+    잡화: [
         { value: "인형/키링/뱃지", text: "인형/키링/뱃지" },
         { value: "에코백/파우치", text: "에코백/파우치" },
         { value: "텀블러/머그컵", text: "텀블러/머그컵" },
-        { value: "기타", text: "기타" }
+        { value: "기타(잡화)", text: "기타" }
     ]
 };
 // select 요소 가져오기
