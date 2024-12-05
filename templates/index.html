@@ -17,8 +17,8 @@
     <a href="/"><img src="{{ url_for('static', filename='svg/rogo.svg') }}" alt = "logo"></a>
 </div>
 <div>
-    <form class = "search_area" action="/search" method="get">
-        <input class = "search-input" name="query" type="text" placeholder="상품 검색">
+    <form class = "search_area" action="/search" method="get" style="display: flex; flex-direction: row;">
+        <input id = "search-input" name="query" type="text" placeholder="상품 검색">
         <button class="search-btn" type="submit"  id="search" href=""><img src="{{ url_for('static', filename='svg/search.svg') }}"  alt = "search"></button>
     </form>
 </div>

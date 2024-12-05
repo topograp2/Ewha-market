@@ -34,14 +34,13 @@
 	justify-content: center;
 	align-items: center;
 }
-.search-input {
-	width: 30rem;
+#search-input {
 	height: 2.0rem;
 	border-width: 0;
 	margin: 0;
 	outline: 0;
 }
-.search-btn{
+#search{
 	background-color: white;
 	margin: 0;
 	border: 0;
