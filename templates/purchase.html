@@ -5,14 +5,18 @@
 {% endblock %}
 
 {% block section %}
+
 <div class="main">
+    <div class="back-btn-container">
+        <div onclick="goBack()"><img src="{{ url_for('static', filename='svg/goBack.svg') }}" alt="goback" /></div>
+    </div>
     <div class="purchase-container">
         <!-- 상품 이미지 및 제목 -->
         <div class="product-detail-header">
             <!-- 이미지 -->
             <div class="image-container">
                 <div class="product-image">
-                    <img src="../../static/images/{{item_data.img_path}}" width="150px"height="150px">
+                    <img class="item-img" src="../../static/images/{{item_data.img_path}}">
                 </div>
             </div>
             <!-- 상품 정보 -->
@@ -22,38 +26,43 @@
             </div>
             <!-- 판매자 정보 -->
             <div class="seller-info-container">
-                <p><strong>판매자 ID  </strong> {{item_data.seller_id}}</p>
-                <p><strong>배송 방법  </strong> {{item_data.delivery_method}}</p>
-                <p><strong>판매 지역  </strong> {{item_data.addr}}</p>
-                <p><strong>제작 방식  </strong> {{item_data.is_preorder}}</p>
+                <div class="row"><div class="font-bold">판매자 ID  </div> <hr class="ver-hr"> <div>{{item_data.seller_id}}</div></div>
+                <div class="row"><div class="font-bold">배송 방법  </div> <hr class="ver-hr"> <div>{{item_data.delivery_method}}</div></div>
+                <div class="row"><div class="font-bold">판매 지역  </div> <hr class="ver-hr"> <div>{{item_data.addr}}</div></div>
+                <div class="row"><div class="font-bold">제작 방식  </div> <hr class="ver-hr"> <div>{{item_data.is_preorder}}</div></div>
             </div>
         </div>
-
+        <hr class="big-hr">
         <!-- 구매자 정보와 결제 정보 -->
         <div class="purchase-details">
             <form method="post" enctype="multipart/form-data" action="/purchase/{{name}}">
                 <!-- 구매자 정보 -->
                 <div class="left-section">
-                    <h3>구매자 정보</h3>
-                    <div class="buyer-info-form">
-                        <label class="same-as-member">
-                            <input type="checkbox" id="same-as-member"> 회원 정보와 동일합니다
+                    <div style="display: flex; flex-direction: row; align-items: center;">
+                        <h3 >구매자 정보</h3>
+                        
+                        <label class="equal-container"> 
+                    
+                            회원 정보와 동일합니다
                         </label>
+                        <img class="checkIcon" src="{{ url_for('static', filename='svg/userNoEqualIcon.svg') }}">
+                    </div>
+                    <div class="buyer-info-form">
                         <div class="form-group">
-                            <label>이름</label>
-                            <input type="text" name="name" placeholder="구매자 이름">
+                            <label class="buyer-info-title">이름</label>
+                            <input class="buyer-info-input" type="text" name="name" placeholder="구매자 이름을 입력해주세요">
                         </div>
                         <div class="form-group">
-                            <label>이메일</label>
-                            <input type="email" name="email" placeholder={{user_data.email}}>
+                            <label class="buyer-info-title">이메일</label>
+                            <input  class="buyer-info-input" type="email" name="email" placeholder="이메일을 입력해주세요">
                         </div>
                         <div class="form-group">
-                            <label>전화번호</label>
-                            <input type="tel" name="tel" placeholder={{user_data.tel}}>
+                            <label class="buyer-info-title">전화번호</label>
+                            <input class="buyer-info-input" type="tel" name="tel" placeholder="전화번호를 입력해주세요">
                         </div>
                         <div class="form-group">
-                            <label>배송지</label>
-                            <input type="text" name="delivery_addr" placeholder="배송지">
+                            <label class="buyer-info-title">배송지</label>
+                            <input class="buyer-info-input" type="text" name="delivery_addr" placeholder="배송지">
                         </div>
                     </div>
                 </div>
@@ -62,15 +71,15 @@
                 <div class="right-section">
                     <h3>결제 방법</h3>
                     <div>
-                        <label><input type="radio" name="payment_method" value="transfer"> 계좌이체</label>
-                        <label><input type="radio" name="payment_method" value="card"> 카드결제</label>
-                        <label><input type="radio" name="payment_method" value="quick"> 간편결제</label>
+                        <label class="fs-20"><input type="radio" name="payment_method" value="transfer"> 계좌이체</label>
+                        <label class="fs-20" ><input type="radio" name="payment_method" value="card"> 카드결제</label>
+                        <label class="fs-20" ><input type="radio" name="payment_method" value="quick"> 간편결제</label>
                     </div>
 
                     <!-- 판매자 메시지 -->
                     <div class="buyer-message-section">
                         <h3>판매자에게 남기고 싶은 말</h3>
-                        <textarea name=request placeholder="추가 질문사항이나 부탁사항을 기록하세요."></textarea>
+                        <textarea class="for-seller-txt" name=request placeholder="추가 질문사항이나 부탁사항을 기록하세요."></textarea>
                     </div>
                 </div>
                 <!-- 주문 버튼 -->
@@ -82,5 +91,11 @@
 
     </div>
 </div>
-
+<script>
+    const myEmail = "{{user_data.email}}";
+    const myTel = "{{user_data.tel}}";
+    const noCheckSvg = "{{ url_for('static', filename='svg/userNoEqualIcon.svg') }}";
+    const checkSvg = "{{ url_for('static', filename='svg/userEqualIcon.svg') }}";
+</script>
+<script src="{{ url_for('static', filename='purchase.js') }}" defer></script>
 {% endblock %}
