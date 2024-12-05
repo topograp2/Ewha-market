@@ -139,7 +139,7 @@ def signup():
 def purchase(name):
     if not session:
         flash("로그인이 필요한 기능입니다!")
-        return render_template("login.html")
+        return redirect(url_for('login'))
     else:
         if request.method == 'GET':
             item_data = DB.get_item_byname(str(name))

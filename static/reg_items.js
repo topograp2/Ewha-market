@@ -1,3 +1,4 @@
+let imgCount = 0;
 document.addEventListener("DOMContentLoaded", function () {
     const imageInput = document.querySelector('input[name="img_path"]');  // 이미지 업로드 input
     const imagePreview = document.querySelector('.image-preview');  // 이미지 미리보기 div
@@ -6,6 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // 업로드 버튼 클릭 시 파일 선택
     uploadButton.addEventListener('click', function () {
         imageInput.click();  // 파일 선택 input 클릭
+        imgCount = 1
     });
 
     // 파일이 선택되었을 때 미리보기
@@ -71,4 +73,73 @@ majorCategory.addEventListener("change", ()=>{
         detailCategory.appendChild(newOption);
         
     });
+})
+
+// 배송방법 선택 체크
+const deliveryMethod = document.querySelector('.radio-div');
+let checkDelivery = 0;
+deliveryMethod.addEventListener("change", ()=>{
+    checkDelivery = 1;
+})
+
+// 상품이름 작성 체크
+const itemName = document.querySelector('input[name="item"]');
+let checkItemName = 0;
+itemName.addEventListener("input", ()=>{
+    checkItemName = 1;
+})
+
+// 가격 작성 체크
+const priceWrite = document.querySelector('input[name="price"]');
+let checkPrice = 0;
+priceWrite.addEventListener("input", ()=>{
+    checkPrice = 1;
+})
+
+// 판매 지역 체크
+const addrWrite = document.querySelector('input[name="addr"]');
+let checkAddr = 0;
+addrWrite.addEventListener("input", ()=>{
+    checkAddr = 1;
+})
+
+// 상품 설명 체크
+let checkItemexp = 0;
+document.addEventListener('DOMContentLoaded', ()=> {
+    const textarea = document.querySelector('textarea[name="itemexp"]')
+    textarea.addEventListener('keyup', ()=>{
+        checkItemexp = textarea.value.length;
+    })
+})
+
+const submitBtn = document.querySelector(".reg-item-container");
+submitBtn.addEventListener("submit", (e) => {
+    if(imgCount===0){
+        e.preventDefault();
+        alert("사진을 등록해주세요!");
+    }
+    else if(checkDelivery === 0){
+        e.preventDefault();
+        alert("배송 방법을 선택해주세요!");
+    }
+    else if(checkItemName === 0){
+        e.preventDefault();
+        alert("상품 이름을 입력해주세요!");
+    }
+    else if(checkPrice === 0){
+        e.preventDefault();
+        alert("상품 가격을 입력해주세요!");
+    }
+    else if(checkAddr === 0){
+        e.preventDefault();
+        alert("판매 지역을 입력해주세요!");
+    }
+    else if(checkItemexp === 0){
+        e.preventDefault();
+        alert("상품 설명을 입력해주세요!");
+    }
+    else {
+        //alert("리뷰가 성공적으로 등록되었습니다.");
+        submitBtn.submit();
+    }
 })
