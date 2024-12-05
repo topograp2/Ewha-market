@@ -137,10 +137,41 @@ for (let i = 0; i < 5; i++) {
 
 
 // 키워드 선택 시 스타일 변경
+const exclusives = [
+    ["seller-good", "seller-bad"],
+    ["info-good", "info-bad"],
+    ["recom", "no-recom"]
+];
 
 const keywordSelect = document.querySelectorAll(".keyword-set");
-keywordSelect.forEach(element => {
-    element.addEventListener("click", () => {
-        element.classList.toggle("active");
-    })
+keywordSelect.forEach(label => {
+    label.addEventListener("click", (event) => {
+        event.preventDefault(); // 기본 동작 방지 (체크박스 클릭 반영 방지)
+        const checkboxId = label.getAttribute("for");
+        const checkbox = document.querySelector(`#${checkboxId}`);
+
+        if (checkbox.checked) {
+            // 이미 선택된 상태라면 해제
+            checkbox.checked = false;
+            label.classList.remove("active");
+        } else {
+            // 새로운 선택 처리
+            exclusives.forEach(group => {
+                if (group.includes(checkboxId)) {
+                    group.forEach(itemId => {
+                        const otherCheckbox = document.querySelector(`#${itemId}`);
+                        const otherLabel = document.querySelector(`label[for='${itemId}']`);
+
+                        // 그룹 내 다른 체크박스 및 라벨 초기화
+                        otherCheckbox.checked = false;
+                        otherLabel.classList.remove("active");
+                    });
+                }
+            });
+
+            // 현재 선택 활성화
+            checkbox.checked = true;
+            label.classList.add("active");
+        }
+    });
 });
