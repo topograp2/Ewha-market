@@ -1,8 +1,8 @@
 {% extends "index.html" %}
 
 {% block head %}
-    <title>상품 리뷰 상세 페이지</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/review_detail.css') }}">
+<title>상품 리뷰 상세 페이지</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/review_detail.css') }}">
 {% endblock %}
 
 {% block section %}
@@ -32,7 +32,7 @@
                     {% elif data.rate_item == "4" %}
                     ★★★★☆
                     {% elif data.rate_item == "5" %}
-                     ★★★★★
+                    ★★★★★
                     {% endif %} </p>
                 <p>배송 상태 만족도 : {% if data.rate_deliver == "0" %}
                     ☆☆☆☆☆
@@ -47,10 +47,10 @@
                     {% elif data.rate_deliver == "5" %}
                     ★★★★★
                     {% endif %} </p>
-                <p>키워드 : 
-                    <span class="keyword">{{data.keywords[0]}}</span>
-                    <span class="keyword">{{data.keywords[1]}}</span>
-                    <span class="keyword">{{data.keywords[2]}}</span>
+                <p>키워드 :
+                    {% for keyword in data.keywords %}
+                    <span class="keyword">{{ keyword }}</span>
+                    {% endfor %}
                     <!--<span class="keyword2">+ 더보기</span>-->
                 </p>
                 <p>작성자 : {{data.reviewer_id}} </p>
@@ -58,15 +58,16 @@
 
             <!-- 오른쪽 영역: 이미지 -->
             <div class="review-images">
-                <div class="image-box"><img src="../../static/images/{{data.img_path}}" width="350px"height="250px"></div> <!-- 이미지 공간 -->
+                <div class="image-box"><img src="../../static/images/{{data.img_path}}" width="350px" height="250px">
+                </div> <!-- 이미지 공간 -->
             </div>
         </form>
     </div>
-        
+
     <!-- 하단 리뷰 내용 박스 -->
     <div class="review-content">
         <p>{{data.review}}</p>
-        
+
     </div>
 </div>
 
