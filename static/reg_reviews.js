@@ -85,23 +85,6 @@ checkBoxes.forEach(checkbox =>{
     })
 })
 
-// 글자수 count -> 폼 제출 시 10자 미만이면 제출 거부해야 함.
-// 체크박스 미 선택 시 -> 폼 제출 거부
-const submitBtn = document.querySelector(".review-form");
-submitBtn.addEventListener("submit", (e) => {
-    if(isItValidTextCnt < 10){
-        e.preventDefault();
-        alert("리뷰를 최소 10자 이상 채워주세요!");
-    } else if(checkCnt === 0){
-        e.preventDefault();
-        alert("키워드를 최소 1개 이상 선택해주세요!");
-    }
-     else {
-        
-        alert("리뷰가 성공적으로 등록되었습니다.");
-        submitBtn.submit();
-    }
-})
 
 // 뒤로 가기 만들기
 function goBack() {
@@ -112,8 +95,10 @@ function goBack() {
 const goodsStars = document.querySelectorAll(".goods .star");
 const deliverStars = document.querySelectorAll(".deliver .star");
 let selectGoodsStar = 0;
+let checkGoodsStar = 0;
 for (let i = 0; i < 5; i++) {
     goodsStars[i].addEventListener("click", () => {
+        checkGoodsStar=1;
         selectGoodsStar = i;
         for (let t = 0; t <= i; t++) {
             goodsStars[t].querySelector("img").src = fullStarIcon;
@@ -124,8 +109,10 @@ for (let i = 0; i < 5; i++) {
     })
 }
 
+let checkDeliverStar = 0;
 for (let i = 0; i < 5; i++) {
     deliverStars[i].addEventListener("click", () => {
+        checkDeliverStar=1;
         for (let t = 0; t <= i; t++) {
             deliverStars[t].querySelector("img").src = fullStarIcon;
         }
@@ -144,3 +131,34 @@ keywordSelect.forEach(element => {
         element.classList.toggle("active");
     })
 });
+
+// 글자수 count -> 폼 제출 시 10자 미만이면 제출 거부해야 함.
+// 체크박스 미 선택 시 -> 폼 제출 거부
+const submitBtn = document.querySelector(".review-form");
+submitBtn.addEventListener("submit", (e) => {
+    if(isItValidTextCnt < 10){
+        e.preventDefault();
+        alert("리뷰를 최소 10자 이상 채워주세요!");
+    }
+    else if(checkGoodsStar===0){
+        e.preventDefault();
+        alert("상품 별점을 최소 1개 이상 선택해주세요!");
+    }
+    else if(checkDeliverStar===0){
+        e.preventDefault();
+        alert("배송상태 별점을 최소 1개 이상 선택해주세요!");
+    }
+    else if(imgCount===0){
+        e.preventDefault();
+        alert("사진을 등록해주세요!");
+    }
+    else if(checkCnt === 0){
+        e.preventDefault();
+        alert("키워드를 최소 1개 이상 선택해주세요!");
+    }
+    else {
+        
+        alert("리뷰가 성공적으로 등록되었습니다.");
+        submitBtn.submit();
+    }
+})
