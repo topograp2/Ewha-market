@@ -30,28 +30,31 @@
             <div class="one-third">
                 <hr class="small-hr">
                 <div class="center item-title"><span class="green-heart">♥</span>좋아요한 상품</div>
-                <div class="center">
+                <div class="preview-container center">
                     {% for key, value in hdata %}
                     <div onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;" class="row margin-bottom">
                         <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
                         <div class="item-name">{{key}}</div>
                     </div>
                     {% endfor %}
-                    <div onclick="location.href='/my_like/{{user_id}}/';"><button class="detail-button">상세보기</button></div>
+                    
                 </div>
+                <div onclick="location.href='/my_like/{{user_id}}/';"><button class="detail-button">상세보기</button></div>
 
             </div>
             <div class="one-third">
                 <hr class="small-hr">
                 <div class="center item-title">등록한 상품 ({{ptotal}})</div>
-                <div class="center">
+                <div class="preview-container center">
                     {% for key, value in pdata %}
                     <div onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;" class="row margin-bottom">
                         <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
                         <div class="item-name">{{key}}</div>
                     </div>
                     {% endfor %}
-                    <div onclick="location.href='/my_post/{{ user_id }}/';"><button class="detail-button">상세보기</button></div>
+                    
+                </div>
+                <div onclick="location.href='/my_post/{{ user_id }}/';"><button class="detail-button">상세보기</button>
                 </div>
 
             </div>
@@ -59,14 +62,15 @@
             <div class="one-third">
                 <hr class="small-hr">
                 <div class="center item-title">작성한 리뷰 ({{rtotal}})</div>
-                <div>
+                <div class="preview-container">
                     <div class="column">
                         {% for key, value in rdata %}
+                        
                         <div onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" style="text-align: left; margin-bottom: 15px;">
                             <div class="review-item">상품: {{key}}</div>
                             <div class="row">
                                 <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
-                                <div>
+                                <div >
                                     <div class="green-star">{% if value['rate_item'] == "0" %}
                                         ☆☆☆☆☆ 
                                         {% elif value['rate_item'] == "1" %}
@@ -86,8 +90,9 @@
                         </div>
                         {% endfor %}
                     </div>
-                    <div onclick="location.href='/my_review/{{user_id}}/';"><button class="detail-button">상세보기</button></div>
+                    
                 </div>
+                <div onclick="location.href='/my_review/{{user_id}}/';"><button class="detail-button">상세보기</button></div>
             </div>
 
         </div>
