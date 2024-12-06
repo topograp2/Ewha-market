@@ -50,13 +50,17 @@ def view_list():
 def view_review():
     page = request.args.get("page", 0, type=int)
     category = request.args.get("category", "all")
+    item = request.args.get("item")
     per_page=6 # item count to display per page
     per_row=2 # item count to display per row
     row_count=int(per_page/per_row)
     start_idx=per_page*page
     end_idx=per_page*(page+1)
     if category=="all":
-        data = DB.get_reviews() #read the table
+        if item:
+            data = DB.get_reviews_byitem(item)
+        else:
+            data = DB.get_reviews() #read the table
     else:
         data = DB.get_reviews_bycategory(category)
     
@@ -73,7 +77,7 @@ def view_review():
                         row2=locals()['data_1'].items(),
                         row3=locals()['data_2'].items(),
                         limit=per_page, page=page, page_count=int((review_counts/per_page)+1),
-                        total=review_counts, category=category)
+                        total=review_counts, category=category, item=item)
 
 @application.route("/reg_items")
 def reg_item():
