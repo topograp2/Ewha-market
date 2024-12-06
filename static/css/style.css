@@ -57,14 +57,16 @@
 	margin-left: 5.3125rem;
 	
 }
-.navbar__menu > li > a {
+.menu-title {
 	font-size: 1.2rem;
 	color: #939393;
 	text-decoration: none;
 }
-.navbar__menu > li > a.active {
+.active {
+	font-size: 1.2rem;
 	color: #ffffff;
 	font-weight: bold;
+	text-decoration: none;
 }
 .navbar__logo {
 	margin-top: 0.625rem;

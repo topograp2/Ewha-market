@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<script src="{{ url_for('static', filename='main.js') }}" defer></script>
+
 <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 {% block head %}{% endblock %}
 </head>
@@ -23,11 +23,11 @@
     </form>
 </div>
 <ul class="navbar__menu">
-    <li><a href="/list">상품 목록</a></li>
-    <li><a href="/review">상품 리뷰</a></li>
+    <li><a class="  {% if 'list' in request.path %}active{% else %} menu-title {% endif %}" href="/list">상품 목록</a></li>
+    <li><a class="{% if 'review' in request.path %}active{% else %} menu-title{% endif %}" href="/review">상품 리뷰</a></li>
     
     {% if session['id'] %}
-    <li><a href="/reg_items">상품 등록</a></li>
+    <li><a class="{% if 'reg_items' in request.path %}active {% else %} menu-title {% endif %}" href="/reg_items">상품 등록</a></li>
     <li class="mypage-container">
         <div class="white-container">
             <div class="id-container">{{session['id']}}</div>
@@ -35,10 +35,14 @@
         </div>
     </li>
     {% else %}
-    <li><a href="/login">로그인</a></li>
+    <li><a class="menu-title" href="/login">로그인</a></li>
     {% endif %}
 </ul>
 </nav>
+<script>
+    const idSession = "{{session['id']}}";
+</script>
+<script src="{{ url_for('static', filename='main.js') }}" defer></script>
 <section>
     {% block section %}
     {% endblock section %}
