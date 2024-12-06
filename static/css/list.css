@@ -26,10 +26,10 @@
 	text-align: right;
 	width: 20rem;
 	height: 3rem;
-	right: 12.5rem;
+	right: 11rem;
 	top: 4rem;
 }
-#list_count {
+.list_count {
 	font-size: 0.8rem;
 	color: #737373;
 	margin-top: 0.3rem;
@@ -38,7 +38,7 @@
 	text-align: right;
 	width: 20rem;
 	height: 3rem;
-	right: 12.5rem;
+	right: 11rem;
 	top: 5.5rem;
 }
 
@@ -80,17 +80,21 @@
 .subcategory-nav.active {
 	display: flex;
 }
+#subcategory0 {
+	background-color: #ffffff;
+	color: #ffffff;
+}
 #subcategory1 {
-	margin-left: 12.5rem;
+	margin-left: 17rem;
 }
 #subcategory2 {
-	margin-left: 14.5rem;
+	margin-left: 21rem;
 }
 #subcategory3 {
-	margin-left: 16.5rem;
+	margin-left: 25rem;
 }
 #subcategory4 {
-	margin-left: 18.5rem;
+	margin-left: 29rem;
 }
 
 
@@ -164,4 +168,5 @@
 	text-align: center;
 	text-decoration: none;
 	font-family: 'Pretendard-Bold';
+	color: black;
 }

@@ -12,29 +12,24 @@
     </div>
     <hr>
     <div class="mp-list">
-        <div class="mp-item">
-            <table>
-            <tr>
-                {% for key, value in row1 %}
-                <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
-                    <img width=200, height=200, src="../../static/images/{{value['img_path']}}">
-                    <div class="mp-text">
-                        <a class=item-title href="">{{value.item}}</a><br>
-                    </div>
-                </td>
-                {% endfor %}
-            </tr>
-            <tr>
-                {% for key, value in row2 %}
-                <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
-                    <img width=200, height=200, src="../../static/images/{{value['img_path']}}">
-                    <div class="mp-text">
-                        <a class=item-title href="">{{value.item}}</a><br>
-                    </div>
-                </td>
-                {% endfor %}
-            </tr>
-            </table>
+        <table>
+        <tr>
+            {% for key, value in row1 %}
+            <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
+                <img width=200, height=200, src="../../static/images/{{value['img_path']}}"><br>
+                <a class=item-title href="">{{value.item}}</a>
+            </td>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in row2 %}
+            <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
+                <img width=200, height=200, src="../../static/images/{{value['img_path']}}"><br>
+                <a class=item-title href="">{{value.item}}</a>
+            </td>
+            {% endfor %}
+        </tr>
+        </table>
     </div>
     <div class="page-wrap">
         <div class="page-nation">
@@ -46,6 +41,6 @@
             </li>
           </ul>
         </div>
-      </div>
+    </div>
 </div>
 {% endblock section %}

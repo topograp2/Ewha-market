@@ -4,76 +4,73 @@
 {% endblock %}
 {% block section %}
 <div class="mp-container">
-    <div class="mp-nav">
-        <a href="/my_page/{{user_id}}" class="back-arrow">←</a>
-        <a href="/my_like/{{user_id}}">좋아요한 상품</a>
-        <a href="/my_post/{{user_id}}">내가 게시한 상품</a>
-        <a href="" class="active">내가 작성한 리뷰</a>
+  <div class="mp-nav">
+      <a href="/my_page/{{user_id}}" class="back-arrow">←</a>
+      <a href="/my_like/{{user_id}}">좋아요한 상품</a>
+      <a href="/my_post/{{user_id}}">내가 게시한 상품</a>
+      <a href="" class="active">내가 작성한 리뷰</a>
+  </div>
+  <hr>
+  <div class="mp-list">
+    <table>
+    <tr>
+      {% for key, value in row1 %}
+      <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-item">
+        <img src="../../static/images/{{value['img_path']}}", width=186, height=130>
+        <div class="mp-text">
+          <div class="green-star">{% if value['rate_item'] == "0" %}
+            ☆☆☆☆☆ 
+            {% elif value['rate_item'] == "1" %}
+            ★☆☆☆☆
+            {% elif value['rate_item'] == "2" %}
+            ★★☆☆☆
+            {% elif value['rate_item'] == "3" %}
+            ★★★☆☆
+            {% elif value['rate_item'] == "4" %}
+            ★★★★☆
+            {% elif value['rate_item'] == "5" %}
+              ★★★★★
+            {% endif %}</div>
+          <span class="title-text">제목: {{value.title}}</span><br>
+          <span class="item-title">상품: {{value.review_item}}</span><br>
+          <span class="review-text">{{value.review}}</span></div></td>
+      {% endfor %}
+    </tr>
+    <tr>
+      {% for key, value in row2 %}
+      <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-item">
+        <img src="../../static/images/{{value['img_path']}}", width=186, height=130>
+        <div class="mp-text">
+          <div class="green-star">{% if value['rate_item'] == "0" %}
+            ☆☆☆☆☆ 
+            {% elif value['rate_item'] == "1" %}
+            ★☆☆☆☆
+            {% elif value['rate_item'] == "2" %}
+            ★★☆☆☆
+            {% elif value['rate_item'] == "3" %}
+            ★★★☆☆
+            {% elif value['rate_item'] == "4" %}
+            ★★★★☆
+            {% elif value['rate_item'] == "5" %}
+              ★★★★★
+            {% endif %}</div>
+          <span class="title-text">제목: {{value.title}}</span><br>
+          <span class="item-title">상품: {{value.review_item}}</span><br>
+          <span class="review-text">{{value.review}}</span></div></td>
+      {% endfor %}
+    </tr>
+    </table>
+  </div>
+  <div class="page-wrap">
+    <div class="page-nation">
+      <ul>
+        <li>
+          {% for i in range(page_count)%}
+          <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
+          {% endfor %}
+        </li>
+      </ul>
     </div>
-    <hr>
-    <div class="mp-list">
-        {% if total > 0 %}
-        <div class="mp-item">
-          <table>
-          <tr>
-            {% for key, value in row1 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text">
-              <img src="../../static/images/{{value['img_path']}}", width=186, height=130>
-              <div class="green-star">{% if value['rate_item'] == "0" %}
-                ☆☆☆☆☆ 
-                {% elif value['rate_item'] == "1" %}
-                ★☆☆☆☆
-                {% elif value['rate_item'] == "2" %}
-                ★★☆☆☆
-                {% elif value['rate_item'] == "3" %}
-                ★★★☆☆
-                {% elif value['rate_item'] == "4" %}
-                ★★★★☆
-                {% elif value['rate_item'] == "5" %}
-                ★★★★★
-                {% endif %}</div>
-                <span class="title-text">제목: {{value.title}}</span><br>
-                <span class="item-title">상품: {{value.review_item}}</span><br>
-                <span class="review-text">{{value.review}}</span></td>
-            {% endfor %}
-          </tr>
-          <tr>
-            {% for key, value in row2 %}
-            <td onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" class="mp-text"><img src="../../static/images/{{value['img_path']}}", width=186, height=130>
-              <div class="green-star">{% if value['rate_item'] == "0" %}
-                ☆☆☆☆☆ 
-                {% elif value['rate_item'] == "1" %}
-                ★☆☆☆☆
-                {% elif value['rate_item'] == "2" %}
-                ★★☆☆☆
-                {% elif value['rate_item'] == "3" %}
-                ★★★☆☆
-                {% elif value['rate_item'] == "4" %}
-                ★★★★☆
-                {% elif value['rate_item'] == "5" %}
-                 ★★★★★
-                {% endif %}</div>
-                <span class="title-text">제목: {{value.title}}</span><br>
-                <span class="item-title">상품: {{value.review_item}}</span><br>
-                <span class="review-text">{{value.review}}</span></td>
-            {% endfor %}
-          </tr>
-          </table>
-        </div>
-        <div class="page-wrap">
-          <div class="page-nation">
-            <ul>
-              <li>
-                {% for i in range(page_count)%}
-                <a href="{{url_for('view_review', page=i)}}" color="black">{{i+1}}</a>
-                {% endfor %}
-              </li>
-            </ul>
-          </div>
-        </div>
-        {% else %}
-        <li>등록된 리뷰가 없습니다. </li>
-        {% endif %}
-    </div>
+  </div>
 </div>
 {% endblock section %}
