@@ -24,8 +24,8 @@
 /* 뒤로가기 버튼 */
 .back-arrow {
     position: absolute; /* 절대 위치 지정 */
-    top: 10px; /* 이미지 섹션 기준 상단 간격 */
-    left: -30px; /* 이미지 왼쪽으로 이동 */
+    top: -20px; /* 이미지 섹션 기준 상단 간격 */
+    left: -85px; /* 이미지 왼쪽으로 이동 */
     font-size: 1.5rem;
     color: #333;
     text-decoration: none;
@@ -41,6 +41,8 @@
     gap: 1rem; /* 이미지와 버튼 사이 간격 */
     overflow: visible; /* 숨겨진 요소 방지 */
     flex-shrink: 0; /* 축소 시 크기 고정 */
+    margin-left: 0;
+    margin-top: 1rem;
 }
 
 /* 콘텐츠 컨테이너 */
@@ -68,9 +70,9 @@
 }
 
 .image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
 }
 
 /* 버튼 섹션 */
@@ -112,23 +114,26 @@
 /* 상세 정보 섹션 */
 .details-container {
     flex: 1 1 50%; /* 상세 정보 섹션 비율 조정 */
+    margin-left: 2rem;
 }
 
 .breadcrumbs {
     font-size: 0.9rem;
     color: #737373;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
 }
 
 .product-title {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-family: 'Pretendard-Bold';
-    margin-bottom: 0.3rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
 }
 
 .price {
     font-size: 2rem;
     color: #6CA062;
+    margin-top: 0.3rem;
     margin-bottom: 1.5rem;
 }
 
@@ -161,13 +166,14 @@
     font-size: 1.5rem;
     font-family: 'Pretendard-Bold';
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
 }
 
 .product-description p {
     font-size: 1rem;
     color: #737373;
     line-height: 1.8;
+    margin-top: 0.2rem;
 }
 
 /* 추가: 부모 요소(body)와 html의 기본 설정 */
