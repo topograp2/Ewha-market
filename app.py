@@ -163,15 +163,17 @@ def purchase_list():
 def my_page(user_id):
     user_data = DB.get_user_byid(user_id)
     hdata=DB.get_like_items_byuser(user_id)
-    hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
+    # hdata=dict(sorted(hdata.items(), key=lambda item: item[1]['time'], reverse=False))
     hdata=list(hdata.items())[:3]
     pdata=DB.get_item_byuser(user_id)
+    ptotal=len(pdata)
     pdata=list(pdata.items())[:3]
     rdata=DB.get_review_byuser(user_id)
+    rtotal=len(rdata)
     rdata=list(rdata.items())[:2]
     return render_template('my_page.html',
                            hdata=hdata, pdata=pdata, rdata=rdata,
-                           ptotal= len(pdata), rtotal= len(rdata),
+                           ptotal= ptotal, rtotal= rtotal,
                            user_id=user_id, user_data=user_data)
 
 # 페이지네이션 함수 따로 뺌
