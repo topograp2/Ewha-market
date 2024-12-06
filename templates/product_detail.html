@@ -1,94 +1,102 @@
 {% extends "index.html" %}
 
+
 {% block section %}
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product_detail.css') }}">
 {% endblock %}
 
 <div class="product-detail-container">
-    <a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
-    <div class="image-container">
-        <div class="product-image">
-            <img src="../../static/images/{{data.img_path}}" width="300px"height="300px">
-        </div>
-        <button onclick="location.href='/reg_review_init/{{name}}/';">리뷰등록</button>
-    </div>
-    <div class="details-container">
-        <div class="breadcrumbs"> {{data.major_category}} > {{data.detail_category}}</div>
-        <h1 class="product-title">{{name}}</h1>
-        <p class="price">{{data.price}} 원</p>
-        
-        <div class="product-info">
-            <p><strong>판매자 ID</strong> {{data.seller_id}}</p>
-            <p><strong>배송 방법</strong> {{data.delivery_method}}</p>
-            <p><strong>판매 지역</strong> {{data.addr}}</p>
-            <p><strong>제작 방식</strong> {{data.is_preorder}} </p>
-        </div>
-        
-        <div class="button-container">
-            <a href="/review" class="review-btn">이 제품의 리뷰 보러 가기</a>
-            <a onclick="location.href='/purchase/{{name}}/';" class="buy-btn">제품 구매하기</a>
-            <i class="fa fa-heart" id="heart"></i>
+    <div class="content-container">
+        <!-- 이미지 및 버튼 섹션 -->
+        <div class="image-section">
+            <a href="/list" class="back-arrow">←</a> <!-- 뒤로가기 버튼 -->
+            <div class="image-container">
+                <img src="../../static/images/{{data.img_path}}" alt="상품 이미지">
+            </div>
+            <div class="image-buttons">
+                <button onclick="location.href='/reg_review_init/{{name}}/';" class="review-btn">리뷰 등록</button>
+                <a href="/review" class="review-btn">리뷰 보기</a>
+            </div>
+            <div class="buy-button-container">
+                <button onclick="location.href='/purchase/{{name}}/';" class="buy-btn">제품 구매하기</button>
+            </div>
         </div>
 
-        <script>
-            function showHeart() {
-                $.ajax({
-                    type: 'GET',
-                    url: '/show_heart/{{name}}/',
-                     data: {}, 
-                     //JSON 형식의 보낼 데이터
-                     success: function (response) { //백엔드에서 response로 클릭 정보를 넘겨줌
-                        let my_heart = response['my_heart'];
-                        if (my_heart['interested'] == 'Y')
-                        {
-                            $("#heart").css("color","red");
-                            $("#heart").attr("onclick","unlike()");
-                        }
-                        else
-                        {
-                            $("#heart").css("color","grey");
-                            $("#heart").attr("onclick","like()");
-                        }
-                        //alert("showheart!")
-                    }
-                });
-            }
+        <!-- 상세 정보 섹션 -->
+        <div class="details-container">
+            <div class="breadcrumbs"> {{data.major_category}} > {{data.detail_category}}</div>
+            <h1 class="product-title">{{name}}</h1>
+            <p class="price">{{data.price}} 원</p>
             
-            function like() {
-                $.ajax({
-                    type:'POST',
-                    url:'/like/{{name}}/', 
-                    data: {interested: "Y"}, 
-                    success: function(response) {
-                        alert(response['msg']); 
-                        window.location.reload()
-                    }
-                });
-            }
+            <div class="product-info">
+                <p><strong>판매자 ID</strong><span class="divider">|</span> {{data.seller_id}}</p>
+                <p><strong>배송 방법</strong><span class="divider">|</span> {{data.delivery_method}}</p>
+                <p><strong>판매 지역</strong><span class="divider">|</span> {{data.addr}}</p>
+                <p><strong>제작 방식</strong><span class="divider">|</span> {{data.is_preorder}}</p>
+            </div>
             
-            function unlike() {
-                $.ajax({
-                    type:'POST',
-                    url:'/unlike/{{name}}/', 
-                    data: {interested: "N"}, 
-                    success: function(response) {
-                        alert(response['msg']); 
-                        window.location.reload()
-                    }
-                });
-            }
-            
-            $(document).ready(function () {
-                showHeart();
-            });  
-            <!--처음 페이지 로딩시 호출-->
-        </script>
-
-        <div class="product-description">
-            <h2>상품 설명</h2>
-            <p>{{data.itemexp}}</p>
+            <!-- 상품 설명 -->
+            <div class="product-description">
+                <h2>상품 설명</h2>
+                <p>{{data.itemexp}}</p>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+
+<script>
+    function showHeart() {
+        $.ajax({
+            type: 'GET',
+            url: '/show_heart/{{name}}/',
+            data: {},
+            success: function (response) {
+                let my_heart = response['my_heart'];
+                if (my_heart['interested'] == 'Y') {
+                    $("#heart").css("color", "red");
+                    $("#heart").attr("onclick", "unlike()");
+                } else {
+                    $("#heart").css("color", "grey");
+                    $("#heart").attr("onclick", "like()");
+                }
+            }
+        });
+    }
+
+    function like() {
+        $.ajax({
+            type: 'POST',
+            url: '/like/{{name}}/',
+            data: { interested: "Y" },
+            success: function (response) {
+                alert(response['msg']);
+                window.location.reload();
+            }
+        });
+    }
+
+    function unlike() {
+        $.ajax({
+            type: 'POST',
+            url: '/unlike/{{name}}/',
+            data: { interested: "N" },
+            success: function (response) {
+                alert(response['msg']);
+                window.location.reload();
+            }
+        });
+    }
+
+    $(document).ready(function () {
+        showHeart();
+    });
+</script>
+
+
+
+
 {% endblock section %}
