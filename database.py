@@ -75,19 +75,27 @@ class DBhandler:
             user=res.key()
             if user==id_:
                 self.db.child("heart").child(user).set(None)
-        print("좋아요들 삭제됨")
-        items=self.db.child("item").get()
-        for res in items.each():
-            value=res.val()
-            if value['seller_id']==id_:
-                self.db.child("item").child(res.key()).set(None)
-        print("item 삭제됨")
+        print("heart 삭제됨")
         orders=self.db.child("order").get()
         for res in orders.each():
             value=res.val()
             if value['customer_id']==id_:
                 self.db.child("orders").child(res.key()).set(None)
         print("order 삭제됨")
+        items=self.db.child("item").get()
+        for res in items.each():
+            value=res.val()
+            if value['seller_id']==id_:
+                self.db.child("item").child(res.key()).set(None)
+                for res2 in orders.each():
+                    if res.key() == res2.val()['purchasing_item']:
+                        self.db.child("order").child(res2.key()).set(None)
+                print("판매하던 item의 order 삭제됨")
+                for res2 in reviews.each():
+                    if res.key() == res2.val()['review_item']:
+                        self.db.child("review").child(res2.key()).set(None)
+                print("판매하던 item의 review 삭제됨")
+        print("item 삭제됨")
         reviews=self.db.child("review").get()
         for res in reviews.each():
             value=res.val()
