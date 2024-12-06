@@ -55,18 +55,18 @@
     });
 </script>
 <div class="main">
-  <div id="category" name="category" onchange="location=this.value" class="container">
+<div id="category" name="category" onchange="location=this.value" class="container">
   <!-- 상단 카테고리 내비게이션 -->
   <nav class="category-nav">
     <a href="{{url_for('view_review', page=i, category='all')}}" data-target="subcategory0">전체</a>
     <p>|</p>
-    <a href="{{url_for('view_review', page=i, category='clothes')}}" data-target="subcategory1">의류</a>
+    <a href="{{url_for('view_review', page=i, category='의류')}}" data-target="subcategory1">의류</a>
     <p>|</p>
-    <a href="{{url_for('view_review', page=i, category='stationary')}}" data-target="subcategory2">문구</a>
+    <a href="{{url_for('view_review', page=i, category='문구')}}" data-target="subcategory2">문구</a>
     <p>|</p>
-    <a href="{{url_for('view_review', page=i, category='food')}}" data-target="subcategory3">푸드</a>
+    <a href="{{url_for('view_review', page=i, category='푸드')}}" data-target="subcategory3">푸드</a>
     <p>|</p>
-    <a href="{{url_for('view_review', page=i, category='others')}}" data-target="subcategory4">잡화</a>
+    <a href="{{url_for('view_review', page=i, category='잡화')}}" data-target="subcategory4">잡화</a>
   </nav>
   <!-- 서브 카테고리 내비게이션 -->
   <nav class="subcategory-nav" id="subcategory0">
