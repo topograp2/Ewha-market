@@ -42,6 +42,30 @@
 	top: 5.5rem;
 }
 
+#search_title {
+	font-size: 1.5rem;
+	font-family: 'Pretendard-Bold';
+	margin:0;
+	position: absolute;
+	text-align: left;
+	width: 20rem;
+	height: 3rem;
+	left: 11rem;
+	top: 3rem;
+}
+.search_count {
+	font-size: 1rem;
+	color: #737373;
+	margin-top: 0.3rem;
+	margin-right: 0;
+	position: absolute;
+	text-align: left;
+	width: 20rem;
+	height: 3rem;
+	left: 11rem;
+	top: 4.5rem;
+}
+
 .category-nav {
 	display: flex;
 	padding: 1rem;
