@@ -57,6 +57,10 @@
 .subcategory-nav.active {
 	display: flex;
 }
+#subcategory0 {
+	background-color: #ffffff;
+	color: #ffffff;
+}
 #subcategory1 {
 	margin-left: 12.5rem;
 }
