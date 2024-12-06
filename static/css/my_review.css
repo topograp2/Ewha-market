@@ -36,42 +36,32 @@
     color: black;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
-.select-view {
-    margin-top: 1.4rem;
-    margin-left: 28rem;
-    padding: 5px;
-    font-size: 0.8rem;
-}
 
 .mp-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     height: 30rem;
-	margin-top: 1.5rem;
-    margin-left: 16rem;
+	margin-left: 16rem;
 	margin-right: 16rem;
-    column-gap: 2.4rem;
+	margin-top: 0;
+}
+
+.mp-item img {
+    object-fit: cover;
 }
 
 .mp-item {
-    display: flex;
-    background-color: #FFFFFF;
-    border-radius: 10px;
-    margin: 5px;
+	display: flex;
 }
-.mp-item td {
-	padding: 0.25rem;
-	padding-bottom: 0.5rem;
+
+.mp-text {
+	margin-left: 10px;
+	margin-top: 5px;
 }
-.mp-item img {
-	object-fit: cover;
-}
+
 .review-text {
-	width: 285px;
-	height: 110px;
-	margin-top: 0.3rem;
+	width: 220px;
+	height: 57px;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 	overflow: hidden;

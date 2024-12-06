@@ -58,22 +58,22 @@
 
     <p id="list_title">검색 결과</p><br>
     {% if total > 0 %}
-        <p id="list_count">"{{ query }}"의 검색 결과 {{ total }}개가 검색되었습니다</p>
-        
-        <div class="search-list">
-          {% for item_name, item_data in datas %}
-            <div class="search-item">
-              {% for key, value in item_data.items() %}
-                  {% if key == 'img_path' %}
-                      <p><img onclick="location.href='/product_detail/{{ item_name }}/';" style="cursor:pointer;" src="static/images/{{ value }}", width=200, height=200></p>
-                  {% endif %}
-              {% endfor %}
-              <p class="product-name">{{ item_name }}</p>
-            </div>
-          {% endfor %}
-        </div>
+      <p class="list_count">"{{ query }}"의 검색 결과 {{ total }}개가 검색되었습니다</p>
+      
+      <div class="search-list">
+        {% for item_name, item_data in datas %}
+          <div class="search-item">
+            {% for key, value in item_data.items() %}
+                {% if key == 'img_path' %}
+                    <p><img onclick="location.href='/product_detail/{{ item_name }}/';" style="cursor:pointer;" src="static/images/{{ value }}", width=200, height=200></p>
+                {% endif %}
+            {% endfor %}
+            <p class="product-name">{{ item_name }}</p>
+          </div>
+        {% endfor %}
+      </div>
     {% else %}
-        <p id="list_count">"{{ query }}"의 검색 결과가 없습니다</p>
+        <p class="list_count">"{{ query }}"의 검색 결과가 없습니다</p>
     {% endif %}
     
     <a class="back_list" href="{{ url_for('view_list') }}">상품 리스트로 돌아가기</a>
