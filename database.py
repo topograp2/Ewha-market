@@ -156,7 +156,7 @@ class DBhandler:
         reviews=self.db.child("review").get()
         target_value=[]
         target_key=[]
-        for res in reviews.eash():
+        for res in reviews.each():
             value=res.val()
             key_value=res.key()
             if value['review_item'] == item:
