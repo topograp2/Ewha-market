@@ -4,6 +4,8 @@
 {% block section %}
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/product_detail.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 {% endblock %}
 
 <div class="product-detail-container">
@@ -34,7 +36,10 @@
                 <p><strong>배송 방법</strong><span class="divider">|</span> {{data.delivery_method}}</p>
                 <p><strong>판매 지역</strong><span class="divider">|</span> {{data.addr}}</p>
                 <p><strong>제작 방식</strong><span class="divider">|</span> {{data.is_preorder}}</p>
+                <i class="fa fa-heart" id="heart"></i>
             </div>
+
+        
             
             <!-- 상품 설명 -->
             <div class="product-description">
@@ -50,50 +55,54 @@
 
 <script>
     function showHeart() {
-        $.ajax({
-            type: 'GET',
-            url: '/show_heart/{{name}}/',
-            data: {},
-            success: function (response) {
-                let my_heart = response['my_heart'];
-                if (my_heart['interested'] == 'Y') {
-                    $("#heart").css("color", "red");
-                    $("#heart").attr("onclick", "unlike()");
-                } else {
-                    $("#heart").css("color", "grey");
-                    $("#heart").attr("onclick", "like()");
-                }
+    $.ajax({
+        type: 'GET',
+        url: '/show_heart/{{name}}/',
+        success: function (response) {
+            let my_heart = response['my_heart'];
+            if (my_heart['interested'] == 'Y') {
+                $("#heart").css("color", "red");
+                $("#heart").attr("onclick", "unlike()");
+            } else {
+                $("#heart").css("color", "grey");
+                $("#heart").attr("onclick", "like()");
             }
-        });
-    }
+        },
+        error: function (error) {
+            console.error('Error fetching heart status:', error);
+        }
+    });
+}
 
+    
     function like() {
         $.ajax({
-            type: 'POST',
-            url: '/like/{{name}}/',
-            data: { interested: "Y" },
-            success: function (response) {
-                alert(response['msg']);
-                window.location.reload();
+            type:'POST',
+            url:'/like/{{name}}/', 
+            data: {interested: "Y"}, 
+            success: function(response) {
+                alert(response['msg']); 
+                window.location.reload()
             }
         });
     }
-
+    
     function unlike() {
         $.ajax({
-            type: 'POST',
-            url: '/unlike/{{name}}/',
-            data: { interested: "N" },
-            success: function (response) {
-                alert(response['msg']);
-                window.location.reload();
+            type:'POST',
+            url:'/unlike/{{name}}/', 
+            data: {interested: "N"}, 
+            success: function(response) {
+                alert(response['msg']); 
+                window.location.reload()
             }
         });
     }
-
+    
     $(document).ready(function () {
         showHeart();
-    });
+    });  
+    <!--처음 페이지 로딩시 호출-->
 </script>
 
 
