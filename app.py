@@ -192,11 +192,16 @@ def paginate(data, page=0, per_page=6, per_row=2):
         data=dict(list(data.items())[:item_counts])
     else:
         data=dict(list(data.items())[start_idx:end_idx])
+
     for i in range(row_count):
         if (i==row_count-1) and (item_counts%per_row != 0):
             rows[f'data_{i}'] = dict(list(data.items())[i*per_row:])
+            print(str(i)+"번째")
+            print(rows[f'data_{i}'])
         else:
-            rows[f'data_{i}'] = dict(list(data.items())[i*per_row:(i+1)*per_row])
+            rows[f'data_{i}'] = dict(list(data.items())[i*per_row:((i+1)*per_row)])
+            print(str(i)+"번째")
+            print(rows[f'data_{i}'])
     return data, rows, int(math.ceil(item_counts/per_page))
 
 @application.route('/my_like/<user_id>/')
@@ -229,20 +234,23 @@ def my_post(user_id):
                         row2=rows['data_1'].items(),
                         limit=per_page, page=page, page_count=page_count,
                         total=item_counts)
-
+   
 @application.route('/my_review/<user_id>/')
 def my_review(user_id):
     page = request.args.get("page", 0, type=int)
     per_page=6
-    per_row=3
+    per_row=2
 
     data=DB.get_review_byuser(user_id)
     item_counts = len(data)
     page_data, rows, page_count= paginate(data, page, per_page, per_row)
-    
+    print(str(0)+":  "+str(rows['data_0']))
+    print(str(1)+":  "+str(rows['data_1']))
+    print(str(2)+":  "+str(rows['data_2']))
     return render_template( "my_review.html", datas=page_data.items(), user_id=user_id,
                         row1=rows['data_0'].items(),
                         row2=rows['data_1'].items(),
+			            row3=rows['data_2'].items(),
                         limit=per_page, page=page, page_count=page_count,
                         total=item_counts)
 
