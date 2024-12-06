@@ -44,6 +44,10 @@
 	margin-top: 0;
 }
 
+.mp-list td {
+	padding-bottom: 0.5rem;
+}
+
 .mp-list img {
     object-fit: cover;
 }

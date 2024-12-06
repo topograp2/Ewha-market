@@ -8,7 +8,7 @@
         <a href="/my_page/{{user_id}}" class="back-arrow">←</a>
         <a href="/my_like/{{user_id}}">좋아요한 상품</a>
         <a href="" class="active">내가 게시한 상품</a>
-        <a href="/my_review/{{user_id}}">내가 작성한 리뷰</a>
+        <a href="/my_rev/{{user_id}}">내가 작성한 리뷰</a>
     </div>
     <hr>
     <div class="mp-list">
@@ -16,7 +16,7 @@
         <tr>
             {% for key, value in row1 %}
             <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
-                <img width=200, height=200, src="../../static/images/{{value['img_path']}}"><br>
+                <img width=180, height=180, src="../../static/images/{{value['img_path']}}"><br>
                 <a class=item-title href="">{{value.item}}</a><br>
             </td>
             {% endfor %}
@@ -24,7 +24,7 @@
         <tr>
             {% for key, value in row2 %}
             <td onclick="location.href='/product_detail/{{key}}/';" style="cursor:pointer;">
-                <img width=200, height=200, src="../../static/images/{{value['img_path']}}"><br>
+                <img width=180, height=180, src="../../static/images/{{value['img_path']}}"><br>
                 <a class=item-title href="">{{value.item}}</a><br>
             </td>
             {% endfor %}

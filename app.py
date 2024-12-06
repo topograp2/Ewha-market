@@ -209,7 +209,7 @@ def my_like(user_id):
     data=DB.get_like_items_byuser(user_id)
     page = request.args.get("page", 0, type=int)
     per_page=10
-    per_row=2
+    per_row=5
     item_counts = len(data)
     page_data, rows, page_count= paginate(data, page, per_page, per_row)
     
@@ -223,7 +223,7 @@ def my_like(user_id):
 def my_post(user_id):
     page = request.args.get("page", 0, type=int)
     per_page=10
-    per_row=2
+    per_row=5
 
     data=DB.get_item_byuser(user_id)
     item_counts = len(data)
@@ -235,7 +235,7 @@ def my_post(user_id):
                         limit=per_page, page=page, page_count=page_count,
                         total=item_counts)
    
-@application.route('/my_review/<user_id>/')
+@application.route('/my_rev/<user_id>/')
 def my_review(user_id):
     page = request.args.get("page", 0, type=int)
     per_page=6
