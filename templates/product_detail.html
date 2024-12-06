@@ -16,7 +16,7 @@
             </div>
             <div class="image-buttons">
                 <button onclick="location.href='/reg_review_init/{{name}}/';" class="review-btn">리뷰 등록</button>
-                <a href="{{url_for('view_list', page=i, item=name)}}" class="review-btn">리뷰 보기</a>
+                <a href="{{url_for('view_review', page=i, item=name)}}" class="review-btn">리뷰 보기</a>
             </div>
             <div class="buy-button-container">
                 <button onclick="location.href='/purchase/{{name}}/';" class="buy-btn">제품 구매하기</button>
