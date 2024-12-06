@@ -107,6 +107,7 @@
 #subcategory0 {
 	background-color: #ffffff;
 	color: #ffffff;
+	z-index: 0;
 }
 #subcategory1 {
 	margin-left: 17rem;
