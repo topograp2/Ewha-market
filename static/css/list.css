@@ -24,7 +24,7 @@
 	margin:0;
 	position: absolute;
 	text-align: right;
-	width: 20rem;
+	width: 10rem;
 	height: 3rem;
 	right: 11rem;
 	top: 4rem;
@@ -107,6 +107,7 @@
 #subcategory0 {
 	background-color: #ffffff;
 	color: #ffffff;
+	z-index: 0;
 }
 #subcategory1 {
 	margin-left: 17rem;

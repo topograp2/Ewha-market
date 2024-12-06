@@ -8,13 +8,51 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
    $(document).ready(function () {
-            var currentCategory = "{{category}}"; // 현재 선택된 카테고리
-            $('nav a').each(function() {
-                if ($(this).text().trim() === currentCategory) {
-                    $(this).addClass("active");
+        var currentCategory = "{{category}}"; // 현재 선택된 카테고리
+        var subcategoryLinks1 = ["학잠/과잠", "후리스", "주경바막/돕바", "기타(의류)"];
+        var subcategoryLinks2 = ["노트/플래너", "필기구", "엽서/스티커", "기타(문구)"];
+        var subcategoryLinks3 = ["베이킹", "음료", "기타(푸드)"];
+        var subcategoryLinks4 = ["인형/키링/뱃지", "에코백/파우치", "텀블러/머그컵", "기타(잡화)"];
+        var activeFound = false; // active가 있는지 체크하는 변수
+
+        // 메인 카테고리와 서브 카테고리 활성화
+        $('nav a').each(function() {
+            // 메인 카테고리 이름 비교
+            var categoryText = $(this).text().trim();
+            if ($(this).text().trim() === currentCategory) {
+                $(this).addClass("active"); // 메인 카테고리 활성화
+                
+                // 서브 카테고리 활성화
+                var targetSubcategory = $("#" + $(this).data('target'));
+                targetSubcategory.addClass("active");
+
+                if (subcategoryLinks1.includes(currentCategory)) {
+                  $('nav a[data-target="subcategory1"]').addClass("active");
+                  $("#subcategory1").addClass("active");
                 }
-            });
+                if (subcategoryLinks2.includes(currentCategory)) {
+                  $('nav a[data-target="subcategory2"]').addClass("active");
+                  $("#subcategory2").addClass("active");
+                }
+                if (subcategoryLinks3.includes(currentCategory)) {
+                  $('nav a[data-target="subcategory3"]').addClass("active");
+                  $("#subcategory3").addClass("active");
+                }
+                if (subcategoryLinks4.includes(currentCategory)) {
+                  $('nav a[data-target="subcategory4"]').addClass("active");
+                  $("#subcategory4").addClass("active");
+                }
+
+                activeFound = true; // active가 존재한다고 설정
+            }
         });
+
+        // active가 없으면 '전체' 카테고리 활성화
+        if (!activeFound) {
+            $('nav a[data-target="subcategory0"]').addClass("active");
+            $("#subcategory0").addClass("active");
+        }
+    });
 </script>
 
 <div id="category" name="category" onchange="location=this.value" class="container">
@@ -22,42 +60,43 @@
   <nav class="category-nav">
     <a href="{{url_for('view_list', page=i, category='all')}}" data-target="subcategory0">전체</a>
     <p>|</p>
-    <a href="{{url_for('view_list', page=i, category='clothes')}}" data-target="subcategory1">의류</a>
+    <a href="{{url_for('view_list', page=i, category='의류')}}" data-target="subcategory1">의류</a>
     <p>|</p>
-    <a href="{{url_for('view_list', page=i, category='stationary')}}" data-target="subcategory2">문구</a>
+    <a href="{{url_for('view_list', page=i, category='문구')}}" data-target="subcategory2">문구</a>
     <p>|</p>
-    <a href="{{url_for('view_list', page=i, category='food')}}" data-target="subcategory3">푸드</a>
+    <a href="{{url_for('view_list', page=i, category='푸드')}}" data-target="subcategory3">푸드</a>
     <p>|</p>
-    <a href="{{url_for('view_list', page=i, category='others')}}" data-target="subcategory4">잡화</a>
+    <a href="{{url_for('view_list', page=i, category='잡화')}}" data-target="subcategory4">잡화</a>
   </nav>
   <!-- 서브 카테고리 내비게이션 -->
   <nav class="subcategory-nav" id="subcategory0">
+    <a></a>
   </nav>
   <nav class="subcategory-nav" id="subcategory1">
     <a href="{{url_for('view_list', page=i, category='학잠/과잠')}}">학잠/과잠</a>
     <a href="{{url_for('view_list', page=i, category='후리스')}}">후리스</a>
     <a href="{{url_for('view_list', page=i, category='주경바막/돕바')}}">주경바막/돕바</a>
-    <a href="{{url_for('view_list', page=i, category='기타(의류)')}}">기타</a>
+    <a href="{{url_for('view_list', page=i, category='기타(의류)')}}">기타(의류)</a>
   </nav>
 
   <nav class="subcategory-nav" id="subcategory2">
     <a href="{{url_for('view_list', page=i, category='노트/플래너')}}">노트/플래너</a>
     <a href="{{url_for('view_list', page=i, category='필기구')}}">필기구</a>
     <a href="{{url_for('view_list', page=i, category='엽서/스티커')}}">엽서/스티커</a>
-    <a href="{{url_for('view_list', page=i, category='기타(문구)')}}">기타</a>
+    <a href="{{url_for('view_list', page=i, category='기타(문구)')}}">기타(문구)</a>
   </nav>
 
   <nav class="subcategory-nav" id="subcategory3">
     <a href="{{url_for('view_list', page=i, category='베이킹')}}">베이킹</a>
     <a href="{{url_for('view_list', page=i, category='음료')}}">음료</a>
-    <a href="{{url_for('view_list', page=i, category='기타(푸드)')}}">기타</a>
+    <a href="{{url_for('view_list', page=i, category='기타(푸드)')}}">기타(푸드)</a>
   </nav>
 
   <nav class="subcategory-nav" id="subcategory4">
     <a href="{{url_for('view_list', page=i, category='인형/키링/뱃지')}}">인형/키링/뱃지</a>
     <a href="{{url_for('view_list', page=i, category='에코백/파우치')}}">에코백/파우치</a>
     <a href="{{url_for('view_list', page=i, category='텀블러/머그컵')}}">텀블러/머그컵</a>
-    <a href="{{url_for('view_list', page=i, category='기타(잡화)')}}">기타</a>
+    <a href="{{url_for('view_list', page=i, category='기타(잡화)')}}">기타(잡화)</a>
   </nav>
   
   <p id="list_title">상품 리스트</p><br>
