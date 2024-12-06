@@ -346,6 +346,13 @@ def search():
                                query = query)
     else:
         return redirect(url_for('view_list'))
+    
+@application.route("/secession")
+def secession():
+    DB.user_secession(session['id'])
+    session.clear()
+    return redirect(url_for('view_list'))
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
     

@@ -63,6 +63,39 @@ class DBhandler:
                 return True
         return False
     
+    def user_secession(self, id_):
+        users=self.db.child("user").get()
+        for res in users.each():
+            value = res.val()
+            if value['id'] == id_:
+                self.db.child("user").child(res.key()).set(None)
+        print("탈퇴됨")
+        hearts=self.db.child("heart").get()
+        for res in hearts.each():
+            user=res.key()
+            if user==id_:
+                self.db.child("heart").child(user).set(None)
+        print("좋아요들 삭제됨")
+        items=self.db.child("item").get()
+        for res in items.each():
+            value=res.val()
+            if value['seller_id']==id_:
+                self.db.child("item").child(res.key()).set(None)
+        print("item 삭제됨")
+        orders=self.db.child("order").get()
+        for res in orders.each():
+            value=res.val()
+            if value['customer_id']==id_:
+                self.db.child("orders").child(res.key()).set(None)
+        print("order 삭제됨")
+        reviews=self.db.child("review").get()
+        for res in reviews.each():
+            value=res.val()
+            if value['reviewer_id']==id_:
+                self.db.child("reviews").child(res.key()).set(None)
+        print("review 삭제됨")
+        return True
+    
     def get_items(self):
         items = self.db.child("item").get().val()
         return items
