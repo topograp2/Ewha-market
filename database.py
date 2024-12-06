@@ -152,6 +152,24 @@ class DBhandler:
             new_dict[k]=v
         return new_dict
     
+    def get_reviews_byitem(self, item):
+        reviews=self.db.child("review").get()
+        target_value=[]
+        target_key=[]
+        for res in reviews.eash():
+            value=res.val()
+            key_value=res.key()
+            if value['review_item'] == item:
+                target_value.append(value)
+                target_key.append(key_value)
+            else:
+                print(f"해당 아이템의 리뷰가 없습니다: {value['review_item']}")
+        print("######target_value",target_value)
+        new_dict={}
+        for k,v in zip(target_key,target_value):
+            new_dict[k]=v
+        return new_dict
+    
     def reg_review(self, name, data, img_path, keywords, id):
         review_info={
             "title": data['reviewTitle'],
