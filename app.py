@@ -199,7 +199,7 @@ def paginate(data, page=0, per_page=6, per_row=2):
 def my_like(user_id):
     data=DB.get_like_items_byuser(user_id)
     page = request.args.get("page", 0, type=int)
-    per_page=6
+    per_page=10
     per_row=2
     item_counts = len(data)
     page_data, rows, page_count= paginate(data, page, per_page, per_row)
@@ -213,8 +213,8 @@ def my_like(user_id):
 @application.route('/my_post/<user_id>/')
 def my_post(user_id):
     page = request.args.get("page", 0, type=int)
-    per_page=6
-    per_row=3
+    per_page=10
+    per_row=2
 
     data=DB.get_item_byuser(user_id)
     item_counts = len(data)
