@@ -74,16 +74,16 @@ reviewText.addEventListener("input", countReviewText);
 
 // 체크박스 된 거 세기
 let checkCnt = 0;
-const checkBoxes =  document.querySelectorAll(".check-keyword");
-checkBoxes.forEach(checkbox =>{
-    checkbox.addEventListener("change", ()=>{
-        if(checkbox.checked){
-            checkCnt++;
-        }else{
-            checkCnt--;
-        }
-    })
-})
+//const checkBoxes =  document.querySelectorAll(".check-keyword");
+//checkBoxes.forEach(checkbox =>{
+    //checkbox.addEventListener("change", ()=>{
+        //if(checkbox.checked){
+            //checkCnt++;
+        //}else{
+            //checkCnt--;
+        //}
+    //})
+//})
 
 
 // 뒤로 가기 만들기
@@ -169,6 +169,7 @@ keywordSelect.forEach(label => {
 
         if (checkbox.checked) {
             // 이미 선택된 상태라면 해제
+            checkCnt--;
             checkbox.checked = false;
             label.classList.remove("active");
         } else {
@@ -187,6 +188,7 @@ keywordSelect.forEach(label => {
             });
 
             // 현재 선택 활성화
+            checkCnt++;
             checkbox.checked = true;
             label.classList.add("active");
         }
