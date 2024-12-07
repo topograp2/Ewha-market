@@ -145,7 +145,7 @@
 	height: 30rem;
 	margin-left: 12.2rem;
 	margin-right: 12.2rem;
-	margin-top: 0;
+	margin-top: 2rem;
 	display: grid;
 	justify-content: center;
 	grid-template-columns: repeat(5, 1fr);
