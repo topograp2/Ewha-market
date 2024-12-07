@@ -62,15 +62,14 @@
             <div class="one-third">
                 <hr class="small-hr">
                 <div class="center item-title">작성한 리뷰 ({{rtotal}})</div>
-                <div class="preview-container">
+                <div class="preview-container center">
                     <div class="column">
                         {% for key, value in rdata %}
                         
                         <div onclick="location.href='/review_detail/{{key}}/';" style="cursor:pointer;" style="text-align: left; margin-bottom: 15px;">
-                            <div class="review-item">상품: {{key}}</div>
-                            <div class="row">
+                            <div class="row margin-bottom">
                                 <div class="image-box1"><img src="../../static/images/{{value['img_path']}}" width="60px"height="40px"></div>
-                                <div >
+                                <div>
                                     <div class="green-star">{% if value['rate_item'] == "0" %}
                                         ☆☆☆☆☆ 
                                         {% elif value['rate_item'] == "1" %}
