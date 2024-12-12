@@ -5,7 +5,7 @@ let isValidCheck = false;
 const pwInput = document.querySelector("#profilePwInput");
 const pwInputMsg = document.querySelector(".pw-input-msg");
 const checkIconPath = document.querySelector(".pw-icon").querySelector("img");
-const checkIconPath = 0;
+//const checkIconPath = 0;
 // 영문, 숫자, 특수문자 포함되는지 검사
 pwInput.addEventListener("input", ()=>{
     const haveLetter = /[a-zA-Z]/.test(pwInput.value);
